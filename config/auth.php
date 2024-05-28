@@ -42,6 +42,7 @@ return [
         ],
     ],
 
+    
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -62,7 +63,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => env('AUTH_MODEL', App\Models\Reg_User::class),
         ],
 
         // 'users' => [
