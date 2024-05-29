@@ -6,9 +6,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//dashboard
 Route::get('/home', function () {
-    return view('home');
+    return view('users.home');
 })->name('home');
+
+//scr_questions
+Route::get('/scr_questions', function () {
+    return view('users.series.scr_questions');
+})->name('home')->middleware('auth');;
 
 //authcontroller route
 Route::get('/login',[AuthController::class,'index'])->name('login');
@@ -21,3 +27,5 @@ Route::get('/home',[AuthController::class,'show_user'])->name('home');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+//scr question bank
+// Route::get('/login',[AuthController::class,'index'])->name('login');

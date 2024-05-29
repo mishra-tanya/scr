@@ -47,7 +47,7 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           {{-- <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li> --}}
-          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+          {{-- <li><a class="nav-link scrollto" href="#pricing">Premium</a></li> --}}
           {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -725,13 +725,13 @@
     </section><!-- End Team Section --> --}}
 
     <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
+    {{-- <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Why to buy premium?</h2>
+          <h2>Why to buy premium?</h2> --}}
           {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
-        </div>
+        {{-- </div>
         <div class="row ">
             <div class="col-lg-3 col-md-6" data-aos="zoom-im" data-aos-delay="100">
             </div>
@@ -746,8 +746,8 @@
                 {{-- <li>After one day can ask for more trials</li> --}}
                 {{-- <li class="na">Pharetra massa</li>
                 <li class="na">Massa ultricies mi</li> --}}
-              </ul>
-              @guest
+              {{-- </ul> --}}
+              {{-- @guest
               <div class="btn-wrap">
                 <a href={{route('login')}} class="btn-buy">Buy Now</a>
               </div>
@@ -773,7 +773,7 @@
                 {{-- <li>Nulla at volutpat dola</li> --}}
                 {{-- <li>Pharetra massa</li>
                 <li>Massa ultricies mi</li> --}}
-              </ul>
+              {{-- </ul>
               @guest
               <div class="btn-wrap">
                 <a href={{route('login')}} class="btn-buy">Buy Now</a>
@@ -790,8 +790,8 @@
         </div>
         </div>
 
-      </div>
-    </section><!-- End Pricing Section -->
+      </div>  --}}
+    {{-- </section><!-- End Pricing Section --> --}} 
 
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
@@ -853,7 +853,7 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
         </div>
 
         {{-- <div>

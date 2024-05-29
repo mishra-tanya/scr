@@ -70,7 +70,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
 
-            return view('home', ['user' => $user]);
+            return view('users.home', ['user' => $user]);
         } else {
             return redirect()->route('login')->with('error', 'You must be logged in to access this page.');
         }
