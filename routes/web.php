@@ -19,5 +19,5 @@ Route::get('/register',[AuthController::class,'register_view'])->name('register'
 Route::post('/register',[AuthController::class,'register'])->name('register');
 Route::get('/home',[AuthController::class,'show_user'])->name('home');
 
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 

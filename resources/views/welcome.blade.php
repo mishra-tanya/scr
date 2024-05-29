@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>OnePage Bootstrap Template - Index</title>
+  <title>SCR</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -66,7 +66,15 @@
             </ul>
           </li> --}}
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href={{url('login')}}>Login</a></li>
+          @guest
+          <li><a class="getstarted scrollto" href={{ url('login') }}>Login</a></li>
+      @endguest
+      @auth
+      <li><a class="nav-link scrollto" href={{ url('home') }}>Dashboard</a></li>
+  @endauth
+      @auth
+          <li><a class="getstarted scrollto" href={{ url('logout') }}>Logout</a></li>
+      @endauth
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -79,13 +87,24 @@
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
+         @auth
+         <h2>Welcome {{Auth::user()->first_name}}, to</h2>
+         @endauth
           <h1>Substainability and Climate Risk (SCR)</h1>
           <h2>SCR Preparation Module</h2>
         </div>
       </div>
+      @guest
       <div class="text-center">
         <a href={{url('login')}} class="btn-get-started scrollto">Get Started</a>
       </div>
+      @endguest
+      @auth
+      <div class="text-center">
+        <a href={{url('home')}} class="btn-get-started scrollto">Get Started</a>
+      </div>
+  @endauth
+     
 
       {{-- <div class="row icon-boxes"> --}}
         {{-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
@@ -728,9 +747,17 @@
                 {{-- <li class="na">Pharetra massa</li>
                 <li class="na">Massa ultricies mi</li> --}}
               </ul>
+              @guest
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href={{route('login')}} class="btn-buy">Buy Now</a>
               </div>
+              @endguest
+             @auth
+             <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+             @endauth
+
             </div>
           </div>
 
@@ -747,9 +774,16 @@
                 {{-- <li>Pharetra massa</li>
                 <li>Massa ultricies mi</li> --}}
               </ul>
+              @guest
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href={{route('login')}} class="btn-buy">Buy Now</a>
               </div>
+              @endguest
+             @auth
+             <div class="btn-wrap">
+              <a href="#" class="btn-buy">Buy Now</a>
+            </div>
+             @endauth
             </div>
           </div>
           <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
@@ -765,29 +799,29 @@
 
         <div class="section-title">
           <h2>Frequently Asked Questions</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
         </div>
 
         <div class="faq-list">
           <ul>
-            <li data-aos="fade-up">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+            <li data-aos="fade-up" >
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-1" class="collapsed" >Is it only free for one day? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse " data-bs-parent=".faq-list">
                 <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                  Yes, it is free for only one day after registeration. But you can ask for more free trials.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">After payment how many days I can access? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                  You can access it anytime, anywhere after payment.
                 </p>
               </div>
             </li>
-
+{{-- 
             <li data-aos="fade-up" data-aos-delay="200">
               <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
@@ -804,16 +838,8 @@
                   Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
                 </p>
               </div>
-            </li>
+            </li> --}}
 
-            <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                </p>
-              </div>
-            </li>
 
           </ul>
         </div>
