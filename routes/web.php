@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -10,11 +11,6 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('users.home');
 })->name('home');
-
-//scr_questions
-Route::get('/scr_questions', function () {
-    return view('users.series.scr_questions');
-})->name('home')->middleware('auth');;
 
 //authcontroller route
 Route::get('/login',[AuthController::class,'index'])->name('login');
@@ -29,3 +25,22 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //scr question bank
 // Route::get('/login',[AuthController::class,'index'])->name('login');
+// routes/web.php
+
+
+// routes/web.php
+use App\Http\Controllers\ScrChapterController;
+
+Route::get('/scr_questions', [ScrChapterController::class, 'showDashboard'])->name('scr_q')->middleware('auth');
+
+
+
+// use App\Http\Controllers\QuizController;
+
+// Route::get('/questions', function () {
+//     return view('users.series.questions');
+// })->name('questions');
+// Route::get('/questions', [QuizController::class, 'getQuestions']);
+use App\Http\Controllers\QuizController;
+
+Route::get('/questions/{chapter_id}/{test}', [QuizController::class, 'getQuestions'])->name('get.questions');

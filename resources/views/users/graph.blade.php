@@ -15,9 +15,15 @@
         /* background-image:  url(assets/img/img.avif); */
         padding: 70px;
         background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(assets/img/img.avif);
-  
     }
-    
+    @media (max-width:920px) {
+            .containerd{
+        /* background-image:  url(assets/img/img.avif); */
+        padding: 30px;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(assets/img/img.avif);
+  
+            }
+        }
 </style>
 <body>
     <div class="containerd mt-5">

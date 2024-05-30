@@ -19,12 +19,10 @@
     @include('nav')
     <div>
         @include('users.graph')
-
         <br><br>
-
         @include('users.content')
-
     </div>
+    @include('footer')
 
 
 

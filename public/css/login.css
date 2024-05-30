@@ -157,6 +157,7 @@ input::placeholder{
 	margin:0;
 	color:#ffffff;
 	background:none;
+	background-color: #d7d7d7;
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
 
@@ -175,7 +176,7 @@ input::placeholder{
 	position:absolute;
 	padding:120px 20px 30px 20px;
     color: black;
-	background:rgba(209, 207, 207, 0.811);
+	background:rgba(255, 255, 255, 0.811);
 }
 
 .login-form .group .label{
@@ -199,7 +200,7 @@ input::placeholder{
 .login-form .group .button{
     border:black 1px solid;
 	padding:15px 20px;
-	border-radius:25px;
+	border-radius:10px;
 	background:rgba(55, 142, 181, 0.9);
     color: white;
 }

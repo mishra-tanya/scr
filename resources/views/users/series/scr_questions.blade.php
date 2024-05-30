@@ -65,6 +65,20 @@
                 border-radius: 100%;
                 border-top: 1px dotted #000000;
             }
+            
+            @media (max-width:920px) {
+                .custom-btn {
+                background-color: #63a9b7;
+                color: #fff;
+                width: 70%;
+                border: none;
+                font-size: 13px;
+                border-radius: 70%;
+                /* padding: 10px 20px; */
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+        }
         </style>
    </head>
 <body>
@@ -75,166 +89,44 @@
 </div>
 
 <div class="container mt-4">        
-    <div class="row" >
-      
-      
-        <div class="col-lg-4 col-md-6 mb-3">
-            <div class="card" style="background-color:#E6F7FF">
-                <div class="card-content">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-12">
-                                <h4 class="card-label">Chapter 1:</h4>
-                                <p>Chapter topic</p>
+    <div class="row">
+        @foreach ($chapters as $chapter)
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card" style="background-color:#E6F7FF">
+                    <div class="card-content">
+                        <div class="card-item">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="card-label">{{ $chapter['title'] }}:</h4>
+                                    <p>{{ $chapter['topic'] }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 1</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
+                        <hr>
+                        @foreach ($chapter['tests'] as $test)
+                            <div class="card-item row">
+                                <div class="col-4">
+                                    <div class="card-label">{{ $test['label'] }}</div>
+                                </div>
+                                <div class="col-8 text-end">
+                                    <div class="card-value text-end">
+                                        <a href={{$test['link']}} class="btn custom-btn btn-block">{{ $test['status'] }}</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <hr>
+                        @endforeach
                     </div>
-                    <hr>
-
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 2</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 3</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
                 </div>
             </div>
+        @endforeach
+    </div>
+
         </div>
 
-         
-        
-        <div class="col-lg-4 col-md-6 mb-3">
-            <div class="card" style="background-color:#E6F7FF">
-                <div class="card-content">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-12">
-                                <h4 class="card-label">Chapter 2:</h4>
-                                <p>Chapter topic</p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 1</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 2</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 3</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-        </div>
-                
-
-        
-        <div class="col-lg-4 col-md-6 mb-3">
-            <div class="card" style="background-color:#E6F7FF">
-                <div class="card-content">
-                    <div class="card-item">
-                        <div class="row">
-                            <div class="col-12">
-                                <h4 class="card-label">Chapter 3:</h4>
-                                <p>Chapter topic</p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 1</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 2</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="card-item row">
-                        <div class="col-4"> 
-                            <div class="card-label">Test 3</div>
-                        </div>
-                        <div class="col-8 text-end">
-                            <div class="card-value text-end">
-                                <a href="" class="btn custom-btn btn-block">Unattempted</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-        </div>
-            </div>
+<br>
+        <div class=" mt-4">
+            <h2 class="text-center mb-4" style="background-color:rgb(235, 235, 235);padding:12px;">Complete Mock Tests</h2>
         </div>
 
 </body>
