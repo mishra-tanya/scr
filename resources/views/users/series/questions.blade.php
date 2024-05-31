@@ -12,7 +12,7 @@
     <style>
         .quiz-container body {
             background-color: #f5f5f5;
-            
+
         }
 
         .quiz-container {
@@ -34,17 +34,16 @@
             margin-bottom: 30px;
 
         }
-         input[type="radio"] {
-    /* Increase the size of the radio button */
-    width: 16px;
-    height: 16px;
-         }
+
+        input[type="radio"] {
+            width: 16px;
+            height: 16px;
+        }
 
         .quiz-container .question-number-list li {
             margin: 0 10px;
         }
 
-        /* Your CSS code */
         .question-number-list {
             list-style: none;
             display: flex;
@@ -61,13 +60,9 @@
             padding: 10px;
             border: none;
             border-radius: 10%;
-            /* Make it circular */
             width: 40px;
-            /* Set a fixed width */
             height: 40px;
-            /* Set a fixed height */
             background-color: #2487ce;
-            /* Default blue color */
             color: #fff;
             cursor: pointer;
             border: 5px rgb(211, 211, 211) double;
@@ -82,7 +77,6 @@
 
         .question-number-list button.reviewed {
             background-color: #826201;
-            /* Blue color for reviewed button */
         }
 
         .quiz-container .question {
@@ -144,7 +138,7 @@
 
         }
     </style>
-{{-- navbar --}}
+    {{-- navbar --}}
     <div class="navbar">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,300italic&subset=latin'
             rel='stylesheet' type='text/css'>
@@ -183,7 +177,6 @@
                 align-items: center;
                 justify-content: space-between;
                 margin: auto;
-                /* background: red; */
                 padding: 0 50px;
             }
 
@@ -227,7 +220,6 @@
             }
 
             nav .navbar .links li .arrow {
-                /* background: red; */
                 height: 100%;
                 width: 22px;
                 line-height: 70px;
@@ -520,12 +512,12 @@
 
                     </ul>
                 </div>
-               
+
             </div>
         </nav>
         <script>
             let navbar = document.querySelector(".navbar");
-           
+
             let navLinks = document.querySelector(".nav-links");
             let menuOpenBtn = document.querySelector(".navbar .bx-menu");
             let menuCloseBtn = document.querySelector(".nav-links .bx-x");
@@ -536,45 +528,40 @@
                 navLinks.style.left = "-100%";
             }
 
-
-            let htmlcssArrow = document.querySelector(".htmlcss-arrow");
-            htmlcssArrow.onclick = function() {
-                navLinks.classList.toggle("show1");
-            }
-            let moreArrow = document.querySelector(".more-arrow");
-            moreArrow.onclick = function() {
-                navLinks.classList.toggle("show2");
-            }
-            let jsArrow = document.querySelector(".js-arrow");
-            jsArrow.onclick = function() {
-                navLinks.classList.toggle("show3");
-            }
         </script>
 
     </div>
 
     <br><br>
-   
+
+    <form action={{ route('submitquiz') }} method="post">
+        @csrf
     <div class="quiz-container">
-      <div class="ch text-center" style="font-size: 25px;">
-        <b class="">Chapter: {{  $ch_no = substr($chapter_id, 7);}}</b>
-      </div>
-        
-        <hr style=" border: 3px solid #2487ce;
-        border-radius: 100%;
-        border-top: 1px dotted #000000;">
+        <div class="ch text-center" style="font-size: 25px;">
+            <b class="">Chapter: {{ $ch_no = substr($chapter_id, 7) }}</b>
+        </div>
+        <input type="hidden" name="chapter_id" value={{ $chapter_id }}>
+        <input type="hidden" name="test" value={{ $test }}>
+        {{-- <input type="hidden" name="user_id" value={{ Auth::user()->id }}> --}}
+        {{-- {{ $test }}{{ Auth::user()->id }} --}}
+
+        <hr
+            style=" border: 3px solid #2487ce;
+            border-radius: 100%;
+            border-top: 1px dotted #000000;">
         <ul class="question-number-list">
-         
+
             @foreach ($questions as $key => $question)
                 <li><button class="{{ $key === 0 ? 'active' : '' }}{{ $question->reviewed ? ' reviewed' : '' }} "
                         data-index="{{ $key }}">{{ $key + 1 }}</button></li>
             @endforeach
         </ul>
 
-        <hr style=" border: 3px solid #2487ce;
-        border-radius: 100%;
-        border-top: 1px dotted #000000;">
-<br>
+        <hr
+            style=" border: 3px solid #2487ce;
+            border-radius: 100%;
+            border-top: 1px dotted #000000;">
+        <br>
         <div class="question">
             @foreach ($questions as $key => $question)
                 <div class="question-block{{ $key === 0 ? ' active' : '' }}" id="question-{{ $key }}">
@@ -584,44 +571,80 @@
                     <h4><b>{!! nl2br(e($question->question_title)) !!}</b></h4>
 
                     <hr>
-                            <label><b>A. </b>
-                                <input type="radio" name="selected_option_{{ $key }}" value="A">
-                                {{ $question->option_a }}
-                            </label>
-                            <hr>
-                            <label><b>B. </b>
-                                <input type="radio" name="selected_option_{{ $key }}" value="B">
-                                {{ $question->option_b }}
-                            </label>
-                            <hr>
-                            <label><b>C. </b>
-                                <input type="radio" name="selected_option_{{ $key }}" value="C">
-                                {{ $question->option_c }}
-                            </label>
-                            <hr>
-                            <label><b>D. </b>
-                                <input type="radio" name="selected_option_{{ $key }}" value="D">
-                                {{ $question->option_d }}
-                            </label>
-                            <hr><br><br>
-                    <button class="mark-review-btn btn btn-success" data-index="{{ $key }}">Mark for Review</button>
+                    <label><b>A. </b>
+                        <input type="radio" name="results[{{ $key }}][user_answer]" value="A">
+                        {{ $question->option_a }}
+                    </label>
+                    <hr>
+                    <label><b>B. </b>
+                        <input type="radio" name="results[{{ $key }}][user_answer]" value="B">
+                        {{ $question->option_b }}
+                    </label>
+                    <hr>
+                    <label><b>C. </b>
+                        <input type="radio" name="results[{{ $key }}][user_answer]" value="C">
+                        {{ $question->option_c }}
+                    </label>
+                    <hr>
+                    <label><b>D. </b>
+                        <input type="radio" name="results[{{ $key }}][user_answer]" value="D">
+                        {{ $question->option_d }}
+                    </label>
+                    <input type="hidden" name="results[{{ $key }}][question_id]" value="{{ $question->id }}">
+                    <input type="hidden" name="results[{{ $key }}][result_ans]" value="{{ $question->result_ans }}">
+                 
+                    <hr><br><br>
+                    {{-- {{ $question->result_ans }} --}}
+<div class="marks">
+                    <button class="mx-2 mark-review-btn button" data-index="{{ $key }}">Mark for
+                        Review</button>
+                    </div>          
                 </div>
             @endforeach
         </div>
-
-        <div class="navigation">
+<style>
+    .button{
+        width: 220px;
+        height: 50px;
+        border: 5px double rgb(211, 211, 211);
+        border-radius: 5px;
+    }
+    .mark-review-btn{
+        color: white;
+        background-color: #826201;
+    }
+    #submit_test{
+        background-color:#28A745;
+        color: white; 
+    }
+    #next{
+        background-color: #0056b3;
+        color: white;
+    }
+    @media (max-width:765px){
+      .marks{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+      }
+    
+    }
+</style>
+        <div class="" style="display: flex;justify-content:end;">
             {{-- <button id="previous">Previous</button> --}}
-            <button id="save" style="font-size: 15px;">Save Response</button>
-            <button id="next" style="font-size: 15px;">Next</button>
+            <button type="submit" class="button mx-2" id="submit_test">Submit Test</button>
+            <button id="next" class="button mx-2" >Next</button>
         </div>
-    </div>
-    <script>
-      
 
+    </div>
+    </form>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const questions = document.querySelectorAll('.question-block');
             const questionButtons = document.querySelectorAll('.question-number-list button');
             const nextButton = document.getElementById('next');
+            const submit_test=document.getElementById('submit_test');
             let currentQuestionIndex = 0;
 
             function showQuestion(index) {
@@ -648,16 +671,20 @@
 
             function updateNavigationButtons() {
                 if (currentQuestionIndex === questions.length - 1) {
-                    nextButton.textContent = 'Submit';
+                    nextButton.style.display = 'none';
+                    // submit_test.style.display='block';
                 } else {
                     nextButton.textContent = 'Next';
+                    nextButton.style.display = 'block';
+                    // submit_test.style.display='none';
                 }
             }
 
-            showQuestion(currentQuestionIndex); 
+            showQuestion(currentQuestionIndex);
 
             questionButtons.forEach((button, index) => {
                 button.addEventListener('click', () => {
+                    event.preventDefault();
                     showQuestion(index);
                 });
             });
@@ -669,6 +696,7 @@
             // });
 
             nextButton.addEventListener('click', () => {
+                event.preventDefault();
                 if (currentQuestionIndex < questions.length - 1) {
                     showQuestion(currentQuestionIndex + 1);
                 } else {
@@ -678,6 +706,7 @@
 
             document.querySelectorAll('.mark-review-btn').forEach(button => {
                 button.addEventListener('click', () => {
+                event.preventDefault();
                     button.classList.toggle('reviewed');
                     questions[currentQuestionIndex].classList.toggle('reviewed');
                     updateQuestionNumberButtonColors();

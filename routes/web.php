@@ -24,11 +24,6 @@ Route::get('/home',[AuthController::class,'show_user'])->name('home');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //scr question bank
-// Route::get('/login',[AuthController::class,'index'])->name('login');
-// routes/web.php
-
-
-// routes/web.php
 use App\Http\Controllers\ScrChapterController;
 
 Route::get('/scr_questions', [ScrChapterController::class, 'showDashboard'])->name('scr_q')->middleware('auth');
@@ -44,3 +39,7 @@ Route::get('/scr_questions', [ScrChapterController::class, 'showDashboard'])->na
 use App\Http\Controllers\QuizController;
 
 Route::get('/questions/{chapter_id}/{test}', [QuizController::class, 'getQuestions'])->name('get.questions');
+Route::post('/submitquiz', [QuizController::class, 'submitQuiz'])->name('submitquiz');
+
+
+
