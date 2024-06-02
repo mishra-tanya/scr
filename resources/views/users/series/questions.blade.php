@@ -594,11 +594,13 @@
                     <input type="hidden" name="results[{{ $key }}][result_ans]" value="{{ $question->result_ans }}">
                  
                     <hr><br><br>
-                    {{-- {{ $question->result_ans }} --}}
-<div class="marks">
-                    <button class="mx-2 mark-review-btn button" data-index="{{ $key }}">Mark for
-                        Review</button>
-                    </div>          
+                    <div class="marks">
+                        <button class="mx-2 mark-review-btn button" data-index="{{ $key }}" onclick="toggleCheckbox(this)">
+                            <input type="hidden" class="checkbox">
+                            <span class="button-text">Mark for Review</span>
+                        </button>
+                    </div>
+                       
                 </div>
             @endforeach
         </div>
@@ -668,6 +670,7 @@
                     }
                 });
             }
+          
 
             function updateNavigationButtons() {
                 if (currentQuestionIndex === questions.length - 1) {
@@ -713,6 +716,19 @@
                 });
             });
         });
+        function toggleCheckbox(button) {
+            var checkbox = button.querySelector('.checkbox');
+            var buttonText = button.querySelector('.button-text');
+            checkbox.value = checkbox.value === "1" ? "0" : "1"; 
+
+            if (checkbox.value === "1") {
+                buttonText.innerText = 'Remove from Review';
+            } else {
+                buttonText.innerText = 'Mark for Review';
+            }
+        }
+
+
     </script>
 </body>
 

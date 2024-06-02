@@ -79,6 +79,7 @@
                 transition: background-color 0.3s ease;
             }
         }
+        
         </style>
    </head>
 <body>
@@ -90,7 +91,7 @@
 
 <div class="container mt-4">        
     <div class="row">
-        @foreach ($chapters as $chapter)
+        @foreach ($chapters as $index => $chapter)
             <div class="col-lg-4 col-md-6 mb-3">
                 <div class="card" style="background-color:#E6F7FF">
                     <div class="card-content">
@@ -104,17 +105,28 @@
                         </div>
                         <hr>
                         @foreach ($chapter['tests'] as $test)
+                        
+                        <form method="POST" action="{{ route('update-test-status') }}">
+                            @csrf
+                            <input type="hidden" name="chapter_id" value="{{  $index + 1 }}">
+                            <input type="hidden" name="link" value="{{ $test['link'] }}">
+                            <input type="hidden" name="status" value="{{ $test['status'] }}">
+                            {{-- <input type="hidden" name="chapterTitle" value="{{ $chapter['title'] }}"> --}}
+                            <input type="hidden" name="testLabel" value="{{ $test['label'] }}">
+                            <input type="hidden" name="userId" value="{{ auth()->user()->id }}">
+                            
                             <div class="card-item row">
                                 <div class="col-4">
                                     <div class="card-label">{{ $test['label'] }}</div>
                                 </div>
                                 <div class="col-8 text-end">
                                     <div class="card-value text-end">
-                                        <a href={{$test['link']}} class="btn custom-btn btn-block">{{ $test['status'] }}</a>
+                                        <button type="submit" class="btn text-capitalize custom-btn btn-block" @if(strtolower($test['status']) === 'attempted') disabled @endif>{{ $test['status'] }}</button>
                                     </div>
                                 </div>
                             </div>
                             <hr>
+                        </form>
                         @endforeach
                     </div>
                 </div>
@@ -128,6 +140,14 @@
         <div class=" mt-4">
             <h2 class="text-center mb-4" style="background-color:rgb(235, 235, 235);padding:12px;">Complete Mock Tests</h2>
         </div>
+<script>
+    
+    window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
 
+</script>
 </body>
 </html>

@@ -173,7 +173,7 @@
                                 <div class="card-label">Total Attempted Tests  </div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">3</div>
+                                <div class="card-value">{{$attemptedCount}}</div>
                             </div>
                         </div>
                         <hr>

@@ -69,8 +69,25 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
+            $userId = Auth::id();
 
-            return view('users.home', ['user' => $user]);
+            // Fetch the user
+            $user = Reg_User::find($userId);
+    
+            if (!$user) {
+                return redirect()->route('login')->with('error', 'User not found.');
+            }
+    
+            $statusData = json_decode($user->status, true) ?? [];
+    
+            $attemptedCount = 0;
+            foreach ($statusData as $statusItem) {
+                if ($statusItem['status'] == 'attempted') {
+                    $attemptedCount++;
+                }
+            }
+
+            return view('users.home', ['user' => $user], compact('attemptedCount'));
         } else {
             return redirect()->route('login')->with('error', 'You must be logged in to access this page.');
         }
@@ -82,5 +99,9 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login');
+    }
+    public function countAttempt()
+    {
+       
     }
 }
