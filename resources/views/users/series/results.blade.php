@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SCR Test Results</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
    
@@ -71,11 +70,43 @@
             border: 5px double rgb(211, 211, 211);
 
         }
-        /* .card-div{
-            padding: 30px;
-        } */
         .result{
             padding: 20px;
+        }
+        .correct-answer {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        .number-line {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            flex-wrap: wrap;
+        }
+        .number-line .number {
+            margin: 5px;
+            padding: 10px;
+            border: 4px double rgb(211, 211, 211);;
+            border-radius: 20%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .number-line .number.correct {
+            background-color: green;
+            color: white;
+        }
+        .number-line .number.incorrect {
+            background-color: red;
+            color: white;
+        }
+        .number-line .number.not-attempted {
+            background-color: gray;
+            color: white;
         }
     @media(max-width:765px){
         .card-container {
@@ -150,9 +181,24 @@
     </div>
     
     <br>
+    <div class="number-line">
+        @foreach($questions as $index => $question)
+            @php
+                $numberClass = '';
+                if ($question['user_answer'] == '') {
+                    $numberClass = 'not-attempted';
+                } elseif ($question['user_answer'] == $question['correct_answer']) {
+                    $numberClass = 'correct';
+                } else {
+                    $numberClass = 'incorrect';
+                }
+            @endphp
+            <div class="number {{ $numberClass }}" data-target="#question-{{ $index + 1 }}">{{ $index + 1 }}</div>
+        @endforeach
+    </div>
     <div class="quiz-container">
         @foreach($questions as $index => $question)
-        <div class="question shadow-lg">
+        <div id="question-{{ $index + 1 }}" class="question shadow-lg">
             <b><h4><strong>Question {{ $index+1 }}:</strong></h4></b>
             <h4 class="mb-3"><b>{{ $question['question_title'] }}</b></h4>
             <div class="options">
@@ -174,13 +220,6 @@
         @else
             <span class="ya @if($question['user_answer'] == $question['correct_answer']) correct @else incorrect @endif"><strong>Your Answer:</strong> {{ $question['user_answer'] }}</span>
         @endif
-        <style>
-            .correct-answer {
-            display: inline-block;
-            margin-top: 15px;
-            font-size: 18px;
-        }
-        </style>
          
         <div class=" d-sm-none"><!-- This will only display on small screens -->
             <p class="correct-answer ca"style="width:auto;margin-top:15px; font-size:18px;"><strong class="">Correct Answer:</strong> {{ $question['correct_answer'] }}</p>
@@ -197,6 +236,16 @@
     </div>
     @include('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-   
+    <script>
+        document.querySelectorAll('.number-line .number').forEach(number => {
+            number.addEventListener('click', function() {
+                document.querySelector(this.dataset.target).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                document.querySelectorAll('.number-line .number').forEach(num => num.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
