@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
    
     <style>
-        /* Style for quiz layout */
         .quiz-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -221,10 +220,10 @@
             <span class="ya @if($question['user_answer'] == $question['correct_answer']) correct @else incorrect @endif"><strong>Your Answer:</strong> {{ $question['user_answer'] }}</span>
         @endif
          
-        <div class=" d-sm-none"><!-- This will only display on small screens -->
+        <div class=" d-sm-none">
             <p class="correct-answer ca"style="width:auto;margin-top:15px; font-size:18px;"><strong class="">Correct Answer:</strong> {{ $question['correct_answer'] }}</p>
         </div>
-        <span class="ca d-none d-sm-inline"><!-- This will only display on screens larger than small -->
+        <span class="ca d-none d-sm-inline">
             <strong>Correct Answer:</strong> {{ $question['correct_answer'] }}
         </span>
         <p><strong><br>Reason:</strong> {{ $question['reason'] }}</p>

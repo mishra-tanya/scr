@@ -51,7 +51,7 @@ class QuizController extends Controller
         $testSeries->test_series = json_encode($testSeriesData);
         $testSeries->save();
 
-        $chapterId = urlencode($request->test); // Encode chapter_id for URL
+        $chapterId = urlencode($request->test); 
 
         return redirect("result/$chapterId");
     }
@@ -84,14 +84,6 @@ class QuizController extends Controller
 
         $user->status = json_encode($testStatuses);
         $user->save();
-
-        // Insert into the result table
-        // TestResult::create([
-        //     'user_id' => $request->userId,
-        //     'test_label' => $request->testLabel,
-        //     'status' => 'attempted',
-        // ]);
-
         return redirect($request->link);
     }
   
