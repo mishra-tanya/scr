@@ -37,3 +37,7 @@ use App\Http\Controllers\QuizController;
 Route::get('/questions/{chapter_id}/{test}', [QuizController::class, 'getQuestions'])->name('get.questions')->middleware('auth');
 Route::post('/submitquiz', [QuizController::class, 'submitQuiz'])->name('submitquiz');
 Route::post('/update-test-status', [QuizController::class, 'updateTestStatus'])->name('update-test-status');
+
+
+use App\Http\Controllers\ResultController;
+Route::get('/result/{chapter_id}',[ResultController::class,'getResult'])->name('getResult');

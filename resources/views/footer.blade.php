@@ -1,6 +1,6 @@
 <style>
 .footer{
-    background-color:rgb(231, 231, 231);
+    background-color:rgb(241, 241, 241);
     padding-bottom: 10px;
 }
 .bi{

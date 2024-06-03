@@ -140,6 +140,54 @@
         <div class=" mt-4">
             <h2 class="text-center mb-4" style="background-color:rgb(235, 235, 235);padding:12px;">Complete Mock Tests</h2>
         </div>
+
+
+        {{-- MOck tests --}}
+        
+<div class="container mt-4">        
+    <div class="row">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card" style="background-color:#E6F7FF">
+                    <div class="card-content">
+                        <div class="card-item">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="card-label">Full Mock Tests</h4>
+                                    <p>Complete Mock Tests</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        
+                        {{-- <form method="POST" action="{{ route('update-test-status') }}"> --}}
+                            @csrf
+                            {{-- <input type="hidden" name="chapter_id" value="{{  $index + 1 }}">
+                            <input type="hidden" name="link" value="{{ $test['link'] }}">
+                            <input type="hidden" name="status" value="{{ $test['status'] }}">
+                            <input type="hidden" name="chapterTitle" value="{{ $chapter['title'] }}">
+                            <input type="hidden" name="testLabel" value="{{ $test['label'] }}">
+                            <input type="hidden" name="userId" value="{{ auth()->user()->id }}">
+                             --}}
+                            <div class="card-item row">
+                                <div class="col-5">
+                                    <div class="card-label">Mock Test 1</div>
+                                </div>
+                                <div class="col-7 text-end">
+                                    <div class="card-value text-end">
+                                        {{-- <button type="submit" class="btn text-capitalize custom-btn btn-block" @if(strtolower($test['status']) === 'attempted') disabled @endif>{{ $test['status'] }}</button> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        {{-- </form> --}}
+                    </div>
+                </div>
+            </div>
+    </div>
+
+        </div>
+
+<br>
 <script>
     
     window.addEventListener('pageshow', function(event) {

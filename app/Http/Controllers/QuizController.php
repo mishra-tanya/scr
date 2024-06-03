@@ -47,11 +47,13 @@ class QuizController extends Controller
         }
         $testSeries = new Result();
         $testSeries->user_id = $user->id;
-        $testSeries->chapter_id = $request->chapter_id;
+        $testSeries->chapter_id = $request->test;
         $testSeries->test_series = json_encode($testSeriesData);
         $testSeries->save();
 
-        return redirect('results');
+        $chapterId = urlencode($request->test); // Encode chapter_id for URL
+
+        return redirect("result/$chapterId");
     }
 
     public function updateTestStatus(Request $request)
@@ -83,6 +85,7 @@ class QuizController extends Controller
         $user->status = json_encode($testStatuses);
         $user->save();
 
+        // Insert into the result table
         // TestResult::create([
         //     'user_id' => $request->userId,
         //     'test_label' => $request->testLabel,
@@ -91,5 +94,5 @@ class QuizController extends Controller
 
         return redirect($request->link);
     }
-   
+  
 }
