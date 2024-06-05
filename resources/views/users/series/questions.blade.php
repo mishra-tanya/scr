@@ -119,6 +119,17 @@
         .quiz-container .navigation button:hover {
             background-color: #0056b3;
         }
+        .quiz-container .question-number-list {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                padding: 0;
+                margin-bottom: 30px;
+                overflow-x: auto;
+                flex-wrap: wrap;
+                /* margin: 30px; */
+            }
+
 
         @media screen and (max-width: 768px) {
             .quiz-container .question-number-list {
@@ -135,6 +146,7 @@
                 width: 50px;
                 margin: 5px;
             }
+            
 
         }
     </style>
@@ -527,7 +539,6 @@
             menuCloseBtn.onclick = function() {
                 navLinks.style.left = "-100%";
             }
-
         </script>
 
     </div>
@@ -536,109 +547,192 @@
 
     <form action={{ route('submitquiz') }} method="post">
         @csrf
-    <div class="quiz-container">
-        <div class="ch text-center" style="font-size: 25px;">
-            <b class="">Chapter: {{ $ch_no = substr($chapter_id, 7) }}</b>
-        </div>
+        <div class="quiz-container">
+            <div class="ch text-center" style="font-size: 25px;">
+                 
+                @if($test_type === 'mock')
+                    <b class="">Chapter: {{ $ch_no = substr($chapter_id, 9) }}</b>
+                
+                @else
+                    <b class="">Chapter: {{ $ch_no = substr($chapter_id, 7) }}</b>
+                @endif
+            </div>
+            @if($test_type === 'mock')
+            <input type="hidden" name="chapter_id" value={{ $chapter_id }}>
+            <input type="hidden" name="test" value={{ $test }}>
+        
+        @else
         <input type="hidden" name="chapter_id" value={{ $chapter_id }}>
         <input type="hidden" name="test" value={{ $test }}>
-        {{-- <input type="hidden" name="user_id" value={{ Auth::user()->id }}> --}}
-        {{-- {{ $test }}{{ Auth::user()->id }} --}}
+        @endif
+            
+            {{-- <input type="hidden" name="user_id" value={{ Auth::user()->id }}> --}}
+            {{-- {{ $test }}{{ Auth::user()->id }} --}}
 
-        <hr
-            style=" border: 3px solid #2487ce;
+            <hr
+                style=" border: 3px solid #2487ce;
             border-radius: 100%;
             border-top: 1px dotted #000000;">
-        <ul class="question-number-list">
+            <ul class="question-number-list">
 
-            @foreach ($questions as $key => $question)
+                {{-- @foreach ($questions as $key => $question)
                 <li><button class="{{ $key === 0 ? 'active' : '' }}{{ $question->reviewed ? ' reviewed' : '' }} "
                         data-index="{{ $key }}">{{ $key + 1 }}</button></li>
             @endforeach
-        </ul>
+            @foreach ($mockQuestions as $key => $question)
+            <li><button class="{{ $key === 0 ? 'active' : '' }}{{ $question->reviewed ? ' reviewed' : '' }} "
+                    data-index="{{ $key }}">{{ $key + 1 }}</button></li>
+        @endforeach --}}
+                @foreach ($questions ?? [] as $key => $question)
+                    <li><button class=" my-2 {{ $key === 0 ? 'active' : '' }}{{ $question->reviewed ? ' reviewed' : '' }} "
+                            data-index="{{ $key }}">{{ $key + 1 }}</button></li>
+                @endforeach
 
-        <hr
-            style=" border: 3px solid #2487ce;
+                @if ($test === 'mock')
+                    @foreach ($mockQuestions ?? [] as $key => $question)
+                        <li><button
+                                class="my-2 {{ $key === 0 ? 'active' : '' }}{{ $question->reviewed ? ' reviewed' : '' }} "
+                                data-index="{{ $key }}">{{ $key + 1 }}</button></li>
+                    @endforeach
+                @endif
+
+            </ul>
+
+            <hr
+                style=" border: 3px solid #2487ce;
             border-radius: 100%;
             border-top: 1px dotted #000000;">
-        <br>
-        <div class="question">
-            @foreach ($questions as $key => $question)
-                <div class="question-block{{ $key === 0 ? ' active' : '' }}" id="question-{{ $key }}">
-                    <h3>
-                        <b>Question {{ $key + 1 }}.</b>
-                    </h3>
-                    <h4><b>{!! nl2br(e($question->question_title)) !!}</b></h4>
-
-                    <hr>
-                    <label><b>A. </b>
-                        <input type="radio" name="results[{{ $key }}][user_answer]" value="A">
-                        {{ $question->option_a }}
-                    </label>
-                    <hr>
-                    <label><b>B. </b>
-                        <input type="radio" name="results[{{ $key }}][user_answer]" value="B">
-                        {{ $question->option_b }}
-                    </label>
-                    <hr>
-                    <label><b>C. </b>
-                        <input type="radio" name="results[{{ $key }}][user_answer]" value="C">
-                        {{ $question->option_c }}
-                    </label>
-                    <hr>
-                    <label><b>D. </b>
-                        <input type="radio" name="results[{{ $key }}][user_answer]" value="D">
-                        {{ $question->option_d }}
-                    </label>
-                    <input type="hidden" name="results[{{ $key }}][question_id]" value="{{ $question->id }}">
-                    <input type="hidden" name="results[{{ $key }}][result_ans]" value="{{ $question->result_ans }}">
-                 
-                    <hr><br><br>
-                    <div class="marks">
-                        <button class="mx-2 mark-review-btn button" data-index="{{ $key }}" onclick="toggleCheckbox(this)">
-                            <input type="hidden" class="checkbox">
-                            <span class="button-text">Mark for Review</span>
-                        </button>
+            <br>
+            <div class="question">
+                @foreach ($questions?? [] as $key => $question)
+                    <div class="question-block{{ $key === 0 ? ' active' : '' }}" id="question-{{ $key }}">
+                        <h3>
+                            <b>Question {{ $key + 1 }}.</b>
+                        </h3>
+                        <h4><b>{!! nl2br(e($question->question_title)) !!}</b></h4>
+            
+                        <hr>
+                        <label><b>A. </b>
+                            <input type="radio" name="results[{{ $key }}][user_answer]" value="A">
+                            {{ $question->option_a }}
+                        </label>
+                        <hr>
+                        <label><b>B. </b>
+                            <input type="radio" name="results[{{ $key }}][user_answer]" value="B">
+                            {{ $question->option_b }}
+                        </label>
+                        <hr>
+                        <label><b>C. </b>
+                            <input type="radio" name="results[{{ $key }}][user_answer]" value="C">
+                            {{ $question->option_c }}
+                        </label>
+                        <hr>
+                        <label><b>D. </b>
+                            <input type="radio" name="results[{{ $key }}][user_answer]" value="D">
+                            {{ $question->option_d }}
+                        </label>
+                        <input type="hidden" name="results[{{ $key }}][question_id]" value="{{ $question->id }}">
+                        <input type="hidden" name="results[{{ $key }}][result_ans]" value="{{ $question->result_ans }}">
+            
+                        <hr><br><br>
+                        <div class="marks">
+                            <button class="mx-2 mark-review-btn button" data-index="{{ $key }}"
+                                onclick="toggleCheckbox(this)">
+                                <input type="hidden" class="checkbox">
+                                <span class="button-text">Mark for Review</span>
+                            </button>
+                        </div>
                     </div>
-                       
-                </div>
-            @endforeach
-        </div>
-<style>
-    .button{
-        width: 220px;
-        height: 50px;
-        border: 5px double rgb(211, 211, 211);
-        border-radius: 5px;
-    }
-    .mark-review-btn{
-        color: white;
-        background-color: #826201;
-    }
-    #submit_test{
-        background-color:#28A745;
-        color: white; 
-    }
-    #next{
-        background-color: #0056b3;
-        color: white;
-    }
-    @media (max-width:765px){
-      .marks{
-        display: flex;
-        align-content: center;
-        justify-content: center;
-      }
-    
-    }
-</style>
-        <div class="" style="display: flex;justify-content:end;">
-            {{-- <button id="previous">Previous</button> --}}
-            <button type="submit" class="button mx-2" id="submit_test">Submit Test</button>
-            <button id="next" class="button mx-2" >Next</button>
-        </div>
+                @endforeach
+            
+                @if($test_type === 'mock')
+                    @foreach ($mockQuestions?? [] as $key => $question)
+                        <div class="question-block{{ $key === 0 ? ' active' : '' }}" id="mock-question-{{ $key }}">
+                            <h3>
+                                <b>Question {{ $key + 1 }}.</b>
+                            </h3>
+                            <h4><b>{!! nl2br(e($question->question_title)) !!}</b></h4>
+            
+                            <hr>
+                            <label><b>A. </b>
+                                <input type="radio" name="results[{{ $key }}][user_answer]" value="A">
+                                {{ $question->option_a }}
+                            </label>
+                            <hr>
+                            <label><b>B. </b>
+                                <input type="radio" name="results[{{ $key }}][user_answer]" value="B">
+                                {{ $question->option_b }}
+                            </label>
+                            <hr>
+                            <label><b>C. </b>
+                                <input type="radio" name="results[{{ $key }}][user_answer]" value="C">
+                                {{ $question->option_c }}
+                            </label>
+                            <hr>
+                            <label><b>D. </b>
+                                <input type="radio" name="results[{{ $key }}][user_answer]" value="D">
+                                {{ $question->option_d }}
+                            </label>
+                            <input type="hidden" name="results[{{ $key }}][question_id]" value="{{ $question->id }}">
+                            <input type="hidden" name="results[{{ $key }}][result_ans]" value="{{ $question->result_ans }}">
+            
+                            <hr><br><br>
+                            <div class="marks">
+                                <button class="mx-2 mark-review-btn button" data-index="{{ $key }}"
+                                    onclick="toggleCheckbox(this)">
+                                    <input type="hidden" class="checkbox">
+                                    <span class="button-text">Mark for Review</span>
+                                </button>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+            
 
-    </div>
+            <style>
+                .button {
+                    width: 220px;
+                    height: 50px;
+                    border: 5px double rgb(211, 211, 211);
+                    border-radius: 5px;
+                }
+
+                .mark-review-btn {
+                    color: white;
+                    background-color: #826201;
+                }
+
+                #submit_test {
+                    background-color: #28A745;
+                    color: white;
+                }
+
+                #next {
+                    background-color: #0056b3;
+                    color: white;
+                }
+
+                @media (max-width:765px) {
+                    .marks {
+                        display: flex;
+                        align-content: center;
+                        justify-content: center;
+                    }
+
+                }
+            </style>
+            {{-- {{ $existingResult ? 'Already Submitted' : 'Submit Test' }} --}}
+
+            <div style="display: flex; justify-content: end;">
+                {{-- <button id="previous">Previous</button> --}}
+                <button type="submit" class="button mx-2 {{ session('existingResult') ? 'disabled' : '' }}"
+                    id="submit_test">Submit Test</button>
+                <button id="next" class="button mx-2">Next</button>
+            </div>
+
+
+        </div>
     </form>
 
     <script>
@@ -646,7 +740,7 @@
             const questions = document.querySelectorAll('.question-block');
             const questionButtons = document.querySelectorAll('.question-number-list button');
             const nextButton = document.getElementById('next');
-            const submit_test=document.getElementById('submit_test');
+            const submit_test = document.getElementById('submit_test');
             let currentQuestionIndex = 0;
 
             function showQuestion(index) {
@@ -670,7 +764,7 @@
                     }
                 });
             }
-          
+
 
             function updateNavigationButtons() {
                 if (currentQuestionIndex === questions.length - 1) {
@@ -709,17 +803,18 @@
 
             document.querySelectorAll('.mark-review-btn').forEach(button => {
                 button.addEventListener('click', () => {
-                event.preventDefault();
+                    event.preventDefault();
                     button.classList.toggle('reviewed');
                     questions[currentQuestionIndex].classList.toggle('reviewed');
                     updateQuestionNumberButtonColors();
                 });
             });
         });
+
         function toggleCheckbox(button) {
             var checkbox = button.querySelector('.checkbox');
             var buttonText = button.querySelector('.button-text');
-            checkbox.value = checkbox.value === "1" ? "0" : "1"; 
+            checkbox.value = checkbox.value === "1" ? "0" : "1";
 
             if (checkbox.value === "1") {
                 buttonText.innerText = 'Remove from Review';
@@ -727,8 +822,6 @@
                 buttonText.innerText = 'Mark for Review';
             }
         }
-
-
     </script>
 </body>
 

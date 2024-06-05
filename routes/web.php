@@ -14,6 +14,8 @@ Route::get('/results', function () {
     return view('users.series.results');
 })->name('home');
 
+
+
 use App\Http\Controllers\AuthController;
 
 Route::get('/login',[AuthController::class,'index'])->name('login');
@@ -37,7 +39,13 @@ use App\Http\Controllers\QuizController;
 Route::get('/questions/{chapter_id}/{test}', [QuizController::class, 'getQuestions'])->name('get.questions')->middleware('auth');
 Route::post('/submitquiz', [QuizController::class, 'submitQuiz'])->name('submitquiz');
 Route::post('/update-test-status', [QuizController::class, 'updateTestStatus'])->name('update-test-status');
+Route::get('/questions/{chapter_id}', [QuizController::class, 'getMockQuestions'])->name('getMockQuestions')->middleware('auth');
 
 
 use App\Http\Controllers\ResultController;
-Route::get('/result/{chapter_id}',[ResultController::class,'getResult'])->name('getResult');
+Route::get('/result/{chapter_id}',[ResultController::class,'getResult'])->name('result.show');
+
+use App\Http\Controllers\LearningObjController;
+Route::get('/learning_obj', [LearningObjController::class, 'index'])->name('learningObj');
+Route::get('/questions/{chapter_id}/{test}', [LearningObjController::class, 'getQuestions'])->name('get.questions')->middleware('auth');
+Route::get('/learning_obj_result/{chapter_id}/{test}',[LearningObjController::class,'getResult'])->name('getResult');

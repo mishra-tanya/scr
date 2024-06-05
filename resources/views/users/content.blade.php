@@ -125,7 +125,7 @@
                                 <div class="card-value ">470</div>
                             </div>
                         </div>
-<hr>                        <a href="/learning" class="btn custom-btn btn-block" style="background-color: #38befd">Start Test</a>
+<hr>                        <a href="/learning_obj" class="btn custom-btn btn-block" style="background-color: #38befd">Start Test</a>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                                 <div class="card-label">Total Questions</div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value ">490</div>
+                                <div class="card-value ">{{$count}}</div>
                             </div>
                         </div>
 <hr>                        <a href="/scr_questions" class="btn custom-btn btn-block" style="background-color: #28A745">Start Test</a>

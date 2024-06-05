@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\Reg_User; 
+use App\Models\Question; 
+
 
 class AuthController extends Controller
 {
@@ -86,8 +88,9 @@ class AuthController extends Controller
                     $attemptedCount++;
                 }
             }
+            $count = Question::count();
 
-            return view('users.home', ['user' => $user], compact('attemptedCount'));
+            return view('users.home', ['user' => $user], compact('attemptedCount','count'));
         } else {
             return redirect()->route('login')->with('error', 'You must be logged in to access this page.');
         }
