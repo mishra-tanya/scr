@@ -95,7 +95,7 @@
                                 <div class="card-label">Total Chapters</div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">38</div>
+                                <div class="card-value">8</div>
                             </div>
                         </div>
                         <hr>
@@ -104,7 +104,7 @@
                                 <div class="card-label">Attempted </div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">4</div>
+                                <div class="card-value">{{$attempted}}</div>
                             </div>
                         </div>
                         <hr>
@@ -113,7 +113,7 @@
                                 <div class="card-label">Total Learning Objectives </div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">94</div>
+                                <div class="card-value">{{$lo_test_count}}</div>
                             </div>
                         </div>
                         <hr>
@@ -122,7 +122,7 @@
                                 <div class="card-label">Total Questions</div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value ">470</div>
+                                <div class="card-value ">{{$lo_count}}</div>
                             </div>
                         </div>
 <hr>                        <a href="/learning_obj" class="btn custom-btn btn-block" style="background-color: #38befd">Start Test</a>

@@ -156,7 +156,7 @@
 
     <br><br>
 
-    <form action={{ route('submitquiz') }} method="post">
+    <form action={{ route('lo_submit') }} method="post">
         @csrf
         <div class="quiz-container">
             <div class="ch text-center" style="font-size: 25px;">

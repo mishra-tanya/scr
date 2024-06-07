@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Reg_User; 
 use App\Models\Question; 
+use App\Models\LearningObjResult; 
+use App\Models\LearningObj;
+use App\Models\TestName; 
+use App\Models\Result; 
+
 
 
 class AuthController extends Controller
@@ -72,7 +77,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $userId = Auth::id();
-
+  
             // Fetch the user
             $user = Reg_User::find($userId);
     
@@ -89,8 +94,38 @@ class AuthController extends Controller
                 }
             }
             $count = Question::count();
+            $lo_count = LearningObj::count();
+            $lo_test_count = TestName::count();
+            $attempted = LearningObjResult::count();
 
-            return view('users.home', ['user' => $user], compact('attemptedCount','count'));
+
+            //learning objective results
+            $results = LearningObjResult::where('user_id', $userId)->get();
+            if ($results->isEmpty()) {
+                return response()->json([
+                    'message' => 'No results found for user ID: ' . $userId
+                ], 404);
+            }
+    
+            $total_questions = 0;
+            $correct_answers = 0;
+    
+            foreach ($results as $result) {
+                $test_series = json_decode($result->test_series, true);
+    
+                foreach ($test_series as $question) {
+                    $total_questions++;
+                    if (strtolower($question['user_answer']) == strtolower($question['correct_answer'])) {
+                        $correct_answers++;
+                    }
+                }
+            }
+    
+            $score = ($correct_answers / $total_questions) * 100;
+
+            
+            return view('users.home', ['user' => $user], compact('attemptedCount','attempted','count','lo_count','lo_test_count',
+        'total_questions','correct_answers','score'));
         } else {
             return redirect()->route('login')->with('error', 'You must be logged in to access this page.');
         }

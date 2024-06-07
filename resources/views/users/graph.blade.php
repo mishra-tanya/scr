@@ -14,13 +14,13 @@
      .containerd{
         /* background-image:  url(assets/img/img.avif); */
         padding: 70px;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(assets/img/img.avif);
+        background-image: linear-gradient(rgba(255, 255, 255, 0.457), rgba(255, 255, 255, 0.5)), url(assets/img/hero-bg.jpg);
     }
     @media (max-width:920px) {
             .containerd{
         /* background-image:  url(assets/img/img.avif); */
         padding: 30px;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(assets/img/img.avif);
+        background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(assets/img/hero-bg.jpg);
   
             }
         }
@@ -28,22 +28,42 @@
 <body>
     <div class="containerd mt-5">
         <h1 class="text-center">Welcome, <b>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</b> </h1>
+        <h3 class="text-center">To SCR Preparation Module</b> </h1>
+
 <br>
         <div class="row stats mt-4"><br>
 
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm" style=" height: 100%;">
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg" style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                        <p class="card-text"> Current Overall</p>
-                        <p class="card-text">Percentage from all tests</p>
-                        <h2 id="percentage"><b>96.8%</b></h2>
+                        <h3><b>Learning Objectives</b></h3>
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path id="circle" class="circle" stroke-dasharray="{{$score}},100" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <text x="18" y="20.35" class="percentage">{{$score}}%</text>
+                        </svg><br>
+                       <b>
+                        <div class="d-flex justify-content-between w-100">
+                            <span class="text-start">Correct Answer:</span>
+                            <span class="text-end">{{$correct_answers}}</span>
+                        </div>
+                        <div class="d-flex justify-content-between w-100">
+                            <span class="text-start"> Attempted Question:&nbsp; </span>
+                            <span class="text-end">{{$total_questions}}</span>
+                        </div>
+                       </b>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm" style=" height: 100%;">
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg" style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                        <h3><b>SCR Percentage</b></h3>
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
@@ -52,24 +72,49 @@
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                             <text x="18" y="20.35" class="percentage">40/50</text>
-                        </svg>
+                        </svg><br>
+                        <p>Overall SCR Percentage</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg" style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                        <h3><b>Completed Tests</b></h3>
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path id="circle" class="circle" stroke-dasharray="80, 100" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <text x="18" y="20.35" class="percentage">40/50</text>
+                        </svg><br>
                         <p>Overall Completed Tests</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm" style="height: 100%;">
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg " style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                        <p>Total Chapters Seen</p>
-                        <h2 id="chaptersSeen">1/8</h2>
-                        <div class="progress w-100">
-                            <div id="progress" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 12.5%;" aria-valuenow="12.5" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                        <h3><b>Overall Percentage</b></h3>
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path id="circle" class="circle" stroke-dasharray="80, 100" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <text x="18" y="20.35" class="percentage">40/50</text>
+                        </svg><br>
+                        <p>Learning Objective & SCR</p>
                     </div>
                 </div>
             </div>
 
+          
         </div>
     </div>
 

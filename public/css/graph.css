@@ -30,15 +30,15 @@ h1 {
 
 .circle-bg {
     fill: none;
-    stroke: #eee;
+    stroke: #2487ce31;
     stroke-width: 1.8;
 }
 
 .circle {
     fill: none;
     stroke-width: 1.8;
-    stroke: #4caf50;
-    stroke-linecap: round;
+    stroke: #2487ce;
+    /* stroke-linecap: round; */
     transition: stroke-dashoffset 0.35s;
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
@@ -53,5 +53,5 @@ h1 {
 
 .progress-bar {
     height: 1rem;
-    border-radius: 1rem;
+    /* border-radius: 2rem; */
 }

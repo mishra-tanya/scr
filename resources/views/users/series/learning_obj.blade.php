@@ -45,7 +45,7 @@
         }
 
         .custom-btn {
-            background-color: #63a9b7;
+            background-color: #2487ce;
             color: #fff;
             width: 100%;
             border: none;
@@ -88,43 +88,53 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-12 mb-3">
-                <div class="card" style="background-color: #E6F7FF;">
-                    <div class="card-content">
-            @foreach ($testNames as $chapter => $tests)
-                        <div class="card mb-4" >
-                            
+                {{-- <div class="card" style="background-color: #E6F7FF;"> --}}
+                    <div class="card-content"> 
+                        @foreach ($testNames as $chapter => $tests)
+                        <div class="card mb-4">
                             <div class="card-content">
-                                <div class="card-item">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h2 class="text-center"><b>Lesson: {{substr($chapter,2)}}</b></h2>
+                                <h2 class="text-center"><b>Lesson: {{$chapter_id=substr($chapter,2)}}</b></h2>
+                                <hr>
+                                @foreach ($tests as $index => $test)
+                                <div class="card-item row">
+                                    <div class="col-12 col-md-10">
+                                        <div class="card-label">
+                                            <p>{{$index+1}}. {{ $test->title }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-2 text-end">
+                                        <div class="card-value text-end">
+                                            @php
+                                            $test_url_id = $test->url_id;
+                                            $ch= "lo_test".substr($chapter,2);
+
+                                            $isAttempted = false;
+                                            foreach ($attemptedTests as $attemptedTest) {
+                                                // dd($attemptedTest);
+                                                if ($ch == $attemptedTest['test'] && $test_url_id == $attemptedTest['chapter_id']) {
+                                                    $isAttempted = true;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                
+                                        @if ($isAttempted)
+                                            <button class="btn text-center custom-btn btn-block" disabled>Attempted</button>
+                                        @else
+                                            <a href="questions/{{ $test_url_id }}/lo_test{{ $chapter_id }}" class="btn text-capitalize custom-btn btn-block">Unattempted</a>
+                                        @endif
+                                            {{-- <a href="questions/{{ $test->url_id }}/lo_test{{substr($chapter,2)}}" class="btn text-capitalize custom-btn btn-block">Unattempted</a> --}}
                                         </div>
                                     </div>
                                 </div>
-                                <hr>  
-                                    @foreach ($tests as $index=> $test)
-                                    <div class="card-item row">
-                                        <div class="col-12 col-md-10">
-                                            <div class="card-label">
-                                                <p>{{$index+1}}. {{ $test->title }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-2 text-end">
-                                            <div class="card-value text-end">
-                                                <a href="questions/{{ $test->url_id }}/lo_test{{substr($chapter,2)}}" class="btn text-capitalize custom-btn btn-block" >Unattempted</a> </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                      
-                                    @endforeach
+                                <hr>
+                                @endforeach
                             </div>
                         </div>
-                        <hr><br>
-                    @endforeach
-                       
-                        
+                        <br>
+                        @endforeach
                     </div>
-                </div>
+                {{-- </div> --}}
             </div>
         </div>
     </div>
@@ -139,3 +149,5 @@
         });
     </script>
 </body>
+
+</html>
