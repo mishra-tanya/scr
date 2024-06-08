@@ -23,7 +23,7 @@ class LearningObjController extends Controller
     }
 
     
-    public function getQuestions(Request $request,$chapter_id,$test){
+    public function getLoQuestions(Request $request,$chapter_id,$test){
         $questions = LearningObj::where('chapter_id', $chapter_id)
                                  ->where('test', $test)
                                  ->get();

@@ -70,49 +70,42 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Registration successful.');
+        return redirect()->route('login')->with('success', 'Registration successful.');
     }
     public function show_user()
-    {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $userId = Auth::id();
-  
-            // Fetch the user
-            $user = Reg_User::find($userId);
-    
-            if (!$user) {
-                return redirect()->route('login')->with('error', 'User not found.');
-            }
-    
-            $statusData = json_decode($user->status, true) ?? [];
-    
-            $attemptedCount = 0;
-            foreach ($statusData as $statusItem) {
-                if ($statusItem['status'] == 'attempted') {
-                    $attemptedCount++;
-                }
-            }
-            $count = Question::count();
-            $lo_count = LearningObj::count();
-            $lo_test_count = TestName::count();
-            $attempted = LearningObjResult::count();
+{
+    if (Auth::check()) {
+        $user = Auth::user();
+        $userId = Auth::id();
 
+        $user = Reg_User::find($userId);
 
-            //learning objective results
-            $results = LearningObjResult::where('user_id', $userId)->get();
-            if ($results->isEmpty()) {
-                return response()->json([
-                    'message' => 'No results found for user ID: ' . $userId
-                ], 404);
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'User not found.');
+        }
+
+        $statusData = json_decode($user->status, true) ?? [];
+
+        $attemptedCount = 0;
+        foreach ($statusData as $statusItem) {
+            if ($statusItem['status'] == 'attempted') {
+                $attemptedCount++;
             }
-    
-            $total_questions = 0;
-            $correct_answers = 0;
-    
+        }
+        
+        $count = Question::count();
+        $lo_count = LearningObj::count();
+        $lo_test_count = TestName::count();
+        $attempted = LearningObjResult::where('user_id', $userId)->count();
+
+        $total_questions = 0;
+        $correct_answers = 0;
+        $score = 0;
+
+        $results = LearningObjResult::where('user_id', $userId)->get();
+        if (!$results->isEmpty()) {
             foreach ($results as $result) {
                 $test_series = json_decode($result->test_series, true);
-    
                 foreach ($test_series as $question) {
                     $total_questions++;
                     if (strtolower($question['user_answer']) == strtolower($question['correct_answer'])) {
@@ -120,16 +113,36 @@ class AuthController extends Controller
                     }
                 }
             }
-    
-            $score = ($correct_answers / $total_questions) * 100;
-
-            
-            return view('users.home', ['user' => $user], compact('attemptedCount','attempted','count','lo_count','lo_test_count',
-        'total_questions','correct_answers','score'));
-        } else {
-            return redirect()->route('login')->with('error', 'You must be logged in to access this page.');
+            $score = ($total_questions > 0) ? ($correct_answers / $total_questions) * 100 : 0;
         }
+
+        $scr_total_questions = 0;
+        $scr_correct_answers = 0;
+        $scr_score = 0;
+
+        $scr_results = Result::where('user_id', $userId)->get();
+        if (!$scr_results->isEmpty()) {
+            foreach ($scr_results as $result) {
+                $scr_test_series = json_decode($result->test_series, true);
+                foreach ($scr_test_series as $question) {
+                    $scr_total_questions++;
+                    if (strtolower($question['user_answer']) == strtolower($question['correct_answer'])) {
+                        $scr_correct_answers++;
+                    }
+                }
+            }
+            $scr_score = ($scr_total_questions > 0) ? ($scr_correct_answers / $scr_total_questions) * 100 : 0;
+        }
+
+        return view('users.home', ['user' => $user], compact(
+            'attemptedCount', 'attempted', 'count', 'lo_count', 'lo_test_count',
+            'total_questions', 'correct_answers', 'score',
+            'scr_total_questions', 'scr_correct_answers', 'scr_score'
+        ));
+    } else {
+        return redirect()->route('login')->with('error', 'You must be logged in to access this page.');
     }
+}
 
     public function logout(Request $request)
     {
@@ -137,9 +150,5 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login');
-    }
-    public function countAttempt()
-    {
-       
     }
 }

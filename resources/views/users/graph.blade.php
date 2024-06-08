@@ -27,7 +27,7 @@
 </style>
 <body>
     <div class="containerd mt-5">
-        <h1 class="text-center">Welcome, <b>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</b> </h1>
+        <h1 class="text-center text-capitalize">Welcome, <b>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</b> </h1>
         <h3 class="text-center">To SCR Preparation Module</b> </h1>
 
 <br>
@@ -37,6 +37,7 @@
                 <div class="card shadow-lg" style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                         <h3><b>Learning Objectives</b></h3>
+                        <p>Overall Percentage</p>
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
@@ -44,7 +45,7 @@
                             <path id="circle" class="circle" stroke-dasharray="{{$score}},100" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <text x="18" y="20.35" class="percentage">{{$score}}%</text>
+                            <text x="18" y="20.35" class="percentage">{{ number_format($score, 2) }}%</text>
                         </svg><br>
                        <b>
                         <div class="d-flex justify-content-between w-100">
@@ -52,7 +53,7 @@
                             <span class="text-end">{{$correct_answers}}</span>
                         </div>
                         <div class="d-flex justify-content-between w-100">
-                            <span class="text-start"> Attempted Question:&nbsp; </span>
+                            <span class="text-start"> Attempted Question:&nbsp;&nbsp;&nbsp; </span>
                             <span class="text-end">{{$total_questions}}</span>
                         </div>
                        </b>
@@ -63,53 +64,96 @@
             <div class="col-md-3 mb-4">
                 <div class="card shadow-lg" style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                        <h3><b>SCR Percentage</b></h3>
+                        <h3><b>SCR Questions</b></h3>
+                        <p>Overall Percentage</p>
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <path id="circle" class="circle" stroke-dasharray="80, 100" d="M18 2.0845
+                            <path id="circle" class="circle" stroke-dasharray="{{$scr_score}}, 100" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <text x="18" y="20.35" class="percentage">40/50</text>
+                            <text x="18" y="20.35" class="percentage">{{ number_format($scr_score, 2) }}%</text>
                         </svg><br>
-                        <p>Overall SCR Percentage</p>
+                       <b>
+                        <div class="d-flex justify-content-between w-100">
+                            <span class="text-start">Correct Answer:</span>
+                            <span class="text-end">{{$scr_correct_answers}}</span>
+                        </div>
+                        <div class="d-flex justify-content-between w-100">
+                            <span class="text-start"> Attempted Question:&nbsp; </span>
+                            <span class="text-end">{{$scr_total_questions}}</span>
+                        </div>
+                       </b>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 mb-4">
-                <div class="card shadow-lg" style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
+                <div class="card shadow-lg" style="height: 100%; border-radius: 20px; background-color: rgba(0, 157, 255, 0.151);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                        <h3><b>Completed Tests</b></h3>
+                        <h3><b>Attempted Tests</b></h3>
+                        <p>Overall Total Tests</p>
+                        @php
+                            $total_tests = $lo_test_count + 27;
+                            $attempted_tests = $attemptedCount + $attempted;
+                            $percentage = ($total_tests > 0) ? ($attempted_tests / $total_tests) * 100 : 0;
+                            $formatted_percentage = number_format($percentage, 2);
+                            $stroke_dasharray = $formatted_percentage . ", 100";
+                        @endphp
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <path id="circle" class="circle" stroke-dasharray="80, 100" d="M18 2.0845
+                            <path id="circle" class="circle" stroke-dasharray="{{ $stroke_dasharray }}" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <text x="18" y="20.35" class="percentage">40/50</text>
+                            <text x="18" y="20.35" class="percentage">{{ $formatted_percentage }}%</text>
                         </svg><br>
-                        <p>Overall Completed Tests</p>
+                        <b>
+                            <div class="d-flex justify-content-between w-100">
+                                <span class="text-start">Attempted Tests:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                <span class="text-end">{{ $attempted_tests }}</span>
+                            </div>
+                            <div class="d-flex justify-content-between w-100">
+                                <span class="text-start">Total Tests:&nbsp; </span>
+                                <span class="text-end">{{ $total_tests }}</span>
+                            </div>
+                        </b>
                     </div>
                 </div>
             </div>
+            
 
             <div class="col-md-3 mb-4">
                 <div class="card shadow-lg " style=" height: 100%;border-radius:20px;  background-color:rgba(0, 157, 255, 0.151);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
                         <h3><b>Overall Percentage</b></h3>
+                        <p>From All Tests</p>
+                        @php
+                        $overall_per =( $score + $scr_score)/2;
+                        $overall_formatted_percentage = number_format($overall_per, 2);
+                        $overall_stroke_dasharray = $overall_formatted_percentage;
+                    @endphp
                         <svg viewBox="0 0 36 36" class="circular-chart">
                             <path class="circle-bg" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <path id="circle" class="circle" stroke-dasharray="80, 100" d="M18 2.0845
+                            <path id="circle" class="circle" stroke-dasharray="{{$overall_stroke_dasharray}},100" d="M18 2.0845
                                 a 15.9155 15.9155 0 0 1 0 31.831
                                 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <text x="18" y="20.35" class="percentage">40/50</text>
+                            <text x="18" y="20.35" class="percentage">{{$overall_formatted_percentage}}%</text>
                         </svg><br>
-                        <p>Learning Objective & SCR</p>
+                        <b>
+                            <div class="d-flex justify-content-between w-100">
+                                <span class="text-start">Learning Obj:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                <span class="text-end">{{number_format($score, 2);}}%</span>
+                            </div>
+                            <div class="d-flex justify-content-between w-100">
+                                <span class="text-start">SCR:&nbsp; </span>
+                                <span class="text-end">{{ number_format($scr_score, 2); }}%</span>
+                            </div>
+                        </b>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,8 @@
         @include('users.graph')
         <br><br>
         @include('users.content')
+        <br><br>
+        @include('users.tabular_status')
     </div>
     @include('footer')
 </body>

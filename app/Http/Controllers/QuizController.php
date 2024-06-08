@@ -126,6 +126,7 @@ public function getQuestions(Request $request, $chapter_id, $test)
 
 public function showQuestions(Request $request, $chapter_id, $test, $questions,$test_type)
 {
+    // dd($questions);
     $chapterid = (int) substr($chapter_id, 7);
     $userId = $request->userId; 
     $status = Reg_User::where('id', $userId)
