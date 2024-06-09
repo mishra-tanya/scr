@@ -66,15 +66,20 @@
             </ul>
           </li> --}}
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          
           @guest
-          <li><a class="getstarted scrollto" href={{ url('login') }}>Login</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('admin/login') }}">Admin Login</a></li>
+          <li><a class="getstarted scrollto" href="{{ url('login') }}">Login</a></li>
       @endguest
       @auth
-      <li><a class="nav-link scrollto" href={{ url('home') }}>Dashboard</a></li>
-  @endauth
-      @auth
-          <li><a class="getstarted scrollto" href={{ url('logout') }}>Logout</a></li>
+          @if(Auth::user()->is_admin)
+              <li><a class="nav-link scrollto" href="{{ url('admin/dashboard') }}">Admin Dashboard</a></li>
+          @else
+              <li><a class="nav-link scrollto" href="{{ url('home') }}">User Dashboard</a></li>
+          @endif
+          <li><a class="getstarted scrollto" href="{{ url('logout') }}">Logout</a></li>
       @endauth
+      
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

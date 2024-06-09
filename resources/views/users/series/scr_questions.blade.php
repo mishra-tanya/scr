@@ -121,8 +121,8 @@
                                         </div>
                                         <div class="col-8 text-end">
                                             <div class="card-value text-end">
-                                                <button type="submit" class="btn text-capitalize custom-btn btn-block"
-                                                    @if (strtolower($test['status']) === 'attempted') disabled @endif>{{ $test['status'] }}</button>
+                                                <button type="submit" class="btn text-capitalize custom-btn btn-block  @if (strtolower($test['status']) === 'attempted') bg-light text-dark @endif"
+                                                    @if (strtolower($test['status']) === 'attempted')  @endif>{{ $test['status'] }}</button>
                                             </div>
                                         </div>
                                     </div>

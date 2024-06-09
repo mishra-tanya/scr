@@ -72,6 +72,8 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Registration successful.');
     }
+
+
     public function show_user()
 {
     if (Auth::check()) {
@@ -92,12 +94,13 @@ class AuthController extends Controller
                 $attemptedCount++;
             }
         }
-        
+        //counting attempts
         $count = Question::count();
         $lo_count = LearningObj::count();
         $lo_test_count = TestName::count();
         $attempted = LearningObjResult::where('user_id', $userId)->count();
 
+        //learning objective
         $total_questions = 0;
         $correct_answers = 0;
         $score = 0;
@@ -116,6 +119,7 @@ class AuthController extends Controller
             $score = ($total_questions > 0) ? ($correct_answers / $total_questions) * 100 : 0;
         }
 
+        //scr question bank
         $scr_total_questions = 0;
         $scr_correct_answers = 0;
         $scr_score = 0;
@@ -134,15 +138,22 @@ class AuthController extends Controller
             $scr_score = ($scr_total_questions > 0) ? ($scr_correct_answers / $scr_total_questions) * 100 : 0;
         }
 
+        $learning_obj_results = LearningObjResult::where('user_id', $userId)->get();
+
+
         return view('users.home', ['user' => $user], compact(
             'attemptedCount', 'attempted', 'count', 'lo_count', 'lo_test_count',
             'total_questions', 'correct_answers', 'score',
-            'scr_total_questions', 'scr_correct_answers', 'scr_score'
+            'scr_total_questions', 'scr_correct_answers', 'scr_score','scr_results','learning_obj_results'
         ));
     } else {
         return redirect()->route('login')->with('error', 'You must be logged in to access this page.');
     }
 }
+
+
+//admin
+
 
     public function logout(Request $request)
     {

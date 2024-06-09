@@ -58,9 +58,9 @@
 
         hr {
             
-            border: 2px solid rgb(0, 119, 255);
-            border-radius: 100%;
-            border-top: 1px dotted #000000;
+            border: 2px solid rgb(0, 119, 255) !important;
+            border-radius: 100%  !important;
+            border-top: 1px dotted #000000 !important;
         }
     </style>
 </head>
@@ -78,13 +78,10 @@
                     <div class="card-content">
                         <div class="card-item">
                             <div class="row">
-                                <div class="col-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backpack4" viewBox="0 0 16 16">
-                                        <path d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"/>
-                                        <path d="M8 0a2 2 0 0 0-2 2H3.5a2 2 0 0 0-2 2v1c0 .52.198.993.523 1.349A.5.5 0 0 0 2 6.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5a.5.5 0 0 0-.023-.151c.325-.356.523-.83.523-1.349V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2-2m0 1a1 1 0 0 0-1 1h2a1 1 0 0 0-1-1M3 14V6.937q.24.062.5.063h4v.5a.5.5 0 0 0 1 0V7h4q.26 0 .5-.063V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1m9.5-11a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                                      </svg>
+                                <div class="col-2">
+                                    <i class="bi bi-journals fs-1"></i>
                                 </div>
-                                <div class="col-11">
+                                <div class="col-10">
                                     <h4 class="card-label">Learning Objective Test</h4>
                                 </div>
                             </div>
@@ -125,7 +122,7 @@
                                 <div class="card-value ">{{$lo_count}}</div>
                             </div>
                         </div>
-<hr>                        <a href="/learning_obj" class="btn custom-btn btn-block" style="background-color: #38befd">Start Test</a>
+<hr>                        <a href="/learning_obj" class="btn text-light custom-btn btn-block" style="background-color: #38befd">Start Test</a>
                     </div>
                 </div>
             </div>
@@ -138,13 +135,10 @@
                     <div class="card-content">
                         <div class="card-item">
                             <div class="row">
-                                <div class="col-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backpack4" viewBox="0 0 16 16">
-                                        <path d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"/>
-                                        <path d="M8 0a2 2 0 0 0-2 2H3.5a2 2 0 0 0-2 2v1c0 .52.198.993.523 1.349A.5.5 0 0 0 2 6.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5a.5.5 0 0 0-.023-.151c.325-.356.523-.83.523-1.349V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2-2m0 1a1 1 0 0 0-1 1h2a1 1 0 0 0-1-1M3 14V6.937q.24.062.5.063h4v.5a.5.5 0 0 0 1 0V7h4q.26 0 .5-.063V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1m9.5-11a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                                      </svg>
+                                <div class="col-2">
+                                    <i class="bi bi-bank fs-1 text-success"></i>
                                 </div>
-                                <div class="col-11">
+                                <div class="col-10">
                                     <h4 class="card-label">SCR <br> Question Bank</h4>
                                 </div>
                             </div>
@@ -185,7 +179,7 @@
                                 <div class="card-value ">{{$count}}</div>
                             </div>
                         </div>
-<hr>                        <a href="/scr_questions" class="btn custom-btn btn-block" style="background-color: #28A745">Start Test</a>
+<hr>                        <a href="/scr_questions" class="btn text-light custom-btn btn-block" style="background-color: #28A745">Start Test</a>
                     </div>
                 </div>
             </div>
@@ -197,13 +191,10 @@
                     <div class="card-content">
                         <div class="card-item">
                             <div class="row">
-                                <div class="col-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backpack4" viewBox="0 0 16 16">
-                                        <path d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"/>
-                                        <path d="M8 0a2 2 0 0 0-2 2H3.5a2 2 0 0 0-2 2v1c0 .52.198.993.523 1.349A.5.5 0 0 0 2 6.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5a.5.5 0 0 0-.023-.151c.325-.356.523-.83.523-1.349V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2-2m0 1a1 1 0 0 0-1 1h2a1 1 0 0 0-1-1M3 14V6.937q.24.062.5.063h4v.5a.5.5 0 0 0 1 0V7h4q.26 0 .5-.063V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1m9.5-11a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                                      </svg>
+                                <div class="col-2">
+                                    <i class="bi bi-pencil-square fs-1 text-warning"></i>
                                 </div>
-                                <div class="col-11">
+                                <div class="col-10">
                                     <h4 class="card-label">SCR <br> Revision Notes </h4>
                                 </div>
                             </div>
@@ -228,7 +219,7 @@
                         </div><hr>
                        <br><br><br><br>
                         
-                        <a href="scr_notes" class="btn custom-btn btn-block mt-3" style="background-color: #826201">Start Test</a>
+                        <a href="scr_notes" class="btn text-light  custom-btn btn-block mt-3" style="background-color: #826201">Start Test</a>
                     </div>
                 </div>
             </div>
@@ -241,13 +232,10 @@
                     <div class="card-content">
                         <div class="card-item">
                             <div class="row">
-                                <div class="col-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backpack4" viewBox="0 0 16 16">
-                                        <path d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"/>
-                                        <path d="M8 0a2 2 0 0 0-2 2H3.5a2 2 0 0 0-2 2v1c0 .52.198.993.523 1.349A.5.5 0 0 0 2 6.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5a.5.5 0 0 0-.023-.151c.325-.356.523-.83.523-1.349V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2-2m0 1a1 1 0 0 0-1 1h2a1 1 0 0 0-1-1M3 14V6.937q.24.062.5.063h4v.5a.5.5 0 0 0 1 0V7h4q.26 0 .5-.063V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1m9.5-11a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                                      </svg>
+                                <div class="col-2">
+                                    <i class="bi bi-stack fs-1"></i>
                                 </div>
-                                <div class="col-11">
+                                <div class="col-10">
                                     <h4 class="card-label">SCR Revision Flash Card</h4>
                                 </div>
                             </div>
@@ -288,7 +276,7 @@
                                 {{-- <div class="card-value ">470</div> --}}
                             </div>
                         </div>
-                    <a href="scr_revision" class="btn custom-btn btn-block" style="background-color: #6F42C1">Start Test</a>
+                    <a href="scr_revision" class="btn text-light  custom-btn btn-block" style="background-color: #6F42C1">Start Test</a>
                     </div>
                 </div>
             </div>
@@ -300,13 +288,10 @@
                     <div class="card-content">
                         <div class="card-item">
                             <div class="row">
-                                <div class="col-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backpack4" viewBox="0 0 16 16">
-                                        <path d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z"/>
-                                        <path d="M8 0a2 2 0 0 0-2 2H3.5a2 2 0 0 0-2 2v1c0 .52.198.993.523 1.349A.5.5 0 0 0 2 6.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5a.5.5 0 0 0-.023-.151c.325-.356.523-.83.523-1.349V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2-2m0 1a1 1 0 0 0-1 1h2a1 1 0 0 0-1-1M3 14V6.937q.24.062.5.063h4v.5a.5.5 0 0 0 1 0V7h4q.26 0 .5-.063V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1m9.5-11a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/>
-                                      </svg>
+                                <div class="col-2">
+                                    <i class="bi bi-file-earmark-play-fill fs-1 text-secondary"></i>
                                 </div>
-                                <div class="col-11">
+                                <div class="col-10">
                                     <h4 class="card-label">SCR <br>Videos</h4>
                                 </div>
                             </div>
@@ -347,7 +332,7 @@
                                 {{-- <div class="card-value ">470</div> --}}
                             </div>
                         </div>
-                   <a href="scr_videos" class="btn custom-btn btn-block" style="background-color: #555555">Start Test</a>
+                   <a href="scr_videos" class="btn text-light custom-btn btn-block" style="background-color: #555555">Start Test</a>
                     </div>
                 </div>
             </div>
