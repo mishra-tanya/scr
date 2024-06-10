@@ -121,9 +121,12 @@
                                         </div>
                                         <div class="col-8 text-end">
                                             <div class="card-value text-end">
-                                                <button type="submit" class="btn text-capitalize custom-btn btn-block  @if (strtolower($test['status']) === 'attempted') bg-light text-dark @endif"
-                                                    @if (strtolower($test['status']) === 'attempted')  @endif>{{ $test['status'] }}</button>
-                                            </div>
+                                                <button type="submit" 
+                                                class="btn text-capitalize custom-btn btn-block @if (strtolower($test['status']) === 'attempted') bg-secondary text-white @endif"
+                                                @if (strtolower($test['status']) === 'completed') disabled @endif>
+                                            {{ $test['status'] }}
+                                        </button>
+                                         </div>
                                         </div>
                                     </div>
                                     <hr>
@@ -173,9 +176,12 @@
                                 </div>
                                 <div class="col-7 text-end">
                                     <div class="card-value text-end">
-                                        <button type="submit" class="btn text-capitalize custom-btn btn-block"
-                                            @if (strtolower($mockTest['status']) === 'attempted') disabled @endif>{{ $mockTest['status'] }}</button>
-                                    </div>
+                                        <button type="submit" 
+                                        class="btn text-capitalize custom-btn btn-block @if (strtolower($mockTest['status']) === 'attempted') bg-secondary text-white @endif"
+                                        @if (strtolower($mockTest['status']) === 'completed') disabled @endif>
+                                    {{ $mockTest['status'] }}
+                                </button>
+                                        </div>
                                 </div>
                             </div>
                             <hr>

@@ -90,7 +90,7 @@ class AuthController extends Controller
 
         $attemptedCount = 0;
         foreach ($statusData as $statusItem) {
-            if ($statusItem['status'] == 'attempted') {
+            if ($statusItem['status'] == 'attempted' || $statusItem['status'] == 'completed') {
                 $attemptedCount++;
             }
         }

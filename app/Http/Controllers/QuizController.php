@@ -40,7 +40,52 @@ class QuizController extends Controller
         $existingResult = Result::where('user_id', $user->id)
                                 ->where('chapter_id', $request->test)
                                 ->first();
-    
+                                $userModel = Reg_User::find($user->id);
+    //  dd( $request->test);
+                                $statusData = json_decode($userModel->status, true);
+                                // dd($statusData);
+                                if(is_numeric($request->test)){
+                                    $testParts = $request->test;
+                                    $chapterId = $request->test.'Mock';
+                                    // dd($chapterId);
+                                    foreach ($statusData as &$status) {
+                                        // dd($statusData);
+                                        $statusParts = explode(' ', $status['test_id']);
+                                        $statusChapterId = $status['chapter_id'];
+                                        $statusTestId = intval($statusParts[1]);
+                                        // dd($statusChapterId,$statusTestId,$statusParts);
+
+                                        if ($status['chapter_id'] == $chapterId && in_array($status['test_id'], ['Mock Test 1', 'Mock Test 2', 'Mock Test 3'])) {
+                                            $status['status'] = 'completed';
+                                        // dd($statusChapterId,$statusTestId);
+                                            // dd($status['status']);
+                                            break;
+                                        }
+                                        // dd($status['test_id']);
+                                    }
+                                }
+                                else{
+                                    $testParts = explode('T', $request->test);
+                                    $chapterId = intval(substr($testParts[0], 1));
+                                    $testId = intval($testParts[1]);
+                                
+                                    foreach ($statusData as &$status) {
+                                        $statusParts = explode(' ', $status['test_id']);
+                                        $statusChapterId = $status['chapter_id'];
+                                        $statusTestId = intval($statusParts[1]);
+                                        // dd($statusChapterId);
+                                        if ($statusChapterId == $chapterId && $statusTestId == $testId) {
+                                            $status['status'] = 'completed';
+                                            break;
+                                        }
+                                    }
+                                }
+                                
+                              
+                                
+                                $userModel->status = json_encode($statusData);
+                                $userModel->save();
+                            
         if ($existingResult) {
             return redirect()->route('result.show', ['chapter_id' => urlencode($request->test)])->with('existingResult', $existingResult);
         }

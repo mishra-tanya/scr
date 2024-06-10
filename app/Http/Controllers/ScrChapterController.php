@@ -53,19 +53,19 @@ class ScrChapterController extends Controller
             [
                 'label' => 'Mock Test 1',
                 'link' => 'scr_questions/mock_test1',
-                'chapter_id' => 1,
+                'chapter_id' => '1Mock',
                 'status' => 'Unattempted',
             ],
             [
                 'label' => 'Mock Test 2',
                 'link' => 'scr_questions/mock_test2',
-                'chapter_id' => 2,
+                'chapter_id' => '2Mock',
                 'status' => 'Unattempted',
             ],
             [
                 'label' => 'Mock Test 3',
                 'link' => 'scr_questions/mock_test3',
-                'chapter_id' => 3,
+                'chapter_id' => '3Mock',
                 'status' => 'Unattempted',
             ],
         ];
