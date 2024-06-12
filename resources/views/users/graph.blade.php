@@ -56,6 +56,10 @@
                             <span class="text-start"> Attempted Question:&nbsp;&nbsp;&nbsp; </span>
                             <span class="text-end">{{$total_questions}}</span>
                         </div>
+                        <div class="d-flex justify-content-between w-100">
+                            <span class="text-start"> Total Question:&nbsp;&nbsp;&nbsp; </span>
+                            <span class="text-end">{{$lo_count}}</span>
+                        </div>
                        </b>
                     </div>
                 </div>
@@ -83,6 +87,10 @@
                         <div class="d-flex justify-content-between w-100">
                             <span class="text-start"> Attempted Question:&nbsp; </span>
                             <span class="text-end">{{$scr_total_questions}}</span>
+                        </div>
+                        <div class="d-flex justify-content-between w-100">
+                            <span class="text-start"> Total Question:&nbsp; </span>
+                            <span class="text-end">{{$count}}</span>
                         </div>
                        </b>
                     </div>

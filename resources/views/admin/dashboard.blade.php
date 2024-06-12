@@ -16,10 +16,6 @@
     <br><br>
     @include('admin.user_req')
     <br><br>
-    @include('admin.add_questions')
-    <br><br>
-    @include('admin.adjust_question')
-    <br><br>
     @include('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

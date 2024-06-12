@@ -130,7 +130,36 @@
                 /* margin: 30px; */
             }
 
+                .button {
+                    width: 220px;
+                    height: 50px;
+                    border: 5px double rgb(211, 211, 211);
+                    border-radius: 5px;
+                }
 
+                .mark-review-btn {
+                    color: white;
+                    background-color: #826201;
+                }
+
+                #submit_test {
+                    background-color: #28A745;
+                    color: white;
+                }
+
+                #next {
+                    background-color: #0056b3;
+                    color: white;
+                }
+
+                @media (max-width:765px) {
+                    .marks {
+                        display: flex;
+                        align-content: center;
+                        justify-content: center;
+                    }
+
+                }
         @media screen and (max-width: 768px) {
             .quiz-container .question-number-list {
                 list-style: none;
@@ -597,12 +626,16 @@
                 @endif
 
             </ul>
-
+          
             <hr
                 style=" border: 3px solid #2487ce;
             border-radius: 100%;
             border-top: 1px dotted #000000;">
             <br>
+            <div style="display: flex; justify-content: end;">
+                <button type="submit" class="button mx-2 {{ session('existingResult') ? 'disabled' : '' }}"
+                id="submit_test">Submit Test</button>
+            </div>
             <div class="question">
                 @foreach ($questions?? [] as $key => $question)
                     <div class="question-block{{ $key === 0 ? ' active' : '' }}" id="question-{{ $key }}">
@@ -690,44 +723,12 @@
             </div>
             
 
-            <style>
-                .button {
-                    width: 220px;
-                    height: 50px;
-                    border: 5px double rgb(211, 211, 211);
-                    border-radius: 5px;
-                }
-
-                .mark-review-btn {
-                    color: white;
-                    background-color: #826201;
-                }
-
-                #submit_test {
-                    background-color: #28A745;
-                    color: white;
-                }
-
-                #next {
-                    background-color: #0056b3;
-                    color: white;
-                }
-
-                @media (max-width:765px) {
-                    .marks {
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-                    }
-
-                }
-            </style>
+           
             {{-- {{ $existingResult ? 'Already Submitted' : 'Submit Test' }} --}}
 
             <div style="display: flex; justify-content: end;">
                 {{-- <button id="previous">Previous</button> --}}
-                <button type="submit" class="button mx-2 {{ session('existingResult') ? 'disabled' : '' }}"
-                    id="submit_test">Submit Test</button>
+                
                 <button id="next" class="button mx-2">Next</button>
             </div>
 

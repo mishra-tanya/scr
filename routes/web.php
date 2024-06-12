@@ -54,6 +54,7 @@ Route::post('/lo_submit', [LearningObjController::class, 'lo_submit'])->name('lo
 });
 
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\QuestionController;
 
 Route::prefix('admin')->group(function () {
     Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
@@ -61,6 +62,14 @@ Route::prefix('admin')->group(function () {
     Route::get('register', [AdminAuthController::class, 'showRegistrationForm'])->name('admin.register');
     Route::post('register', [AdminAuthController::class, 'register']);
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::get('/add_questions', function () {
+        return view('admin.add_questions');
+    })->name('admin.add_question');
+    Route::get('/limit_ques', function () {
+        return view('admin.adjust_question');
+    })->name('admin.limit_ques');
+    Route::post('/questions/scr/store', [QuestionController::class, 'storeSCR'])->name('questions.scr.store');
+    Route::post('/questions/lo/store', [QuestionController::class, 'storeLO'])->name('questions.lo.store');
 });
 
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
@@ -68,3 +77,4 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 });
+

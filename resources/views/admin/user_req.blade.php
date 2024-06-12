@@ -31,7 +31,7 @@
         <div class="container">
             <div class="panel">
                 <div class="table-responsive">
-                    <table id="scrQuestionBankTable" class="table  text-center table-bordered table-condensed">
+                    <table id="pay_user" class="table  text-center table-bordered table-condensed">
                         <thead style="">
                             <tr>
                                 <th>S.No.</th>
@@ -51,6 +51,33 @@
             </div>
         </div>
     </div><br><br>
+    <div class="m-4 border shadow-md">
+        <h2 class="text-center " style="background-color: rgb(255, 255, 255); padding: 12px;">All Users
+        </h2>
+        <div class="container">
+            <div class="panel">
+                <div class="table-responsive">
+                    <table id="all_user" class="table  text-center table-bordered table-condensed">
+                        <thead style="">
+                            <tr>
+                                <th>S.No.</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>User Address</th>
+                                <th>Country</th>
+                                <th>Designation</th>
+                                <th>Payment Status</th>
+                                <th>Trial Days</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><br><br>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -60,6 +87,11 @@
     <script>
         $(document).ready(function() {
             $('#pay_user').DataTable({
+                "order": [
+                    [0, "desc"]
+                ]
+            });
+            $('#all_user').DataTable({
                 "order": [
                     [0, "desc"]
                 ]

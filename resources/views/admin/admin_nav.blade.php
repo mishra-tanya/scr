@@ -318,14 +318,14 @@ nav .navbar .links li .sub-menu li{
         <ul class="links">
           <li><a href="/">Home</a></li>
           <li><a href="/admin/dashboard">Dashboard</a></li>
-          <li><a href="/">All Users</a></li>
+          <li><a href="#all_user">All Users</a></li>
 
           <li>
             <a href="#">Add Questions</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href="#questions">Learning Objectives</a></li>
-              <li><a href="#questions">SCR Question Bank</a></li>
+              <li><a href={{url('/admin/add_questions#learning_obj')}}>Learning Objectives</a></li>
+              <li><a href={{url('/admin/add_questions')}}>SCR Question Bank</a></li>
               {{-- <li class="more">
                 <span><a href="#">More</a>
                 <i class='bx bxs-chevron-right arrow more-arrow'></i>
@@ -342,9 +342,9 @@ nav .navbar .links li .sub-menu li{
             <a href="#">Adjust Q Limit</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href="#adjust">SCR Tests Question</a></li>
-              <li><a href="#adjust">SCR Mock Tests Question</a></li>
-              <li><a href="#adjust">Learning Objective Question</a></li>
+              <li><a href={{url('/admin/limit_ques')}}>SCR Tests Question</a></li>
+              <li><a href={{url('/admin/limit_ques')}}>SCR Mock Tests Question</a></li>
+              <li><a href={{url('/admin/limit_ques')}}>Learning Objective Question</a></li>
 
             </ul>
           </li>

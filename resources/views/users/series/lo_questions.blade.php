@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCR Test Series </title>
+    <title>Learning Objective</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -12,7 +12,6 @@
     <style>
         .quiz-container body {
             background-color: #f5f5f5;
-
         }
 
         .quiz-container {
@@ -32,7 +31,6 @@
             justify-content: center;
             padding: 0;
             margin-bottom: 30px;
-
         }
 
         input[type="radio"] {
@@ -82,6 +80,23 @@
             margin-bottom: 20px;
         }
 
+        .button {
+            width: 220px;
+            height: 50px;
+            border: 7px double rgb(211, 211, 211);
+            /* border-radius: 5px; */
+        }
+
+        #submit_test {
+            background-color: #28A745;
+            color: white;
+        }
+
+        #next {
+            background-color: #0056b3;
+            color: white;
+        }
+
         .quiz-container .options {
             display: grid;
             gap: 10px;
@@ -97,7 +112,7 @@
         }
 
         .quiz-container .options button:hover {
-            background-color: #e9e9e9;
+            background-color: #e9e9f9;
         }
 
         .quiz-container .navigation {
@@ -113,24 +128,27 @@
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
-        
         }
 
         .quiz-container .navigation button:hover {
             background-color: #0056b3;
         }
-        .quiz-container .question-number-list {
-                list-style: none;
-                display: flex;
-                justify-content: center;
-                padding: 0;
-                margin-bottom: 30px;
-                overflow-x: auto;
-                flex-wrap: wrap;
-                
-                /* margin: 30px; */
-            }
 
+        .quiz-container .question-number-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            flex-wrap: wrap;
+            /* margin: 30px; */
+        }
+
+        .mark-review-btn {
+            color: white;
+            background-color: #826201;
+        }
 
         @media screen and (max-width: 768px) {
             .quiz-container .question-number-list {
@@ -147,11 +165,9 @@
                 width: 50px;
                 margin: 5px;
             }
-            
-
         }
     </style>
-   @include('nav')
+    @include('nav')
     </div>
 
     <br><br>
@@ -160,40 +176,29 @@
         @csrf
         <div class="quiz-container">
             <div class="ch text-center" style="font-size: 25px;">
-                 
-                    <b class="">Lesson: {{ $ch_no = substr($test, 7) }}</b>
+                <b class="">Lesson: {{ $ch_no = substr($test, 7) }}</b>
             </div>
             <input type="hidden" name="chapter_id" value={{ $chapter_id }}>
             <input type="hidden" name="test" value={{ $test }}>
-        
-            
+
             {{-- <input type="hidden" name="user_id" value={{ Auth::user()->id }}> --}}
             {{-- {{ $test }}{{ Auth::user()->id }} --}}
 
-            <hr
-                style=" border: 3px solid #28A745;
-            border-radius: 100%;
-            border-top: 1px dotted #000000;">
+            <hr style="border: 3px solid #28A745; border-radius: 100%; border-top: 1px dotted #000000;">
             <ul class="question-number-list">
                 @foreach ($questions ?? [] as $key => $question)
-                    <li><button class=" my-2 {{ $key === 0 ? 'active' : '' }}{{ $question->reviewed ? ' reviewed' : '' }} "
-                            data-index="{{ $key }}">{{ $key + 1 }}</button></li>
+                    <li><button class="my-2 {{ $key === 0 ? 'active' : '' }}{{ $question->reviewed ? ' reviewed' : '' }}" data-index="{{ $key }}">{{ $key + 1 }}</button></li>
                 @endforeach
-
             </ul>
-            <hr
-            style=" border: 3px solid #2487ce;
-        border-radius: 100%;
-        border-top: 1px dotted #000000;">
-          
+            <hr style="border: 3px solid #2487ce; border-radius: 100%; border-top: 1px dotted #000000;">
+            <div style="display: flex; justify-content: end;">
+                <button type="submit" class="button mx-2 {{ session('existingResult') ? 'disabled' : '' }}" id="submit_test">Submit Test</button>
+            </div>
             <div class="question">
-                @foreach ($questions?? [] as $key => $question)
+                @foreach ($questions ?? [] as $key => $question)
                     <div class="question-block{{ $key === 0 ? ' active' : '' }}" id="question-{{ $key }}">
-                        <h3>
-                            <b>Question {{ $key + 1 }}.</b>
-                        </h3>
+                        <h3><b>Question {{ $key + 1 }}.</b></h3>
                         <h4><b>{!! nl2br(e($question->question_title)) !!}</b></h4>
-            
                         <hr>
                         <div class="row">
                             <div class="col-12 col-md-6 mb-3">
@@ -228,49 +233,27 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <input type="hidden" name="results[{{ $key }}][question_id]" value="{{ $question->id }}">
                         <input type="hidden" name="results[{{ $key }}][result_ans]" value="{{ $question->result_ans }}">
-            
                         <hr><br>
-                        
+                        <div class="marks">
+                            <button class="mx-2 mark-review-btn button" data-index="{{ $key }}" onclick="toggleCheckbox(this, event)">
+                                <input type="hidden" class="checkbox" value="0">
+                                <span class="button-text">Mark for Review</span>
+                            </button>
+                        </div>
                     </div>
                 @endforeach
             </div>
-            
-
-            <style>
-                .button {
-                    width: 220px;
-                    height: 50px;
-                    border: 7px double rgb(211, 211, 211);
-                    /* border-radius: 5px; */
-                }
-
-                #submit_test {
-                    background-color: #28A745;
-                    color: white;
-                }
-
-                #next {
-                    background-color: #0056b3;
-                    color: white;
-                }
-
-            </style>
-
             <div style="display: flex; justify-content: end;">
-                <button type="submit" class="button mx-2 {{ session('existingResult') ? 'disabled' : '' }}"
-                    id="submit_test">Submit Test</button>
                 <button id="next" class="button mx-2">Next</button>
             </div>
-
-
         </div>
     </form>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const questions = document.querySelectorAll('.question-block');
             const questionButtons = document.querySelectorAll('.question-number-list button');
             const nextButton = document.getElementById('next');
@@ -299,29 +282,25 @@
                 });
             }
 
-
             function updateNavigationButtons() {
                 if (currentQuestionIndex === questions.length - 1) {
                     nextButton.style.display = 'none';
-                    // submit_test.style.display='block';
                 } else {
                     nextButton.textContent = 'Next';
                     nextButton.style.display = 'block';
-                    // submit_test.style.display='none';
                 }
             }
 
             showQuestion(currentQuestionIndex);
 
             questionButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
+                button.addEventListener('click', (event) => {
                     event.preventDefault();
                     showQuestion(index);
                 });
             });
 
-
-            nextButton.addEventListener('click', () => {
+            nextButton.addEventListener('click', (event) => {
                 event.preventDefault();
                 if (currentQuestionIndex < questions.length - 1) {
                     showQuestion(currentQuestionIndex + 1);
@@ -329,8 +308,33 @@
                     console.log('Submitting...');
                 }
             });
-        })
-   </script>
+
+            document.querySelectorAll('.mark-review-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    button.classList.toggle('reviewed');
+                    const questionIndex = button.getAttribute('data-index');
+                    questions[questionIndex].classList.toggle('reviewed');
+                    updateQuestionNumberButtonColors();
+                });
+            });
+        });
+
+        function toggleCheckbox(button, event) {
+            event.preventDefault();
+            const checkbox = button.querySelector('.checkbox');
+            const buttonText = button.querySelector('.button-text');
+            checkbox.value = checkbox.value === "1" ? "0" : "1";
+
+            if (checkbox.value === "1") {
+                buttonText.innerText = 'Remove from Review';
+                button.classList.add('reviewed');
+            } else {
+                buttonText.innerText = 'Mark for Review';
+                button.classList.remove('reviewed');
+            }
+        }
+    </script>
 </body>
 
 </html>

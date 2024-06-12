@@ -126,6 +126,20 @@
             color: white;
         }
 
+        .question {
+            margin-bottom: 20px;
+            border: 2px black solid;
+            padding: 20px;
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+        }
+        .question-number-list button.reviewed {
+            background-color: #826201;
+        }
+
         @media(max-width:765px) {
             .card-container {
                 max-width: 600px;
@@ -141,6 +155,7 @@
                 font-size: 30px;
                 font-weight: bold;
             }
+
         }
     </style>
     <link rel="stylesheet" href="../../css/graph.css">
@@ -152,17 +167,18 @@
     <br><br>
     <div class="text-center">
         @if (is_numeric($chapter_id))
-        <h2><b>Mock Test: {{$chapter_id}}</b><span class="d-none d-md-inline"></span></h2>
-    @else
-        @if (preg_match('/[A-Za-z][0-9][A-Za-z][0-9]/', $chapter_id))
-            <h2><b>Chapter: {{ substr($chapter_id, 1, 1) }}</b><span class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
-                <b class="d-block d-md-inline">Test Series: {{ substr($chapter_id, 3, 1) }}</b>
-            </h2>
+            <h2><b>Mock Test: {{ $chapter_id }}</b><span class="d-none d-md-inline"></span></h2>
         @else
-            <h2><b>Invalid Chapter ID: {{$chapter_id}}</b></h2>
+            @if (preg_match('/[A-Za-z][0-9][A-Za-z][0-9]/', $chapter_id))
+                <h2><b>Chapter: {{ substr($chapter_id, 1, 1) }}</b><span
+                        class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
+                    <b class="d-block d-md-inline">Test Series: {{ substr($chapter_id, 3, 1) }}</b>
+                </h2>
+            @else
+                <h2><b>Invalid Chapter ID: {{ $chapter_id }}</b></h2>
+            @endif
         @endif
-    @endif
-    
+
         {{-- <h2><b>Chapter: {{ substr($chapter_id, 1, 1) }}</b><span class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
             <b class="d-block d-md-inline">Test Series: {{ substr($chapter_id, 3, 1) }}</b>
         </h2> --}}
@@ -173,66 +189,68 @@
         <div class="card-div">
             <div class="">
                 @php
-                $percentage = 0;
-                $remark = '';
-            
-                if($totalQuestions > 0) {
-                    $percentage = ($correctAnswers / $totalQuestions) * 100;
-            
-                    if ($percentage >= 90) {
-                        $remark = 'Excellent!';
-                    } elseif ($percentage >= 75) {
-                        $remark = 'Good job!';
-                    } elseif ($percentage >= 50) {
-                        $remark = 'Not bad!';
+                    $percentage = 0;
+                    $remark = '';
+
+                    if ($totalQuestions > 0) {
+                        $percentage = ($correctAnswers / $totalQuestions) * 100;
+
+                        if ($percentage >= 90) {
+                            $remark = 'Excellent!';
+                        } elseif ($percentage >= 75) {
+                            $remark = 'Good job!';
+                        } elseif ($percentage >= 50) {
+                            $remark = 'Not bad!';
+                        } else {
+                            $remark = 'Keep practicing!';
+                        }
                     } else {
-                        $remark = 'Keep practicing!';
+                        $remark = 'Give the test first to see the result!!';
                     }
-                } else {
-                    $remark = 'Give the test first to see the result!!';
-                }
-            @endphp
-            
-                   
-                   
+                @endphp
+
+
+
                 <h4 class="text-center"><strong> {{ $remark }}</strong></h4>
                 <div class="row">
                     @if ($totalQuestions > 0)
-                    <div class="col-lg-6 col-md-12 text-end">
-                        <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                            <svg viewBox="0 0 36 36" class="circular-chart">
-                                <path class="circle-bg" d="M18 2.0845
+                        <div class="col-lg-6 col-md-12 text-end">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                                <svg viewBox="0 0 36 36" class="circular-chart">
+                                    <path class="circle-bg" d="M18 2.0845
                                     a 15.9155 15.9155 0 0 1 0 31.831
                                     a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <path id="circle" class="circle"
-                                    stroke-dasharray="
+                                    <path id="circle" class="circle"
+                                        stroke-dasharray="
                                     {{ ($correctAnswers / $totalQuestions) * 100 }}
                                     
-                                    , 100" d="M18 2.0845
+                                    , 100"
+                                        d="M18 2.0845
                                     a 15.9155 15.9155 0 0 1 0 31.831
                                     a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                <text x="18" y="20.35" class="percentage">{{ $correctAnswers }}
-                                    /{{ $totalQuestions }}</text>
-                            </svg>
-                                       
-                                    @endif
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="result">
-                            @if ($totalQuestions > 0)
-                            <p><strong>Total Questions:</strong> {{ $totalQuestions }}</p>
-                            <p><strong>Correct Answers:</strong> {{ $correctAnswers }}</p>
-                            <p><strong>Incorrect Answers:</strong> {{ $totalQuestions - $correctAnswers }}</p>
-                            <p><strong>Percentage:</strong>
-                                {{ number_format(($correctAnswers / $totalQuestions) * 100, 2) }}%
-                                @endif
-                            </p>
-                        </div>
-                    </div>
+                                    <text x="18" y="20.35" class="percentage">{{ $correctAnswers }}
+                                        / {{ $totalQuestions }}</text>
+                                </svg>
+
+                    @endif
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="result">
+                    @if ($totalQuestions > 0)
+                        <p><strong>Total Questions:</strong> {{ $totalQuestions }}</p>
+                        <p><strong>Correct Answers:</strong> {{ $correctAnswers }}</p>
+                        <p><strong>Incorrect Answers:</strong> {{ $totalQuestions - $correctAnswers }}</p>
+                        <p><strong>Percentage:</strong>
+                            {{ number_format(($correctAnswers / $totalQuestions) * 100, 2) }}%
+                    @endif
+                    </p>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <br>
@@ -254,8 +272,8 @@
     </div>
     <div class="quiz-container">
         @foreach ($questions as $index => $question)
-            <div id="question-{{ $index + 1 }}" class="question shadow-lg">
-                <b>
+        <div id="question-{{ $index + 1 }}" class="question @if($index == 0) active @endif shadow-lg">
+            <b>
                     <h4><strong>Question {{ $index + 1 }}:</strong></h4>
                 </b>
                 <h4 class="mb-3"><b>{{ $question['question_title'] }}</b></h4>
@@ -292,14 +310,55 @@
                     <strong>Correct Answer:</strong> {{ $question['correct_answer'] }}
                 </span>
                 <p><strong><br>Reason:</strong> {{ $question['reason'] }}</p>
-
-            </div><br>
-            <hr style="height: 20px;"><br>
+                <style>
+                      .button {
+                    width: 200px;
+                    height: 50px;
+                    border: 5px double rgb(211, 211, 211);
+                    border-radius: 5px;
+                    font-size: 18px;
+                }
+                #next {
+                    background-color: #0056b3;
+                    color: white;
+                }
+                </style>
+                <div style="display: flex; justify-content: end;">
+                    <button id="next" class="button next-button" data-next="{{ $index + 2 }}">Next</button>
+                </div>
+            </div>
         @endforeach
-
+        
+<br><br><hr>
     </div>
     @include('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentQuestionIndex = 0;
+            const questions = document.querySelectorAll('.question');
+            const nextButtons = document.querySelectorAll('.next-button');
+    
+            nextButtons.forEach((button, index) => {
+                button.addEventListener('click', function () {
+                    questions[currentQuestionIndex].classList.remove('active');
+                    if (index + 1 < questions.length) {
+                        questions[index + 1].classList.add('active');
+                        currentQuestionIndex = index + 1;
+                    }
+                });
+            });
+    
+            document.querySelectorAll('.number-line .number').forEach(number => {
+                number.addEventListener('click', function () {
+                    questions[currentQuestionIndex].classList.remove('active');
+                    currentQuestionIndex = parseInt(this.textContent) - 1;
+                    questions[currentQuestionIndex].classList.add('active');
+                });
+            });
+        });
+    </script>
+    
     <script>
         document.querySelectorAll('.number-line .number').forEach(number => {
             number.addEventListener('click', function() {
@@ -311,6 +370,7 @@
                 this.classList.add('active');
             });
         });
+        
     </script>
 </body>
 

@@ -53,19 +53,28 @@ class LearningObjController extends Controller
     }
 
     $testSeriesData = [];
+    $correctAnswers = 0;
+    $total_q = 0;
+
     foreach ($request->results as $result) {
         $testSeriesData[] = [
             'question_id' => $result['question_id'],
             'user_answer' => optional($result)['user_answer'],
             'correct_answer' => $result['result_ans'],
         ];
+        $total_q++;
+        if (strtoupper(optional($result)['user_answer']) == strtoupper($result['result_ans'])) {
+            $correctAnswers++;
+        }
     }
-
+   
     $testSeries = new LearningObjResult();
     $testSeries->user_id = $user->id;
     $testSeries->chapter_id = $request->chapter_id;
     $testSeries->test = $request->test;
     $testSeries->test_series = json_encode($testSeriesData);
+    $testSeries->score = $correctAnswers;
+    $testSeries->total_q = $total_q;
     $testSeries->save();
 
     return redirect()->route('getLoResult', [

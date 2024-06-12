@@ -42,6 +42,7 @@
                                 <th>Chapter</th>
                                 <th>Test</th>
                                 <th>Status</th>
+                                <th>Score</th>
                                 <th>Results</th>
                             </tr>
                         </thead>
@@ -60,6 +61,7 @@
                                     <i class="bi bi-check-circle-fill" style="color: green;"></i>
                                     <span class="ms-1">Completed</span>
                                 </td>
+                                 <td>{{$scr_result->score}} / {{$scr_result->total_question}}</td> 
                                 <td>
                                     <b>
                                         <a href="{{ url('result/' . $scr_result->chapter_id) }}" class="text-white"
@@ -100,6 +102,7 @@
                                 <th>Lesson</th>
                                 <th>Learning Objective</th>
                                 <th>Status</th>
+                                <th>Score</th>
                                 <th>Results</th>
                             </tr>
                         </thead>
@@ -114,6 +117,7 @@
                                         <i class="bi bi-check-circle-fill" style="color: green;"></i>
                                         <span class="ms-1">Completed</span>
                                     </td>
+                                    <td>{{ $result->score}} / {{$result->total_q }}</td>
                                     <td>
                                         <b>
                                             <a href="{{ url('learning_obj_result/' . $result->chapter_id . '/' . $result->test) }}"
