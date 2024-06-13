@@ -343,8 +343,8 @@ nav .navbar .links li .sub-menu li{
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
               <li><a href={{url('/admin/limit_ques')}}>SCR Tests Question</a></li>
-              <li><a href={{url('/admin/limit_ques')}}>SCR Mock Tests Question</a></li>
-              <li><a href={{url('/admin/limit_ques')}}>Learning Objective Question</a></li>
+              <li><a href={{url('/admin/limit_ques#scr')}}>SCR Mock Tests Question</a></li>
+              <li><a href={{url('/admin/limit_ques#lo')}}>Learning Objective Question</a></li>
 
             </ul>
           </li>

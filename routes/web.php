@@ -39,22 +39,22 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     Route::get('/result/{chapter_id}',[ResultController::class,'getResult'])->name('result.show');
 
-    Route::get('/scr_questions', [ScrChapterController::class, 'showDashboard'])->name('scr_q')->middleware('auth');
+    Route::get('/scr_questions', [ScrChapterController::class, 'showDashboard'])->name('scr_q');
 
-    Route::get('/scr_questions/{chapter_id}/{test}', [QuizController::class, 'getQuestions'])->name('get.questions')->middleware('auth');
+    Route::get('/scr_questions/{chapter_id}/{test}', [QuizController::class, 'getQuestions'])->name('get.questions');
     Route::post('/submitquiz', [QuizController::class, 'submitQuiz'])->name('submitquiz');
     Route::post('/update-test-status', [QuizController::class, 'updateTestStatus'])->name('update-test-status');
-    Route::get('/scr_questions/{chapter_id}', [QuizController::class, 'getMockQuestions'])->name('getMockQuestions')->middleware('auth');
+    Route::get('/scr_questions/{chapter_id}', [QuizController::class, 'getMockQuestions'])->name('getMockQuestions');
     
-    
-Route::get('/learning_obj', [LearningObjController::class, 'index'])->name('learningObj');
-Route::get('/questions/{chapter_id}/{test}', [LearningObjController::class, 'getLoQuestions'])->name('getLoQuestions')->middleware('auth');
-Route::get('/learning_obj_result/{chapter_id}/{test}',[LearningObjController::class,'getLoResult'])->name('getLoResult');
-Route::post('/lo_submit', [LearningObjController::class, 'lo_submit'])->name('lo_submit');
+    Route::get('/learning_obj', [LearningObjController::class, 'index'])->name('learningObj');
+    Route::get('/questions/{chapter_id}/{test}', [LearningObjController::class, 'getLoQuestions'])->name('getLoQuestions');
+    Route::get('/learning_obj_result/{chapter_id}/{test}',[LearningObjController::class,'getLoResult'])->name('getLoResult');
+    Route::post('/lo_submit', [LearningObjController::class, 'lo_submit'])->name('lo_submit');
 });
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuestionLimitController;
 
 Route::prefix('admin')->group(function () {
     Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
@@ -65,12 +65,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/add_questions', function () {
         return view('admin.add_questions');
     })->name('admin.add_question');
-    Route::get('/limit_ques', function () {
-        return view('admin.adjust_question');
-    })->name('admin.limit_ques');
     Route::post('/questions/scr/store', [QuestionController::class, 'storeSCR'])->name('questions.scr.store');
     Route::post('/questions/lo/store', [QuestionController::class, 'storeLO'])->name('questions.lo.store');
-});
+    Route::post('/store-question-limit', [QuestionLimitController::class, 'store'])->name('store.question.limit');
+    Route::get('/limit_ques', [QuestionLimitController::class, 'index'])->name('question.limits');
+
+})->middleware('is_admin');
 
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', function () {
