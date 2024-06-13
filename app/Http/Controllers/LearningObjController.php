@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TestName;
 use App\Models\LearningObj;
+use App\Models\QuestionLimit;
 use App\Models\LearningObjResult;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,14 +25,15 @@ class LearningObjController extends Controller
 
     
     public function getLoQuestions(Request $request,$chapter_id,$test){
+        $questionLimit = QuestionLimit::where('chapter', 'lo')->first();
+        $limit = $questionLimit ? $questionLimit->question_limit : 1;
         $questions = LearningObj::where('chapter_id', $chapter_id)
-                                 ->where('test', $test)
-                                 ->get();
-    
+                    ->where('test', $test)
+                    ->limit($limit)
+                    ->get();
             $userId = $request->userId; 
            
             return view('users.series.lo_questions', compact('questions','chapter_id','test'));
-    
             // dd($questions);
             // return response()->json($questions);
     }

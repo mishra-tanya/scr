@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Question; 
 use App\Models\Result; 
 use App\Models\Reg_User; 
+use App\Models\QuestionLimit; 
+
 
 use Illuminate\Support\Facades\Auth;
 
@@ -165,16 +167,29 @@ public function updateTestStatus(Request $request)
 
 public function getMockQuestions(Request $request, $chapter_id)
 {
-    $questions = Question::where('chapter_id', $chapter_id)->get();
+    $questionLimit = QuestionLimit::where('chapter', 'mock')->first();
+    $limit = $questionLimit ? $questionLimit->question_limit : 5; 
+
+    $questions = Question::where('chapter_id', $chapter_id)
+                         ->limit($limit)
+                         ->get();
+    // $questions = Question::where('chapter_id', $chapter_id)->get();
     $test=substr($chapter_id,9);
     return $this->showQuestions($request, $chapter_id, $test, $questions,"mock");
 }
 
 public function getQuestions(Request $request, $chapter_id, $test)
 {
+    // dd($chapter_id);
+    $questionLimit = QuestionLimit::where('chapter', $chapter_id)->first();
+
+    $limit = $questionLimit ? $questionLimit->question_limit : 5; 
+
     $questions = Question::where('chapter_id', $chapter_id)
                          ->where('test', $test)
+                         ->limit($limit)
                          ->get();
+    
     return $this->showQuestions($request, $chapter_id, $test, $questions,"test");
 }
 
