@@ -17,4 +17,53 @@ class Reg_User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-}
+
+    public function learningObjResults()
+    {
+        return $this->hasMany(LearningObjResult::class, 'user_id');
+    }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class, 'user_id');
+    }
+
+    public function calculateOverallResult()
+    {
+        $learningObjResults = $this->learningObjResults;
+        $learningTotalQuestions = 0;
+        $learningCorrectAnswers = 0;
+
+        foreach ($learningObjResults as $result) {
+            $testSeries = json_decode($result->test_series, true);
+            foreach ($testSeries as $question) {
+                $learningTotalQuestions++;
+                if (strtolower($question['user_answer']) == strtolower($question['correct_answer'])) {
+                    $learningCorrectAnswers++;
+                }
+            }
+        }
+        $learningObjScore = ($learningTotalQuestions > 0) ? ($learningCorrectAnswers / $learningTotalQuestions) * 100 : 0;
+
+        $scrResults = $this->results;
+        $scrTotalQuestions = 0;
+        $scrCorrectAnswers = 0;
+
+        foreach ($scrResults as $result) {
+            $scrTestSeries = json_decode($result->test_series, true);
+            foreach ($scrTestSeries as $question) {
+                $scrTotalQuestions++;
+                if (strtolower($question['user_answer']) == strtolower($question['correct_answer'])) {
+                    $scrCorrectAnswers++;
+                }
+            }
+        }
+        $scrScore = ($scrTotalQuestions > 0) ? ($scrCorrectAnswers / $scrTotalQuestions) * 100 : 0;
+
+        $this->scr = $scrScore;
+        $this->learning_obj = $learningObjScore;
+
+        $this->save();
+    }
+
+    }

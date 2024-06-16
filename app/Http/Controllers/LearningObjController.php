@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TestName;
+use App\Models\Reg_User;
 use App\Models\LearningObj;
 use App\Models\QuestionLimit;
 use App\Models\LearningObjResult;
@@ -94,6 +95,7 @@ public function getLoResult($chapter_id, $test)
         return redirect()->route('login')->with('error', 'You need to log in first.');
     }
     $user_id = Auth::user()->id;
+    $user = Reg_User::find($user_id);
 
     $results = LearningObjResult::where('user_id', $user_id)
                     ->where('chapter_id', $chapter_id)
@@ -140,6 +142,9 @@ public function getLoResult($chapter_id, $test)
 // dd($correctAnswers);
     // Debug: Print the total number of questions
     // dd($totalQuestions);
+
+    $user->calculateOverallResult();
+       
 
     return view('users.series.lo_results', [
         'chapter_id' => $chapter_id,

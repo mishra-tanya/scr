@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Result;
 use App\Models\Question;
+use App\Models\Reg_User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +16,10 @@ class ResultController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You need to log in first.');
         }
+        
         $user_id = Auth::user()->id;
+        $user = Reg_User::find($user_id);
+
         $results = Result::where('user_id', $user_id)
                         ->where('chapter_id', $chapter_id)
                         ->get();
@@ -46,6 +51,8 @@ class ResultController extends Controller
             }
         }
 
+        $user->calculateOverallResult();
+       
         return view('users.series.results', [
             'chapter_id'=>$chapter_id,
             'questions' => $questions,

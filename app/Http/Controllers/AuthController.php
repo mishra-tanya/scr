@@ -138,6 +138,7 @@ class AuthController extends Controller
             $scr_score = ($scr_total_questions > 0) ? ($scr_correct_answers / $scr_total_questions) * 100 : 0;
         }
 
+        $user->calculateOverallResult();
         $learning_obj_results = LearningObjResult::where('user_id', $userId)->get();
 
 

@@ -43,8 +43,8 @@
                             <th>Admin Contact</th>
                             <th>Country</th>
                             <th>Designation</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            {{-- <th>Update</th>
+                            <th>Delete</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -57,8 +57,8 @@
                                 <td></td>
                                 <td class="text-capitalize">{{ $admin->country }}</td>
                                 <td class="text-capitalize">{{ $admin->designation }}</td>
-                                <td></td>
-                                <td></td>
+                                {{-- <td></td>
+                                <td></td> --}}
                                 {{-- <td>{{ $user->payment_status }}</td> --}}
                                 {{-- <td>{{ $user->trial_days }}</td> --}}
                             </tr>
@@ -88,7 +88,8 @@
                                 <th>User Address</th>
                                 <th>Country</th>
                                 <th>Designation</th>
-                                <th>Results</th>
+                                <th>Overall Scr Result</th>
+                                <th>Overall Learning Obj Result</th>
                                 <th>Payment Status</th>
                                 <th>Trial Days</th>
                             </tr>
@@ -103,9 +104,10 @@
                                     <td class="text-capitalize">{{ $user->address }}</td>
                                     <td class="text-capitalize">{{ $user->country }}</td>
                                     <td class="text-capitalize">{{ $user->designation }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $user->scr}} %</td>
+                                    <td>{{ $user->learning_obj}} %</td>
+                                    <td>{{$user->payment_status}}</td>
+                                    <td>{{$user->trial_days}}</td>
                                     {{-- <td>{{ $user->payment_status }}</td> --}}
                                     {{-- <td>{{ $user->trial_days }}</td> --}}
                                 </tr>
