@@ -47,9 +47,7 @@
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
-                        Not Registered? <a href={{url('admin/register')}}> Register Now</a>
                         
-                        <br><br>
                         <a href="/" style="margin-top:30px;">Back to Home Page</a>
             
                     </div>

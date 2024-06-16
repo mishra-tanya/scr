@@ -318,14 +318,17 @@ nav .navbar .links li .sub-menu li{
         <ul class="links">
           <li><a href="/">Home</a></li>
           <li><a href="/admin/dashboard">Dashboard</a></li>
-          <li><a href="#all_user">All Users</a></li>
 
           <li>
-            <a href="#">Add Questions</a>
+            <a href="#">User/Admin</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href={{url('/admin/add_questions#learning_obj')}}>Learning Objectives</a></li>
-              <li><a href={{url('/admin/add_questions')}}>SCR Question Bank</a></li>
+          <li><a href={{url('admin/register')}}> Register New Admin</a></li>
+          <li><a href={{url('admin/dashboard/user#all_user')}}>All Users</a></li>
+          <li><a href={{url('admin/dashboard/user#all_admin')}}> All Admins</a></li>
+
+
+            
               {{-- <li class="more">
                 <span><a href="#">More</a>
                 <i class='bx bxs-chevron-right arrow more-arrow'></i>
@@ -339,12 +342,15 @@ nav .navbar .links li .sub-menu li{
             </ul>
           </li>
           <li>
-            <a href="#">Adjust Q Limit</a>
+            <a href="#"> Questions</a>
             <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href={{url('/admin/limit_ques')}}>SCR Tests Question</a></li>
-              <li><a href={{url('/admin/limit_ques#scr')}}>SCR Mock Tests Question</a></li>
-              <li><a href={{url('/admin/limit_ques#lo')}}>Learning Objective Question</a></li>
+              {{-- <li><a href={{url('/admin/add_questions#learning_obj')}}>Add Learning Objectives Questions</a></li> --}}
+              <li><a href={{url('/admin/add_questions')}}>Add Questions</a></li>
+              {{-- <li><a href={{url('/admin/add_questions#mock_q')}}>Add SCR Mock Question </a></li> --}}
+              <li><a href={{url('/admin/limit_ques')}}> Add Questions Limit</a></li>
+              {{-- <li><a href={{url('/admin/limit_ques#scr')}}>SCR Mock Tests Questions Limit</a></li>
+              <li><a href={{url('/admin/limit_ques#lo')}}>Learning Objective Questions Limit</a></li> --}}
 
             </ul>
           </li>

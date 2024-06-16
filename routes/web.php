@@ -55,6 +55,8 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionLimitController;
+use App\Http\Controllers\UserController;
+
 
 Route::prefix('admin')->group(function () {
     Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
@@ -66,9 +68,12 @@ Route::prefix('admin')->group(function () {
         return view('admin.add_questions');
     })->name('admin.add_question');
     Route::post('/questions/scr/store', [QuestionController::class, 'storeSCR'])->name('questions.scr.store');
+    Route::post('/questions/mock/store', [QuestionController::class, 'storeMock'])->name('questions.mock.store');
     Route::post('/questions/lo/store', [QuestionController::class, 'storeLO'])->name('questions.lo.store');
     Route::post('/store-question-limit', [QuestionLimitController::class, 'store'])->name('store.question.limit');
     Route::get('/limit_ques', [QuestionLimitController::class, 'index'])->name('question.limits');
+    Route::get('/fetch-learning-objectives/{chapterId}', [QuestionController::class, 'fetchLearningObjectives']);
+    Route::get('/dashboard/user', [UserController::class, 'index'])->name('dashboard.users.admin');
 
 })->middleware('is_admin');
 

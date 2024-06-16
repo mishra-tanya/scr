@@ -55,7 +55,7 @@ class AdminAuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->back()->with('success', 'New Admin Successfully Registered as '.$request->email);
     }
 
     public function logout(Request $request)

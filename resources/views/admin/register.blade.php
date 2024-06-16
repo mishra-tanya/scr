@@ -32,26 +32,6 @@
 </style>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-light bg-primary shadow-sm">
-        <a class="navbar-brand mx-3 m-2" href="#"><b>SCR</b></a>
-        {{-- <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-            aria-label="Toggle navigation"></button> --}}
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                <li class="nav-item mx-4">
-                    <a class="nav-link active" href="/" aria-current="page">Home <span
-                            class="visually-hidden"></span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href={{ url('login') }}>Login</a>
-                </li>
-
-            </ul>
-
-        </div>
-    </nav>
-
     <section class="h-100 ">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -61,6 +41,13 @@
                             <h3 class="mb-5 text-uppercase text-center"><b>Admin Registration form</b>
                                 <hr>
                             </h3>
+                            @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                
                             <form action={{ route('admin.register') }} method="post">
                                 @csrf
                                 <div class="row">
@@ -139,8 +126,8 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-center pt-3">
-                                    Already Registered? <a href={{ url('admin/login') }} class="mx-2"
-                                        style="text-decoration: none"> Login now</a>
+                                  <a href={{ url('admin/dashboard') }} class="text-dark"
+                                        style="text-decoration: none"> Back to Dashboard</a>
                                 </div>
                             </form>
                         </div>
