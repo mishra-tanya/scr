@@ -92,7 +92,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6 mb-4">
+                                    <div class="col-md-12 mb-4">
                                         <div data-mdb-input-init class="form-outline">
                                             <label class="form-label" for="form3Example1m1">Address</label>
                                             <input type="text" id="form3Example1m1"
@@ -114,6 +114,19 @@
                                         </div>
                                         <div class=""style="color:red; font-size:12px;">
                                             @error('country')
+                                                <div>{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <label class="form-label" for="form3Example1n1">Contact No.</label>
+                                            <input type="text" id="form3Example1n1" class="form-control "
+                                                placeholder="Enter Contact No." name="contact_no" />
+
+                                        </div>
+                                        <div class=""style="color:red; font-size:12px;">
+                                            @error('contact_no')
                                                 <div>{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -144,7 +157,7 @@
 
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="form3Example8">Password</label>
-                                    <input type="text" id="form3Example8"
+                                    <input type="password" id="form3Example8"
                                         class="form-control "placeholder="Enter Password" name="password" />
                                     <div class=""style="color:red; font-size:12px;">
                                         @error('password')

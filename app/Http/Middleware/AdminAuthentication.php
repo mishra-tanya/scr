@@ -16,10 +16,12 @@ class AdminAuthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->is_admin) {
-            return $next($request);
+        if (Auth::check()) {
+            if (Auth::user()->is_admin) {
+                return $next($request);
+            }
         }
 
-        return redirect('/admin/login')->with('error', 'You do not have admin access.');
-     }
+        return redirect()->route('admin.login')->with('error', 'You do not have admin access.');
+    }
 }

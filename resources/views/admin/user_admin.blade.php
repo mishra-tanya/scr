@@ -33,7 +33,7 @@
     <div class="container">
         <div class="panel">
             <div class="table-responsive">
-                <table id="all_admin" class="table  text-center table-bordered table-condensed">
+                <table id="all_admin" class="table table-hover  text-center table-bordered table-condensed">
                     <thead style="">
                         <tr>
                             <th>S.No.</th>
@@ -78,7 +78,7 @@
         <div class="container">
             <div class="panel">
                 <div class="table-responsive">
-                    <table id="all_user" class="table  text-center table-bordered table-condensed">
+                    <table id="all_user" class="table table-hover  text-center table-bordered table-condensed">
                         <thead style="">
                             <tr>
                                 <th>S.No.</th>
@@ -92,6 +92,7 @@
                                 <th>Overall Learning Obj Result</th>
                                 <th>Payment Status</th>
                                 <th>Trial Days</th>
+                                <th>View</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,14 +101,19 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td class="text-capitalize">{{ $user->first_name." ".$user->last_name  }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td></td>
+                                    <td>{{ $user->contact_no }}</td>
                                     <td class="text-capitalize">{{ $user->address }}</td>
                                     <td class="text-capitalize">{{ $user->country }}</td>
                                     <td class="text-capitalize">{{ $user->designation }}</td>
                                     <td>{{ $user->scr}} %</td>
                                     <td>{{ $user->learning_obj}} %</td>
-                                    <td>{{$user->payment_status}}</td>
+                                    <td>@if ($user->payment_status==1)
+                                        Paid
+                                    @else
+                                        Unpaid
+                                    @endif</td>
                                     <td>{{$user->trial_days}}</td>
+                                    <td><a href="{{ url('/admin/user/' . $user->email) }}">View</a></td>
                                     {{-- <td>{{ $user->payment_status }}</td> --}}
                                     {{-- <td>{{ $user->trial_days }}</td> --}}
                                 </tr>

@@ -57,29 +57,34 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionLimitController;
 use App\Http\Controllers\UserController;
 
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login']);
 
-Route::prefix('admin')->group(function () {
-    Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('login', [AdminAuthController::class, 'login']);
+Route::prefix('admin')->middleware(['is_admin'])->group(function ()  {
     Route::get('register', [AdminAuthController::class, 'showRegistrationForm'])->name('admin.register');
     Route::post('register', [AdminAuthController::class, 'register']);
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
     Route::get('/add_questions', function () {
         return view('admin.add_questions');
     })->name('admin.add_question');
+
     Route::post('/questions/scr/store', [QuestionController::class, 'storeSCR'])->name('questions.scr.store');
     Route::post('/questions/mock/store', [QuestionController::class, 'storeMock'])->name('questions.mock.store');
     Route::post('/questions/lo/store', [QuestionController::class, 'storeLO'])->name('questions.lo.store');
+
     Route::post('/store-question-limit', [QuestionLimitController::class, 'store'])->name('store.question.limit');
     Route::get('/limit_ques', [QuestionLimitController::class, 'index'])->name('question.limits');
+
     Route::get('/fetch-learning-objectives/{chapterId}', [QuestionController::class, 'fetchLearningObjectives']);
     Route::get('/dashboard/user', [UserController::class, 'index'])->name('dashboard.users.admin');
 
-})->middleware('is_admin');
+    Route::get('/{email}/learning_obj_result/{chapter_id}/{test}',[UserController::class,'userloResult'])->name('userloResult');
+    Route::get('/scrtest/{chapter_id}', [UserController::class, 'viewScrTestDetails'])->name('admin.scr.test.details');
+    
+    Route::get('dashboard',[UserController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/user/{email}', [UserController::class, 'showUserDetails'])->name('user.details');
 
-Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
-    Route::get('dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::post('/admin/send-email/{id}', [UserController::class, 'sendEmail'])->name('admin.send.email');
+    
 });
 

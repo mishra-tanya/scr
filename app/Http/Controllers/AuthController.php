@@ -53,20 +53,29 @@ class AuthController extends Controller
             'last_name' => 'max:255',
             'address' => 'max:255',
             'country' => 'required|string|max:255',
+            'contact_no'=>'required|string|min:10',
             'designation' => 'max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6'
         ]);
 
+        if (Reg_User::where('email', $req->email)->exists()) {
+            return back()->withErrors([
+                'email' => 'The email address has already been taken.'
+            ])->withInput();
+        }
+        
         $user = Reg_User::create([
             'first_name' => $req->first_name,
             'last_name' => $req->last_name,
             'address' => $req->address,
+            'contact_no'=>$req->contact_no,
             'country' => $req->country,
             'designation' => $req->designation,
             'email' => $req->email,
             'password' => Hash::make($req->password)
         ]);
+        // dd($req->all());
 
         Auth::login($user);
 

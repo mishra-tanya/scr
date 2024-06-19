@@ -12,19 +12,204 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" type="text/css"
+        href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css"> --}}
+    <link rel="stylesheet" type="text/css"
+        href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    {{-- <link rel="stylesheet" type="text/css"
+        href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> --}}
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
         table th {
             background: #2487ce !important;
             color: white !important;
             text-align: center;
             vertical-align: middle;
         }
+
+        
+        .m-3 i{
+            font-size:40px;
+        }
     </style>
 </head>
 
 <body>
-<br>
+<br><br>
+    <div class="m-3">
+        <div class="grey-bg container-fluid">
+            <section id="minimal-statistics">
+                <div class="row">
+                    <div class="col-12 mt-3 mb-1">
+                        <h4 class="text-uppercase text-center">Quick Overview DashBoard</h4>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="icon-pencil primary font-large-2 float-left"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                            <h3>{{ $totalLearningObjectiveQuestions}}</h3>
+                                            <span>Total Learning Objective Questions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="icon-pencil danger font-large-2 float-left"></i>
+                                        </div>
+                                       
+                                        <div class="media-body text-right">
+                                            <h3>{{$totalSCRQuestionsAdded}}</h3>
+                                            <span>Total SCR Questions Added</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="icon-user primary font-large-2 float-left"></i>
+                                        </div>
+                                       
+                                        <div class="media-body text-right">
+                                            <h3>{{$totalUsers}}</h3>
+                                            <span>Total Users</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="icon-user danger font-large-2 float-left"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                            <h3>{{$totalPaidUsers}}</h3>
+                                            <span>Total Paid Users</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <br>
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            <h3 class="danger">{{$totalTrialRequests}}</h3>
+                                            <span>Total Trial Requests</span>
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="icon-rocket danger font-large-2 float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            <h3 class="success">{{$newUsersToday}}</h3>
+                                            <span>New Users Today</span>
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="icon-graph success font-large-2 float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    <br>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body text-left">
+                                            <h3 class="warning">{{$totalAdmins}}</h3>
+                                            <span>Total Admins</span>
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                       
+                                        <div class="media-body text-left">
+                                            <h3 class="primary">{{$totalChapters}}</h3>
+                                            <span>Total Chapters</span>
+                                        </div>
+                                        <div class="align-self-center">
+                                            <i class="icon-support primary font-large-2 float-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <br>
+               
+            </section>
+    
+           
+        </div>
+    </div>
+   
+<br><br><br><br>
+    {{--  trial requested users --}}
     <div class="m-4 border shadow-md">
         <h2 class="text-center " style="background-color: rgb(255, 255, 255); padding: 12px;">User's Requests
         </h2>
@@ -44,7 +229,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                          
+
                         </tbody>
                     </table>
                 </div>

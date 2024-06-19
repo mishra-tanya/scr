@@ -362,7 +362,10 @@ nav .navbar .links li .sub-menu li{
                 Logout
             </a>
         </li>
-          <li class="text-white">Admin Login: {{Auth::user()->email}}</li>
+          <li class="text-white"> @if (Auth::user())
+            Admin Login:{{Auth::user()->email}}
+          
+          @endif</li>
 
         </ul>
       </div>
