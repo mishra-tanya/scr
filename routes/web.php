@@ -25,6 +25,13 @@ Route::post('/register',[AuthController::class,'register'])->name('register');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+use App\Http\Controllers\ForgotPasswordController;
+
+Route::post('forgot-password', [ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
+Route::get('reset-password/{token}', [ForgotPasswordController::class,'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ForgotPasswordController::class,'reset'])->name('password.update');
+
+
 use App\Http\Controllers\ScrChapterController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ResultController;
@@ -50,6 +57,9 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::get('/questions/{chapter_id}/{test}', [LearningObjController::class, 'getLoQuestions'])->name('getLoQuestions');
     Route::get('/learning_obj_result/{chapter_id}/{test}',[LearningObjController::class,'getLoResult'])->name('getLoResult');
     Route::post('/lo_submit', [LearningObjController::class, 'lo_submit'])->name('lo_submit');
+
+    Route::post('/update-email-notification/{user}', [AuthController::class,'updateEmailNotification'])->name('update.email.notification');
+
 });
 
 use App\Http\Controllers\AdminAuthController;

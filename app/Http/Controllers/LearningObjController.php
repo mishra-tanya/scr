@@ -9,6 +9,9 @@ use App\Models\LearningObj;
 use App\Models\QuestionLimit;
 use App\Models\LearningObjResult;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\TestResultMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class LearningObjController extends Controller
 {
@@ -80,6 +83,29 @@ class LearningObjController extends Controller
     $testSeries->total_q = $total_q;
     $testSeries->save();
 
+    //mail
+    // dd($request->chapter_id,$request->test);
+    try {
+        if ($user->email_notification == 1) {
+            Mail::to($user->email)->send(new TestResultMail($user, $testSeriesData, $correctAnswers, $total_q, $request->chapter_id, $request->test));
+            Log::info('Mail sent to: ' . $user->email);
+        } else {
+            Log::info('Email notification is disabled for user: ' . $user->email);
+        }
+    } catch (\Exception $e) {
+        Log::error('Mail send error: ' . $e->getMessage());
+        return response()->json(['message' => 'Failed to send email. Please try again later.'], 500);
+    }
+    
+//  try {
+//         // Attempt to send the email
+//         Mail::to($user->email)->send(new TestResultMail($user, $testSeriesData, $correctAnswers, $total_q,$request->chapter_id,$request->test));
+//         Log::info('Mail sent to: ' . $user->email);
+//     } catch (\Exception $e) {
+//         // Log the error message
+//         Log::error('Mail send error: ' . $e->getMessage());
+//         return response()->json(['message' => 'Failed to send email. Please try again later.'], 500);
+//     }
     return redirect()->route('getLoResult', [
         'chapter_id' => urlencode($request->chapter_id),
         'test' => urlencode($request->test)

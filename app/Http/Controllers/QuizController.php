@@ -8,6 +8,11 @@ use App\Models\Result;
 use App\Models\Reg_User; 
 use App\Models\QuestionLimit; 
 
+use App\Mail\ScrTestResultMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+
+
 
 use Illuminate\Support\Facades\Auth;
 
@@ -115,7 +120,20 @@ class QuizController extends Controller
         $testSeries->score = $correctAnswers;
         $testSeries->total_question = $total_question;
         $testSeries->save();
-    
+    // mail
+    // dd($user->email,$user, $testSeriesData, $correctAnswers, $total_question, $request->test );
+        try {
+            if ($user->email_notification == 1) {
+                Mail::to($user->email)->send(new ScrTestResultMail($user, $testSeriesData, $correctAnswers, $total_question, $request->test));
+                Log::info('Mail sent to: ' . $user->email);
+            } else {
+                Log::info('Email notification is disabled for user: ' . $user->email);
+            }
+        } catch (\Exception $e) {
+            Log::error('Mail send error: ' . $e->getMessage());
+            return response()->json(['message' => 'Failed to send email. Please try again later.'], 500);
+        }
+
         return redirect()->route('result.show', ['chapter_id' => urlencode($request->test)]);
     }
     

@@ -52,7 +52,6 @@ class ResultController extends Controller
         }
 
         $user->calculateOverallResult();
-       
         return view('users.series.results', [
             'chapter_id'=>$chapter_id,
             'questions' => $questions,

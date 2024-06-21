@@ -53,7 +53,7 @@
                             <span class="text-end">{{$correct_answers}}</span>
                         </div>
                         <div class="d-flex justify-content-between w-100">
-                            <span class="text-start"> Attempted Question:&nbsp;&nbsp;&nbsp; </span>
+                            <span class="text-start"> Attempted Question:&nbsp;</span>
                             <span class="text-end">{{$total_questions}}</span>
                         </div>
                         <div class="d-flex justify-content-between w-100">

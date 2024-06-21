@@ -351,7 +351,7 @@ nav .navbar .links li .sub-menu li{
           <li><a href="/#about">About us</a></li>
           <li><a href="/#contact">Contact us</a></li>
           <li><a href={{ url('logout') }}>Logout</a></li>
-          <li class="text-white">Logged in as: {{Auth::user()->email}}</li>
+          <li class="text-white"> {{Auth::user()->email}}</li>
 
         </ul>
       </div>

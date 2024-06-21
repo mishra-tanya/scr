@@ -152,14 +152,7 @@
                     color: white;
                 }
 
-                @media (max-width:765px) {
-                    .marks {
-                        display: flex;
-                        align-content: center;
-                        justify-content: center;
-                    }
-
-                }
+              
         @media screen and (max-width: 768px) {
             .quiz-container .question-number-list {
                 list-style: none;
@@ -178,6 +171,48 @@
             
 
         }
+        .loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+    .spinner {
+        width: 60px;
+        height: 60px;
+        border-width: 8px;
+    }
+}
+
     </style>
     {{-- navbar --}}
     <div class="navbar">
@@ -578,7 +613,9 @@
         @csrf
         <div class="quiz-container">
             <div class="ch text-center" style="font-size: 25px;">
-                 
+                <div class="loader" id="loader">
+                    <div class="spinner"></div>
+                </div>
                 @if($test_type === 'mock')
                     <b class="">Chapter: {{ $ch_no = substr($chapter_id, 9) }}</b>
                 
@@ -632,8 +669,8 @@
             border-radius: 100%;
             border-top: 1px dotted #000000;">
             <br>
-            <div style="display: flex; justify-content: end;">
-                <button type="submit" class="button mx-2 {{ session('existingResult') ? 'disabled' : '' }}"
+            <div style="display: flex; justify-content: end;" class="mb-3">
+                <button onclick="submitForm()" type="submit" class="button mx-2 {{ session('existingResult') ? 'disabled' : '' }}"
                 id="submit_test">Submit Test</button>
             </div>
             <div class="question">
@@ -824,6 +861,16 @@
             }
         }
     </script>
+     <script>
+        function submitForm() {
+            document.getElementById('loader').style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loader').style.display = 'none';
+        });
+    </script>
+
 </body>
 
 </html>

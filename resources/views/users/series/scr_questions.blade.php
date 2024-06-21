@@ -70,7 +70,7 @@
             .custom-btn {
                 background-color: #63a9b7;
                 color: #fff;
-                width: 70%;
+                width: 73%;
                 border: none;
                 font-size: 13px;
                 border-radius: 70%;

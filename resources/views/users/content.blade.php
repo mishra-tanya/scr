@@ -62,6 +62,14 @@
             border-radius: 100%  !important;
             border-top: 1px dotted #000000 !important;
         }
+        .cstm{
+            padding: 3px;
+            font-size: 12px;
+            border:none;
+        }
+        .cstm:hover{
+            background-color: #c9c9c9;
+        }
     </style>
 </head>
 <body>
@@ -71,8 +79,27 @@
 
     <div class="container mt-4">        
         <div class="row" >
-          
-          
+            <div class="mt-3 mb-3">
+                <form method="POST" action="{{ route('update.email.notification', $user->id) }}" id="emailNotificationForm">
+                    @csrf
+                    <input type="hidden" id="emailNotificationInput" name="email_notification" value="{{ $user->email_notification == 0 ? 1 : 0 }}">
+                    @if($user->email_notification==1)
+                     Email Notification is ON : 
+                @else
+                Email Notification is OFF : 
+                @endif
+                    <button type="submit" id="toggleEmailNotificationButton" class="cstm">
+                        @if($user->email_notification==1)
+                            Turn OFF Email 
+                        @else
+                        Turn ON Email 
+                        @endif
+                    </button>
+                </form>
+            </div>
+
+           
+            
             <div class="col-lg-4 col-md-6 mb-3">
                 <div class="card" style="background-color:#E6F7FF">
                     <div class="card-content">
@@ -341,5 +368,22 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const toggleEmailNotificationButton = document.getElementById('toggleEmailNotificationButton');
+        //     const emailNotificationInput = document.getElementById('emailNotificationInput');
+        //     const emailNotificationForm = document.getElementById('emailNotificationForm');
+    
+        //     toggleEmailNotificationButton.addEventListener('click', function () {
+        //         const currentValue = emailNotificationInput.value;
+        //         const newValue = currentValue === '1' ? '0' : '1';
+        //         emailNotificationInput.value = newValue;
+    
+        //         // Submit the form when the status is toggled
+        //         emailNotificationForm.submit();
+        //     });
+        // });
+    </script>
+    
 </body>
 </html>

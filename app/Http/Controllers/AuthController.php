@@ -161,8 +161,18 @@ class AuthController extends Controller
     }
 }
 
+public function updateEmailNotification(Request $request, Reg_User $user)
+{
+    $emailNotificationValue = $request->input('email_notification');
 
-//admin
+// dd($emailNotificationValue);
+    $user->email_notification = $emailNotificationValue;
+
+    $user->save();
+
+    return back()->with('success', 'Email notification status updated successfully');
+}
+
 
 
     public function logout(Request $request)
