@@ -28,9 +28,22 @@
 <body>
     <div class="containerd mt-5">
         <h1 class="text-center text-capitalize">Welcome, <b>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</b> </h1>
-        <h3 class="text-center">To SCR Preparation Module</b> </h1>
+      
+        <h3 class="text-center">To SCR Preparation Module  @if(Auth::user()->payment_status==0)
+            (Trials) 
+        @else
+            (Paid)
+        
+        @endif </b> </h1>
 
 <br>
+@if(Auth::user()->payment_status == 0)
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        You are currently on trial. Please <a href="{{ route('payment.page') }}" class="alert-link">upgrade your account</a> to continue your preparation journey.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
         <div class="row stats mt-4"><br>
 
             <div class="col-md-3 mb-4">

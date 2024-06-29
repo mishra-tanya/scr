@@ -23,15 +23,18 @@ class ResultController extends Controller
         $results = Result::where('user_id', $user_id)
                         ->where('chapter_id', $chapter_id)
                         ->get();
-
+        if ($results->isEmpty()) {
+            return "No results found for this user, chapter, and test combination.";
+        }                       
         $questions = [];
         $totalQuestions = 0;
         $correctAnswers = 0;
 
         foreach ($results as $result) {
             $testSeries = json_decode($result->test_series, true);
+                //   dd($testSeries);
             foreach ($testSeries as $item) {
-                $question = Question::where('question_no', $item['question_id'])->first();
+                $question = Question::where('id', $item['question_id'])->first();
                 if ($question) {
                     $questions[] = [
                         'question_title' => $question->question_title,
@@ -43,14 +46,15 @@ class ResultController extends Controller
                         'user_answer' => $item['user_answer'],
                         'correct_answer' => $item['correct_answer']
                     ];
-                    $totalQuestions++;
+                    $totalQuestions++; 
                     if ($item['user_answer'] == $item['correct_answer']) {
                         $correctAnswers++;
                     }
                 }
             }
         }
-
+        
+        // dd($totalQuestions);
         $user->calculateOverallResult();
         return view('users.series.results', [
             'chapter_id'=>$chapter_id,

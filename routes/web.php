@@ -25,6 +25,10 @@ Route::post('/register',[AuthController::class,'register'])->name('register');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+use App\Http\Controllers\PaymentController;
+Route::get('/payment', [PaymentController::class, 'show'])->name('payment.page')->middleware('auth');
+Route::post('/trial-request', [PaymentController::class ,'store'])->name('trial.request')->middleware('auth');
+
 use App\Http\Controllers\ForgotPasswordController;
 
 Route::post('forgot-password', [ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
@@ -37,7 +41,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\LearningObjController;
 
-Route::middleware(['auth', 'is_user'])->group(function () {
+Route::middleware(['auth', 'is_user','check.trial'])->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
