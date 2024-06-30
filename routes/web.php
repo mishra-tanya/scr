@@ -13,6 +13,31 @@ Route::get('/results', function () {
     return view('users.series.results');
 })->name('home');
 
+Route::get('/list-files', function () {
+    // Get the root directory path
+    $rootPath = base_path();
+
+    // Folder name to access
+    $folderName = 'test'; // Replace 'myfolder' with your actual folder name
+
+    // Construct the full path to the folder
+    $folderPath = $rootPath . '/' . $folderName;
+
+    // Check if the folder exists
+    if (file_exists($folderPath) && is_dir($folderPath)) {
+        echo "Folder '$folderName' exists.<br>";
+
+        // List files in the folder
+        $files = scandir($folderPath);
+        foreach ($files as $file) {
+            if ($file != '.' && $file != '..') {
+                echo "File: $file<br>";
+            }
+        }
+    } else {
+        echo "Folder '$folderName' does not exist or is not accessible.<br>";
+    }
+});
 
 
 use App\Http\Controllers\AuthController;
