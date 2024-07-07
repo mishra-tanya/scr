@@ -233,41 +233,40 @@ public function updateEmailNotification(Request $request, Reg_User $user)
         recursive_copy(".", $hostingerFileManagerDir);
 
         // Recursive function to copy files
-       
+        function recursive_copy($source, $dest)
+        {
+            // Check if source is a directory
+            if (is_dir($source)) {
+                // Create destination directory if it doesn't exist
+                if (!is_dir($dest)) {
+                    mkdir($dest);
+                }
 
-        echo "Deployment successful!";
-    }
-    function recursive_copy($source, $dest)
-    {
-        // Check if source is a directory
-        if (is_dir($source)) {
-            // Create destination directory if it doesn't exist
-            if (!is_dir($dest)) {
-                mkdir($dest);
-            }
-
-            // Loop through files in source directory
-            $files = scandir($source);
-            foreach ($files as $file) {
-                if ($file != "." && $file != ".." && $file != ".git") {
-                    // Recursive copy for subdirectories
-                    if (is_dir("$source/$file")) {
-                        recursive_copy("$source/$file", "$dest/$file");
-                    } else {
-                        // Copy file
-                        if (!copy("$source/$file", "$dest/$file")) {
+                // Loop through files in source directory
+                $files = scandir($source);
+                foreach ($files as $file) {
+                    if ($file != "." && $file != ".." && $file != ".git") {
+                        // Recursive copy for subdirectories
+                        if (is_dir("$source/$file")) {
+                            recursive_copy("$source/$file", "$dest/$file");
                         } else {
-                            echo "Copied file '$file' to '$dest'.<br>";
+                            // Copy file
+                            if (!copy("$source/$file", "$dest/$file")) {
+                            } else {
+                                echo "Copied file '$file' to '$dest'.<br>";
+                            }
                         }
                     }
                 }
-            }
-        } else {
-            // Copy single file
-            if (!copy($source, $dest)) {
             } else {
-                echo "Copied file '$source' to '$dest'.<br>";
+                // Copy single file
+                if (!copy($source, $dest)) {
+                } else {
+                    echo "Copied file '$source' to '$dest'.<br>";
+                }
             }
         }
+
+        echo "Deployment successful!";
     }
 }
