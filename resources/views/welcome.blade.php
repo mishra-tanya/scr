@@ -93,7 +93,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
          @auth
-         <h2 class=" text-capitalize"> testing site Welcome {{Auth::user()->first_name}}, to</h2>
+         <h2 class=" text-capitalize"> testing site for testing it  Welcome {{Auth::user()->first_name}}, to</h2>
          @endauth
           <h1>Substainability and Climate Risk (SCR)</h1>
           <h2>SCR Preparation Module</h2>
