@@ -269,4 +269,6 @@ public function updateEmailNotification(Request $request, Reg_User $user)
 
         echo "Deployment successful!";
     }
+
+    
 }
