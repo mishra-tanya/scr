@@ -182,8 +182,8 @@ public function updateEmailNotification(Request $request, Reg_User $user)
         $request->session()->regenerateToken();
         return redirect('/login');
     }
-
-    public function deploy()
+    
+     public function deploy()
     {
         //deployment script for test
         // Enable error reporting
@@ -192,7 +192,9 @@ public function updateEmailNotification(Request $request, Reg_User $user)
         // Define variables
         $gitRepo = "https://github.com/mishra-tanya/scr";
         $branch = "testing";
-        $hostingerFileManagerDir = dirname(dirname(dirname(__DIR__)));
+        // $hostingerFileManagerDir = dirname(dirname(dirname(__DIR__)));
+        $baseDir = dirname(dirname(dirname(__DIR__))); // Navigate three levels up from the current directory
+        $hostingerFileManagerDir = $baseDir . '/public/deploy_test';
         echo $hostingerFileManagerDir;
         // Check if Git is installed
         if (!shell_exec("git --version")) {
@@ -269,6 +271,4 @@ public function updateEmailNotification(Request $request, Reg_User $user)
 
         echo "Deployment successful!";
     }
-
-    
 }
