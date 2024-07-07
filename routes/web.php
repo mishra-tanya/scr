@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/welcome', function () {
+Route::get('/testingroutechnges', function () {
     return view('welcome');
 })->name('wel');
 
