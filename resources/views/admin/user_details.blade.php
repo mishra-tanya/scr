@@ -97,7 +97,7 @@
                                     <td>Learning Objective {{ substr($result->chapter_id, 3) }}</td>
                                     <td>{{ $result->score }}</td>
                                     <td>{{ $result->total_q }}</td>
-                                    <td>{{ $result->score/$result->total_q *100 }} %</td>
+                                    <td>{{ number_format($result->score/$result->total_q *100 ,2)}} %</td>
                                     <td>{{ $result->created_at->format('Y-m-d') }}</td>
                                 </tr>
                                 @endforeach
@@ -140,7 +140,7 @@
                                     @endif
                                     <td>{{ $result->score }} </td>
                                     <td>{{ $result->total_question }}</td>
-                                    <td>{{ number_format($result->score / $result->total_question * 100, 1) }} %</td>
+                                    <td>{{ number_format($result->score / $result->total_question * 100, 2) }} %</td>
                                     <td>{{ $result->created_at->format('Y-m-d') }}</td>
                                 </tr>
                                 @endforeach
