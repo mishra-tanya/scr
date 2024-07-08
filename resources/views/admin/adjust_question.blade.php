@@ -72,7 +72,7 @@
                                     <label for="testSeries{{ $chapter }}" class="form-label">SCR Test Series: <b>Chapter {{ $chapter }}</b></label>
                                     <select name="question_limit" id="testSeries{{ $chapter }}" class="form-select">
                                         <option value="">Select No. of Questions for SCR Test Series</option>
-                                        @for ($i = 5; $i <= 50; $i++)
+                                        @for ($i = 5; $i <= 200; $i+=5)
                                             <option value="{{ $i }}" {{ $selectedLimit == $i ? 'selected' : '' }}> {{ $i }}</option>
                                         @endfor
                                     </select>
@@ -97,7 +97,7 @@
                                 <label for="mockTest" class="form-label"><b>SCR Mock Test</b></label>
                                 <select name="question_limit" id="mockTest" class="form-select">
                                     <option value="">Select No. of Questions for SCR Mock Series</option>
-                                    @for ($i = 5; $i <= 100; $i++)
+                                    @for ($i = 60; $i <= 300; $i+=10)
                                         <option value="{{ $i }}" {{ $selectedMockLimit == $i ? 'selected' : '' }}> {{ $i }}</option>
                                     @endfor
                                 </select>
@@ -121,7 +121,7 @@
                                 <label for="learningObjectives" class="form-label"><b>Learning Objectives</b></label>
                                 <select name="question_limit" id="learningObjectives" class="form-select">
                                     <option value="">Select No. of Questions for Learning Objective</option>
-                                    @for ($i = 5; $i <= 50; $i++)
+                                    @for ($i = 5; $i <= 150; $i+=5)
                                         <option value="{{ $i }}" {{ $selectedLoLimit == $i ? 'selected' : '' }}> {{ $i }}</option>
                                     @endfor
                                 </select>
