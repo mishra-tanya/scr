@@ -68,6 +68,18 @@ class ScrChapterController extends Controller
                 'chapter_id' => '3Mock',
                 'status' => 'Unattempted',
             ],
+            [
+                'label' => 'Mock Test 4',
+                'link' => 'scr_questions/mock_test4',
+                'chapter_id' => '4Mock',
+                'status' => 'Unattempted',
+            ],
+            [
+                'label' => 'Mock Test 5',
+                'link' => 'scr_questions/mock_test5',
+                'chapter_id' => '5Mock',
+                'status' => 'Unattempted',
+            ],
         ];
 
         // Check and update status for regular tests
