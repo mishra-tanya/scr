@@ -11,7 +11,7 @@ class QuestionLimitController extends Controller
     {
         $request->validate([
             'chapter' => 'required|string',
-            'question_limit' => 'required|integer|min:5|max:100',
+            'question_limit' => 'required|integer|min:5',
         ]);
 
         $chapter = $request->input('chapter');
