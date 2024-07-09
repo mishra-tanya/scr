@@ -193,10 +193,9 @@ public function updateEmailNotification(Request $request, Reg_User $user)
         $gitRepo = "https://github.com/mishra-tanya/scr";
         $branch = "master";
         // $hostingerFileManagerDir = dirname(dirname(dirname(__DIR__)));
-       $baseDir = dirname(dirname(__DIR__)); // This will give you the path to public_html
-       $subdomainDir = $baseDir . '/scr-prep.indiaesg.org'; // This gives you the path to scr.indiaesg directory
-       // $hostingerFileManagerDir = $baseDir . '/public/deploy_test';
-        echo  $subdomainDir;
+        $baseDir = dirname(dirname(dirname(__DIR__))); // Navigate three levels up from the current directory
+        // $hostingerFileManagerDir = $baseDir . '/public/deploy_test';
+        echo  $baseDir;
         // Check if Git is installed
         if (!shell_exec("git --version")) {
             echo "Error: Git is not installed or accessible. Please install Git on youri server.";
