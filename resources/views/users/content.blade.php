@@ -119,7 +119,7 @@
                                 <div class="card-label">Total Chapters</div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">8</div>
+                                <div class="card-value">10</div>
                             </div>
                         </div>
                         <hr>
