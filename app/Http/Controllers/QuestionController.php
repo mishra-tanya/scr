@@ -80,6 +80,8 @@ class QuestionController extends Controller
 
     public function storeLO(Request $request)
     {
+        $count = LearningObj::count();
+        $newQuestionNo = $count + 1;
 
         $request->validate([
             'chapter_id' => 'required|integer',
