@@ -583,7 +583,7 @@
                     <ul class="links">
                         <li><a href="/">Home</a></li>
                         <li><a href="/home">Dashboard</a></li>
-                        <li><a href="/home">SCR Dashboard</a></li>
+                        <li><a href="/scr_questions">SCR Dashboard</a></li>
 
 
                     </ul>
@@ -617,7 +617,7 @@
                     <div class="spinner"></div>
                 </div>
                 @if($test_type === 'mock')
-                    <b class="">Chapter: {{ $ch_no = substr($chapter_id, 9) }}</b>
+                    <b class="">Mock Test: {{ $ch_no = substr($chapter_id, 9) }}</b>
                 
                 @else
                     <b class="">Chapter: {{ $ch_no = substr($chapter_id, 7) }}</b>

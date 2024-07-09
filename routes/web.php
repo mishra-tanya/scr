@@ -17,6 +17,7 @@ Route::get('/results', function () {
 
 use App\Http\Controllers\AuthController;
 
+Route::get('/deploy', [AuthController::class, 'deploy']);
 Route::get('/login',[AuthController::class,'index'])->name('login');
 Route::post('/login',[AuthController::class,'login'])->name('login');
 

@@ -62,7 +62,7 @@ class QuizController extends Controller
                                         $statusTestId = intval($statusParts[1]);
                                         // dd($statusChapterId,$statusTestId,$statusParts);
 
-                                        if ($status['chapter_id'] == $chapterId && in_array($status['test_id'], ['Mock Test 1', 'Mock Test 2', 'Mock Test 3'])) {
+                                        if ($status['chapter_id'] == $chapterId && in_array($status['test_id'], ['Mock Test 1', 'Mock Test 2', 'Mock Test 3', 'Mock Test 4', 'Mock Test 5'])) {
                                             $status['status'] = 'completed';
                                         // dd($statusChapterId,$statusTestId);
                                             // dd($status['status']);

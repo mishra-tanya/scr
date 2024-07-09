@@ -150,7 +150,8 @@
 
     <div class="container mt-4 text-center " style="max-width: 1200px;">
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-3">
+            <div class="col-3"></div>
+            <div class="col-lg-6 col-md-12 mb-3">
                 <div class="card" style="max-width:1200px;background-color:#E6F7FF">
                     <div class="card-content">
                         <div class="card-item">
@@ -204,6 +205,7 @@
             }
         });
     </script>
+    @include('footer')
 </body>
 
 </html>

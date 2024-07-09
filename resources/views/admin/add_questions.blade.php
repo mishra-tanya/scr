@@ -121,7 +121,7 @@
                             <label for="chapter_id" class="form-label">Chapter</label>
                             <select name="chapter_id" id="chapter_id" class="form-select">
                                 <option value="">Select Chapter</option>
-                                @for ($i = 1; $i <= 8; $i++)
+                                @for ($i = 1; $i <= 10; $i++)
                                     <option value="{{ $i }}">Chapter {{ $i }}</option>
                                 @endfor
                             </select>
@@ -130,7 +130,7 @@
                             <label for="test_series" class="form-label">Mock Series</label>
                             <select name="test_series" id="test_series" class="form-select">
                                 <option value="">Select Mock Series</option>
-                                @for ($j = 1; $j <= 3; $j++)
+                                @for ($j = 1; $j <= 5; $j++)
                                     <option value="{{ $j }}">Mock Test {{ $j }}</option>
                                 @endfor
                             </select>
@@ -188,7 +188,7 @@
                                 <label for="chapter_id" class="form-label">Chapter</label>
                                 <select name="chapter_id" id="lo_chapter_id" class="form-select">
                                     <option value="">Select Chapter</option>
-                                    @for ($i = 1; $i <= 8; $i++)
+                                    @for ($i = 1; $i <= 10; $i++)
                                         <option value="{{ $i }}">Chapter {{ $i }}</option>
                                     @endfor
                                 </select>

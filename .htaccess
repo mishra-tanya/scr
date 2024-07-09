@@ -1,0 +1,14 @@
+AddHandler application/x-httpd-alt-php82___lsphp .php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect requests to the public folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+
+    # Handle Laravel framework
+    RewriteRule ^public/index.php - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /public/index.php [L]
+</IfModule>

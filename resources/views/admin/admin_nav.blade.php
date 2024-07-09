@@ -343,16 +343,19 @@ nav .navbar .links li .sub-menu li{
           </li>
           <li>
             <a href="#"> Questions</a>
-            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <i class='bx bxs-chevron-down js-arrow arrow'></i>
+            <ul class="js-sub-menu sub-menu">
+             <li><a href={{url('/admin/add_questions')}}>Add Questions</a></li>
+             <li><a href={{url('/admin/limit_ques')}}> Add Questions Limit</a></li>
+            </ul>
+            {{-- <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
             <ul class="htmlCss-sub-menu sub-menu">
               {{-- <li><a href={{url('/admin/add_questions#learning_obj')}}>Add Learning Objectives Questions</a></li> --}}
-              <li><a href={{url('/admin/add_questions')}}>Add Questions</a></li>
+              {{-- <li><a href={{url('/admin/add_questions')}}>Add Questions</a></li> --}}
               {{-- <li><a href={{url('/admin/add_questions#mock_q')}}>Add SCR Mock Question </a></li> --}}
-              <li><a href={{url('/admin/limit_ques')}}> Add Questions Limit</a></li>
+              {{-- <li><a href={{url('/admin/limit_ques')}}> Add Questions Limit</a></li> --}}
               {{-- <li><a href={{url('/admin/limit_ques#scr')}}>SCR Mock Tests Questions Limit</a></li>
               <li><a href={{url('/admin/limit_ques#lo')}}>Learning Objective Questions Limit</a></li> --}}
-
-            </ul>
           </li>
           <li>
             <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
@@ -374,29 +377,38 @@ nav .navbar .links li .sub-menu li{
   </nav>
   <script src="js/script.js"></script>
   <script>
-    
-let navbar = document.querySelector(".navbar");
-let navLinks = document.querySelector(".nav-links");
-let menuOpenBtn = document.querySelector(".navbar .bx-menu");
-let menuCloseBtn = document.querySelector(".nav-links .bx-x");
-menuOpenBtn.onclick = function() {
-navLinks.style.left = "0";
-}
-menuCloseBtn.onclick = function() {
-navLinks.style.left = "-100%";
-}
+    let navbar = document.querySelector(".navbar");
+    let navLinks = document.querySelector(".nav-links");
+    let menuOpenBtn = document.querySelector(".navbar .bx-menu");
+    let menuCloseBtn = document.querySelector(".nav-links .bx-x");
 
+    menuOpenBtn.onclick = function() {
+      navLinks.style.left = "0";
+    }
+    menuCloseBtn.onclick = function() {
+      navLinks.style.left = "-100%";
+    }
 
-let htmlcssArrow = document.querySelector(".htmlcss-arrow");
-htmlcssArrow.onclick = function() {
- navLinks.classList.toggle("show1");
-}
-let moreArrow = document.querySelector(".more-arrow");
-moreArrow.onclick = function() {
- navLinks.classList.toggle("show2");
-}
-let jsArrow = document.querySelector(".js-arrow");
-jsArrow.onclick = function() {
- navLinks.classList.toggle("show3");
-}
+    function applySubMenuToggle() {
+      let htmlcssArrow = document.querySelector(".htmlcss-arrow");
+      let jsArrow = document.querySelector(".js-arrow");
+
+      if (window.innerWidth <= 800) {
+        htmlcssArrow.onclick = function() {
+          navLinks.classList.toggle("show1");
+        }
+        jsArrow.onclick = function() {
+          navLinks.classList.toggle("show3");
+        }
+      } else {
+        htmlcssArrow.onclick = null;
+        jsArrow.onclick = null;
+      }
+    }
+
+    applySubMenuToggle();
+
+    window.onresize = function() {
+      applySubMenuToggle();
+    }
   </script>

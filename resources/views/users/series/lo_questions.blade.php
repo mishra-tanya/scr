@@ -33,10 +33,10 @@
             margin-bottom: 30px;
         }
 
-        input[type="radio"] {
+        /* input[type="radio"] {
             width: 16px;
             height: 16px;
-        }
+        } */
 
         .quiz-container .question-number-list li {
             margin: 0 10px;

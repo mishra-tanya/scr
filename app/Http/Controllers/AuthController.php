@@ -182,4 +182,93 @@ public function updateEmailNotification(Request $request, Reg_User $user)
         $request->session()->regenerateToken();
         return redirect('/login');
     }
+    
+     public function deploy()
+    {
+        //deployment script for test
+        // Enable error reporting
+        error_reporting(E_ALL);
+
+        // Define variables
+        $gitRepo = "https://github.com/mishra-tanya/scr";
+        $branch = "master";
+        // $hostingerFileManagerDir = dirname(dirname(dirname(__DIR__)));
+        $baseDir = dirname(dirname(dirname(__DIR__))); // Navigate three levels up from the current directory
+        // $hostingerFileManagerDir = $baseDir . '/public/deploy_test';
+        echo  $baseDir;
+        // Check if Git is installed
+        if (!shell_exec("git --version")) {
+            echo "Error: Git is not installed or accessible. Please install Git on youri server.";
+            exit;
+        }
+
+        // Check if the directory is a Git repository
+        if (!is_dir("$hostingerFileManagerDir/.git")) {
+            // If not, initialize a new Git repository
+            $output = shell_exec("git -C $hostingerFileManagerDir init 2>&1");
+            echo "Git Init Output: <pre>$output</pre>";
+
+            // Add the remote repository
+            $output = shell_exec("git -C $hostingerFileManagerDir remote add origin $gitRepo 2>&1");
+            echo "Git Add Remote Output: <pre>$output</pre>";
+        }
+        // Discard local changes
+        $output = shell_exec("git -C $hostingerFileManagerDir reset --hard HEAD 2>&1");
+        echo "Discard Local Changes Output: <pre>$output</pre>";
+        // Pull latest changes from GitHub
+        $output = shell_exec("git -C $hostingerFileManagerDir pull origin $branch 2>&1");
+        echo "Git Pull Output: <pre>$output</pre>";
+
+        // Check if there were any errors during git pull
+        if (strpos($output, "error") !== false) {
+            echo "Error: There was an error during 'git pull'. Please check the output above for details.";
+            exit;
+        }
+
+        // Check if the branch is already up to date
+        if (strpos($output, "Already up to date.") !== false) {
+            echo "Branch is already up to date. No need to copy files.";
+            exit;
+        }
+
+        // Copy files to Hostinger file manager directory
+        recursive_copy(".", $hostingerFileManagerDir);
+
+        // Recursive function to copy files
+        function recursive_copy($source, $dest)
+        {
+            // Check if source is a directory
+            if (is_dir($source)) {
+                // Create destination directory if it doesn't exist
+                if (!is_dir($dest)) {
+                    mkdir($dest);
+                }
+
+                // Loop through files in source directory
+                $files = scandir($source);
+                foreach ($files as $file) {
+                    if ($file != "." && $file != ".." && $file != ".git") {
+                        // Recursive copy for subdirectories
+                        if (is_dir("$source/$file")) {
+                            recursive_copy("$source/$file", "$dest/$file");
+                        } else {
+                            // Copy file
+                            if (!copy("$source/$file", "$dest/$file")) {
+                            } else {
+                                echo "Copied file '$file' to '$dest'.<br>";
+                            }
+                        }
+                    }
+                }
+            } else {
+                // Copy single file
+                if (!copy($source, $dest)) {
+                } else {
+                    echo "Copied file '$source' to '$dest'.<br>";
+                }
+            }
+        }
+
+        echo "Deployment successful!";
+    }
 }

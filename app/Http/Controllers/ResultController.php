@@ -54,7 +54,7 @@ class ResultController extends Controller
             }
         }
         
-        // dd($totalQuestions);
+        // dd($chapter_id);
         $user->calculateOverallResult();
         return view('users.series.results', [
             'chapter_id'=>$chapter_id,
