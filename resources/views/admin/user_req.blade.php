@@ -229,9 +229,9 @@
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>Contact No.</th>
-                                <th>Country</th>
                                 <th>Address</th>
                                 <th>Designation</th>
+                                <th>Reg. Date</th>
                                 <th>Status</th>
                                 <th>Req. Days</th>
                                 <th>Increase Trial Days</th>
@@ -244,9 +244,10 @@
                                 <td>{{ $trialRequest->first_name ." ". $trialRequest->last_name }}</td>
                                 <td class="text-lowercase">{{ $trialRequest->email }}</td>
                                 <td>{{ $trialRequest->contact_no }}</td>
-                                <td>{{ $trialRequest->country }}</td>
-                                <td>{{ $trialRequest->address ?? 'N/A' }}</td>
+                                <td>{{ $trialRequest->address ." ". $trialRequest->country  }}</td>
                                 <td>{{ $trialRequest->designation }}</td>
+                               <td> {{ Carbon\Carbon::parse($trialRequest->created_at)->format('Y-m-d') }}</td>
+
                                 {{-- <td>{{ $trialRequest->payment_status ?? 'N/A' }}</td> --}}
                                 <td>
                                     @if ($trialRequest->approved)
@@ -261,7 +262,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="input-group">
-                                            <input type="number" name="trial_days" class="form-control p-2" value="{{ $trialRequest->trial_days }}" required>
+                                            <input type="number" name="trial_days" class="form-control" value="{{ $trialRequest->trial_days }}" required>
                                             <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </form>
