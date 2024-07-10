@@ -101,5 +101,7 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function ()  {
 
     Route::post('/admin/send-email/{id}', [UserController::class, 'sendEmail'])->name('admin.send.email');
     
+    Route::put('/trial-requests/{id}/update-trial-days', [UserController::class, 'updateTrialDays'])->name('update.trial.days');
+
 });
 

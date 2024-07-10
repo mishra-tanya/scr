@@ -210,26 +210,64 @@
    
 <br><br><br><br>
     {{--  trial requested users --}}
-    <div class="m-4 border shadow-md">
-        <h2 class="text-center " style="background-color: rgb(255, 255, 255); padding: 12px;">User's Requests
+    <div class="m-4 border shadow-md" id="trial">
+        <h2 class="text-center "  style="background-color: rgb(255, 255, 255); padding: 12px;">User's Trial Requests
         </h2>
+      
         <div class="container">
             <div class="panel">
                 <div class="table-responsive">
+                    @if(session('success'))
+                    <div class="alert alert-warning">
+                        {{ session('success') }}
+                    </div>
+                @endif
                     <table id="pay_user" class="table  text-center table-bordered table-condensed">
                         <thead style="">
                             <tr>
                                 <th>S.No.</th>
                                 <th>User Name</th>
                                 <th>User Email</th>
-                                <th>User Address</th>
-                                <th>Payment Status</th>
-                                <th>Requested Days</th>
+                                <th>Contact No.</th>
+                                <th>Country</th>
+                                <th>Address</th>
+                                <th>Designation</th>
+                                <th>Status</th>
+                                <th>Req. Days</th>
                                 <th>Increase Trial Days</th>
                             </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody class="text-capitalize">
+                            @foreach($trialRequests as $index => $trialRequest)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $trialRequest->first_name ." ". $trialRequest->last_name }}</td>
+                                <td class="text-lowercase">{{ $trialRequest->email }}</td>
+                                <td>{{ $trialRequest->contact_no }}</td>
+                                <td>{{ $trialRequest->country }}</td>
+                                <td>{{ $trialRequest->address ?? 'N/A' }}</td>
+                                <td>{{ $trialRequest->designation }}</td>
+                                {{-- <td>{{ $trialRequest->payment_status ?? 'N/A' }}</td> --}}
+                                <td>
+                                    @if ($trialRequest->approved)
+                                        <span class="badge bg-success">Approved</span>
+                                    @else
+                                        <span class="badge bg-warning text-dark">Not Approved</span>
+                                    @endif
+                                </td>
+                                <td>{{ $trialRequest->trial_days }}</td>
+                                <td>
+                                    <form action="{{ route('update.trial.days', $trialRequest->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="input-group">
+                                            <input type="number" name="trial_days" class="form-control p-2" value="{{ $trialRequest->trial_days }}" required>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
