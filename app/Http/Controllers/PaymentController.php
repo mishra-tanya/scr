@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\TrialRequest; 
+
 class PaymentController extends Controller
 {
     public function show()

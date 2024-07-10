@@ -7,10 +7,13 @@ use App\Models\LearningObjResult;
 use App\Models\Result; 
 use App\Models\LearningObj; 
 use App\Models\Question; 
+use App\Models\TrialRequest; 
+
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 use Illuminate\Http\Request;
@@ -29,6 +32,23 @@ class UserController extends Controller
         $totalAdmins = Reg_User::where('is_admin', '1')->count();
         $totalChapters = 8; 
 
+        $trialRequests = DB::table('trial_requests')
+        ->join('reg_users', 'trial_requests.email', '=', 'reg_users.email')
+        ->select(
+            'trial_requests.id',
+            'trial_requests.email',
+            'trial_requests.approved',
+            'trial_requests.trial_days',
+            'reg_users.first_name',
+            'reg_users.last_name',
+            'reg_users.country',
+            'reg_users.designation',
+            'reg_users.contact_no',
+            'reg_users.address',
+            // 'reg_users.payment_status'
+        )
+        ->get();
+        // dd($trialRequests);
         return view('admin.dashboard', compact(
             'totalLearningObjectiveQuestions',
             'totalSCRQuestionsAdded',
@@ -37,8 +57,28 @@ class UserController extends Controller
             'totalTrialRequests',
             'newUsersToday',
             'totalAdmins',
-            'totalChapters'
+            'totalChapters',
+            'trialRequests'
         ));
+    }
+
+    
+    public function updateTrialDays(Request $request, $id)
+    {
+        $request->validate([
+            'trial_days' => 'required|integer',
+        ]);
+
+        $trialRequest = TrialRequest::findOrFail($id);
+        $newTrialDays = $request->input('trial_days');
+
+        DB::transaction(function () use ($trialRequest, $newTrialDays) {
+            $trialRequest->update(['trial_days' => $newTrialDays, 'approved' => true]);
+    
+            Reg_User::where('email', $trialRequest->email)->update(['trial_days' => $newTrialDays]);
+        });
+
+        return redirect()->back()->with('success', 'Trial days updated successfully.');
     }
 
     public function index()

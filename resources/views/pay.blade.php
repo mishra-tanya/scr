@@ -130,7 +130,7 @@
             <div class="card golden-card col-md-4 mx-auto ">
                 <div class="p-4 pb-1">
                     <h3>Get Premium Here</h3>
-                    <p>At Price <b>4000 ₹</b> Only </p>
+                    <p>At Price <b>000 ₹</b> Only </p>
                 </div>
                 <div class="card-content p-4">
 
@@ -152,14 +152,22 @@
         </div>
     </div>
     <hr>
-    <div id="free-trials">
+    
         <div class="h1 text-center">Ask for Free trials</div>
         <div class="free">
+            <div id="free-trials">
+              
             <div class="form-container mt-4">
-                <form id="trial-request-form">
+                @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+                <form action={{route('trial.request')}} method="POST" id="trial-request-form">
+                    @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                        <input type="email" class="form-control" id="email" value={{Auth::user()->email}} readonly name="email" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="trial" class="form-label">Trial Days</label>
@@ -189,50 +197,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#trial-request-form').submit(function (event) {
-                event.preventDefault();
-    
-                // Get form data
-                var formData = {
-                    email: $('#email').val(),
-                    trial: $('#trial').val()
-                };
-    
-                // Send AJAX request to check if email exists
-                $.ajax({
-                    type: 'POST',
-                    url: '/check-trial-request',
-                    data: formData,
-                    success: function (response) {
-                        if (response.exists) {
-                            // Email exists
-                            $('#trial-request-response').html('Request again sent for trial.');
-                        } else {
-                            // Email doesn't exist
-                            // Send AJAX request to store trial request
-                            $.ajax({
-                                type: 'POST',
-                                url: '/trial-request',
-                                data: formData,
-                                success: function () {
-                                    $('#trial-request-response').html('Yay! Free trial requested. Enjoy!');
-                                },
-                                error: function () {
-                                    $('#trial-request-response').html('Error submitting trial request. Please try again.');
-                                }
-                            });
-                        }
-                    },
-                    error: function () {
-                        $('#trial-request-response').html('Error checking trial request. Please try again.');
-                    }
-                });
-            });
-        });
-    </script>
-    
+   
 </body>
 
 </html>
