@@ -45,7 +45,6 @@ class UserController extends Controller
             'reg_users.designation',
             'reg_users.contact_no',
             'reg_users.address',
-            'reg_users.address',
             'reg_users.created_at'
 
             // 'reg_users.payment_status'

@@ -234,7 +234,7 @@
                                 <th>Reg. Date</th>
                                 <th>Status</th>
                                 <th>Req. Days</th>
-                                <th>Increase Trial Days</th>
+                                <th>Increasing_Trial Days</th>
                             </tr>
                         </thead>
                         <tbody class="text-capitalize">

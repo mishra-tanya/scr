@@ -16,7 +16,7 @@
     
       <div class="me-md-auto text-center text-md-start m-4">
         <div class="copyright text-center">
-          &copy; Copyright 2024 <strong><span>SCR</span></strong>. All Rights Reserved
+          &copy; Copyright 2024 <strong><span>IndiaESG</span></strong>. All Rights Reserved
         </div>
     </div>
 </div>
