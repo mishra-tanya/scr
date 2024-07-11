@@ -65,22 +65,9 @@
             }
         }
 
-        .form-container {
-            width: 1200px;
-            max-width: 600px;
-            background-color: #f8f9fa;
-            margin: 40px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+       
 
-        .free {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
+       
         .form-control:focus {
             border-color: #007bff;
             box-shadow: none;
@@ -99,6 +86,8 @@
 </head>
 
 <body>
+  @include('nav')
+  <br><br>
     <div class="conatiner text-center mb-3">
         <h1 class="text-center">Buy Premium</h1>
         <p class="mt-3 ">Get started with  premium for life time access</p>
@@ -153,40 +142,43 @@
     </div>
     <hr>
     
-        <div class="h1 text-center">Ask for Free trials</div>
-        <div class="free">
-            <div id="free-trials">
-              
-            <div class="form-container mt-4">
-                @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+        <div class="h1 text-center m-2">Ask for Free trials</div>
+       <div class="row m-3">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class=" card m-3 free">
+                <div id="free-trials">
+                  
+                <div class="form-container m-3 mt-0 card-content ">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                    <form action={{route('trial.request')}} method="POST" id="trial-request-form">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" value={{Auth::user()->email}} readonly name="email" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="trial" class="form-label">Trial Days</label>
+                            <select class="form-select" id="trial" name="trial" required>
+                                @for ($i=3;$i<=60;$i+=3){
+                                    <option value={{$i}}>{{$i}} Days</option>
+                                }
+                                @endfor
+                               
+                              
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-            @endif
-                <form action={{route('trial.request')}} method="POST" id="trial-request-form">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" value={{Auth::user()->email}} readonly name="email" aria-describedby="emailHelp" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="trial" class="form-label">Trial Days</label>
-                        <select class="form-select" id="trial" name="trial" required>
-                            <option value="2">2 Days</option>
-                            <option value="3">3 Days</option>
-                            <option value="4">4 Days</option>
-                            <option value="5">5 Days</option>
-                            <option value="6">6 Days</option>
-                            <option value="7">7 Days</option>
-                            <option value="14">14 Days</option>
-                            <option value="30">30 Days</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                <div id="trial-request-response" class="mt-3"></div>
             </div>
-            <div id="trial-request-response" class="mt-3"></div>
         </div>
+       </div>
     </div>
     
     @include('footer')
