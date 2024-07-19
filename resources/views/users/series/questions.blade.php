@@ -76,7 +76,7 @@
         }
 
         .question-number-list button.reviewed {
-            background-color: #826201;
+            background-color: #826201 !important;
         }
 
         .quiz-container .question {
@@ -172,7 +172,7 @@
 
             .mark-review-btn {
                 font-size: 18px;
-                /* max-width:190px; */
+                max-width:195px;
             }
 
             #submit_test {
@@ -183,7 +183,7 @@
 
             #next {
                 font-size: 18px;
-                max-width: 131px;
+                max-width: 95px;
             }
 
         }
@@ -222,6 +222,12 @@
             }
         }
 
+        .question-number-list button.answered {
+            background-color: darkgreen;
+           border-radius: 50%;
+           padding: 10px;
+        }
+
         /* Responsive adjustments for smaller screens */
         @media screen and (max-width: 600px) {
             .spinner {
@@ -236,7 +242,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,300italic&subset=latin'
             rel='stylesheet' type='text/css'>
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-       <link rel="stylesheet" href="../../css/home.css">
+        <link rel="stylesheet" href="../../css/home.css">
         <nav>
             <div class="navbar">
                 <i class='bx bx-menu'></i>
@@ -258,7 +264,7 @@
             </div>
         </nav>
     </div>
-<script src="../../js/script.js"></script>
+    <script src="../../js/script.js"></script>
     <br><br>
 
     <form action={{ route('submitquiz') }} method="post">
@@ -271,8 +277,8 @@
                 @if ($test_type === 'mock')
                     <b class="">Mock Test: {{ $ch_no = substr($chapter_id, 9) }}</b>
                 @else
-                <p class=""><b>Chapter: {{ $ch_no = substr($chapter_id, 7) }}</b></p>
-                
+                    <p class=""><b>Chapter: {{ $ch_no = substr($chapter_id, 7) }}</b></p>
+
                     @php
                         function extractChapterAndTest($test)
                         {
@@ -339,36 +345,36 @@
             <div class="question">
                 @foreach ($questions ?? [] as $key => $question)
                     <div class="question-block{{ $key === 0 ? ' active' : '' }}" id="question-{{ $key }}">
-                        <h3>
-                            <b>Question {{ $key + 1 }}.</b>
-                        </h3>
+                        <h3><b>Question {{ $key + 1 }}.</b></h3>
                         <h4><b>{!! nl2br(e($question->question_title)) !!}</b></h4>
-
                         <hr>
                         <label><b>A. </b>
-                            <input type="radio" name="results[{{ $key }}][user_answer]" value="A">
+                            <input type="radio" id="question-{{ $key }}-A"
+                                name="results[{{ $key }}][user_answer]" value="A">
                             {{ $question->option_a }}
                         </label>
                         <hr>
                         <label><b>B. </b>
-                            <input type="radio" name="results[{{ $key }}][user_answer]" value="B">
+                            <input type="radio" id="question-{{ $key }}-B"
+                                name="results[{{ $key }}][user_answer]" value="B">
                             {{ $question->option_b }}
                         </label>
                         <hr>
                         <label><b>C. </b>
-                            <input type="radio" name="results[{{ $key }}][user_answer]" value="C">
+                            <input type="radio" id="question-{{ $key }}-C"
+                                name="results[{{ $key }}][user_answer]" value="C">
                             {{ $question->option_c }}
                         </label>
                         <hr>
                         <label><b>D. </b>
-                            <input type="radio" name="results[{{ $key }}][user_answer]" value="D">
+                            <input type="radio" id="question-{{ $key }}-D"
+                                name="results[{{ $key }}][user_answer]" value="D">
                             {{ $question->option_d }}
                         </label>
                         <input type="hidden" name="results[{{ $key }}][question_id]"
                             value="{{ $question->id }}">
                         <input type="hidden" name="results[{{ $key }}][result_ans]"
                             value="{{ $question->result_ans }}">
-
                         <hr><br><br>
                         <div class="marks">
                             <button class="mx-2 mark-review-btn button" data-index="{{ $key }}"
@@ -379,6 +385,7 @@
                         </div>
                     </div>
                 @endforeach
+
 
                 @if ($test_type === 'mock')
                     @foreach ($mockQuestions ?? [] as $key => $question)
@@ -391,22 +398,26 @@
 
                             <hr>
                             <label><b>A. </b>
-                                <input type="radio" name="results[{{ $key }}][user_answer]" value="A">
+                                <input type="radio" id="question-{{ $key }}-A"
+                                    name="results[{{ $key }}][user_answer]" value="A">
                                 {{ $question->option_a }}
                             </label>
                             <hr>
                             <label><b>B. </b>
-                                <input type="radio" name="results[{{ $key }}][user_answer]" value="B">
+                                <input type="radio" id="question-{{ $key }}-B"
+                                    name="results[{{ $key }}][user_answer]" value="B">
                                 {{ $question->option_b }}
                             </label>
                             <hr>
                             <label><b>C. </b>
-                                <input type="radio" name="results[{{ $key }}][user_answer]" value="C">
+                                <input type="radio" id="question-{{ $key }}-C"
+                                    name="results[{{ $key }}][user_answer]" value="C">
                                 {{ $question->option_c }}
                             </label>
                             <hr>
                             <label><b>D. </b>
-                                <input type="radio" name="results[{{ $key }}][user_answer]" value="D">
+                                <input type="radio" id="question-{{ $key }}-D"
+                                    name="results[{{ $key }}][user_answer]" value="D">
                                 {{ $question->option_d }}
                             </label>
                             <input type="hidden" name="results[{{ $key }}][question_id]"
@@ -518,6 +529,15 @@
                     updateQuestionNumberButtonColors();
                 });
             });
+
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const questionIndex = parseInt(this.id.split('-')[1]);
+                    questionButtons[questionIndex].classList.add('answered');
+                    updateQuestionNumberButtonColors();
+                });
+            });
+
         });
 
         function toggleCheckbox(button) {
