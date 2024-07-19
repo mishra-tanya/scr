@@ -36,7 +36,7 @@
                 <div class="col-md-4">
                     <div class="video-card">
                         <video width="100%" height="auto" controls>
-                            <source src="{{ asset('videos/REVISION_CHAPTER_1_FOUNDATIONS_OF_CLIMATE_CHANGE.mp4') }}" type="video/mp4">
+                            <source  src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_1_FOUNDATIONS_OF_CLIMATE_CHANGE.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <p>Revision Chapter 1: Foundations of Climate Change</p>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/REVISION_CHAPTER_2_SUSTAINABILITY.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_2_SUSTAINABILITY.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Revision Chapter 2: Sustainability</p>
@@ -52,7 +52,7 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/REVISION_CHAPTER_3_CLIMATE_CHANGE_RISK.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_3_CLIMATE_CHANGE_RISK.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Revision Chapter 3: Climate Change Risk</p>
@@ -60,7 +60,7 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/REVISION_CHAPTER_4_SUSTAINABILITY_AND_CLIMATE_POLICY_CULTURE_AND_GOVERNANCE.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_4_SUSTAINABILITY_AND_CLIMATE_POLICY_CULTURE_AND_GOVERNANCE.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Revision Chapter 4: Sustainability And Climate Policy Culture And Governance</p>
@@ -68,7 +68,7 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_1_Foundations_of_Climate_Change_Part_1.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_1_Foundations_of_Climate_Change_Part_1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 1: Foundations of Climate Change Part 1</p>
@@ -76,7 +76,7 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_2_Foundations_of_Climate_Change_Part_2.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_2_Foundations_of_Climate_Change_Part_2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 2: Foundations of Climate Change Part 2</p>
@@ -84,7 +84,7 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_3_INTERNATIONAL_NON_STATE_COALITIONS.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_3_INTERNATIONAL_NON_STATE_COALITIONS.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 3: International Non State Coalitions </p>
@@ -92,7 +92,7 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_4_TCFD.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_4_TCFD.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 4: TCFD</p>
@@ -100,7 +100,7 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_5_SUSTAINABLE_FINANCE.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_5_SUSTAINABLE_FINANCE.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 5: Sustainable Finance</p>
@@ -108,28 +108,28 @@
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_6_ESG_CLIMATE_RISK_INTO_CREDIT_RATING.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_6_ESG_CLIMATE_RISK_INTO_CREDIT_RATING.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 6: ESG Climate Risk into Credit Rating</p>
                 </div>
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_7_TAXONOMY.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_7_TAXONOMY.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 7: Taxonomy</p>
                 </div>
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_8_DISCLOSURES.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_8_DISCLOSURES.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 8: Disclosures</p>
                 </div>
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
-                        <source src="{{ asset('videos/SESSION_9_SCENARIO_ANALYSIS.mp4') }}" type="video/mp4">
+                        <source src="http://indiaesg.org/uploads/VIDEO/SESSION_9_SCENARIO_ANALYSIS.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 9: Scenatio Analysis</p>
