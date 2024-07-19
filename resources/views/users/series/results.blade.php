@@ -157,6 +157,7 @@
             }
 
         }
+      
     </style>
     <link rel="stylesheet" href="../../css/graph.css">
 </head>
@@ -169,20 +170,20 @@
         @if (is_numeric($chapter_id))
             <h2><b>Mock Test: {{ $chapter_id }}</b><span class="d-none d-md-inline"></span></h2>
         @else
-            @if (preg_match('/[A-Za-z][0-9][A-Za-z][0-9]/', $chapter_id))
-                <h2><b>Chapter: {{ substr($chapter_id, 1, 1) }}</b><span
-                        class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
-                    <b class="d-block d-md-inline">Test Series: {{ substr($chapter_id, 3, 1) }}</b>
-                </h2>
-            @else
-                <h2><b>Invalid Chapter ID: {{ $chapter_id }}</b></h2>
-            @endif
+           
+                        @php
+                        function chapterTest($chapter_id)
+                        {
+                            if (preg_match('/C(\d+)T(\d+)/', $chapter_id, $matche)) {
+                                return ' Chapter: ' . $matche[1].' , Test Series: ' . $matche[2];
+                            }
+                            return 'Invalid format';
+                        }
+                    @endphp
+                    <h2><b><p class=""> {{   chapterTest($chapter_id) }}</p></b></h2>
         @endif
-
-        {{-- <h2><b>Chapter: {{ substr($chapter_id, 1, 1) }}</b><span class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
-            <b class="d-block d-md-inline">Test Series: {{ substr($chapter_id, 3, 1) }}</b>
-        </h2> --}}
     </div> <br>
+    
     <h2 class="text-center"><b>Your Result</b></h2>
 
     <div class="card-container">
@@ -276,7 +277,7 @@
             <b>
                     <h4><strong>Question {{ $index + 1 }}:</strong></h4>
                 </b>
-                <h4 class="mb-3"><b>{{ $question['question_title'] }}</b></h4>
+                <h4 class="mb-3 question_title"> <b>{!! nl2br(e($question['question_title'])) !!}</b></h4>
                 <div class="options">
                     <div
                         class="option @if ($question['user_answer'] == 'A') @if ($question['user_answer'] == $question['correct_answer']) correct @else incorrect @endif @endif">

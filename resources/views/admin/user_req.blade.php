@@ -135,7 +135,7 @@
                                     <div class="media d-flex">
                                         <div class="media-body text-left">
                                             <h3 class="danger">{{$totalTrialRequests}}</h3>
-                                            <span>Total Trial Requests</span>
+                                            <span>Today's Trial Requests</span>
                                         </div>
                                         <div class="align-self-center">
                                             <i class="icon-rocket danger font-large-2 float-right"></i>

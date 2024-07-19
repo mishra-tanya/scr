@@ -149,7 +149,7 @@
                                 <div class="card-value ">{{$lo_count}}</div>
                             </div>
                         </div>
-<hr>                        <a href="/learning_obj" class="btn text-light custom-btn btn-block" style="background-color: #38befd">Start Test</a>
+<hr>                        <a href="/learning_obj" class="btn text-light custom-btn btn-block" style="background-color: #38befd">Start Here</a>
                     </div>
                 </div>
             </div>
@@ -185,7 +185,7 @@
                                 <div class="card-label">Total Tests </div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">27</div>
+                                <div class="card-value">29</div>
                             </div>
                         </div>
                         <hr>
@@ -206,7 +206,7 @@
                                 <div class="card-value ">{{$count}}</div>
                             </div>
                         </div>
-<hr>                        <a href="/scr_questions" class="btn text-light custom-btn btn-block" style="background-color: #28A745">Start Test</a>
+<hr>                        <a href="/scr_questions" class="btn text-light custom-btn btn-block" style="background-color: #28A745">Start Here</a>
                     </div>
                 </div>
             </div>
@@ -241,12 +241,12 @@
                                 <div class="card-label"> Total Seen Chapters </div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">2</div>
+                                <div class="card-value">{{$numberOfChapters}}</div>
                             </div>
                         </div><hr>
                        <br><br><br><br>
                         
-                        <a href="scr_notes" class="btn text-light  custom-btn btn-block mt-3" style="background-color: #826201">Start Test</a>
+                        <a href="scr_notes" class="btn text-light  custom-btn btn-block mt-3" style="background-color: #826201">Start Here</a>
                     </div>
                 </div>
             </div>
@@ -282,7 +282,7 @@
                                 <div class="card-label">Total Chapters Seen </div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">1</div>
+                                <div class="card-value">{{$numberOfFlashChapters}}</div>
                             </div>
                         </div>
                         <hr>
@@ -303,7 +303,7 @@
                                 {{-- <div class="card-value ">470</div> --}}
                             </div>
                         </div>
-                    <a href="scr_revision" class="btn text-light  custom-btn btn-block" style="background-color: #6F42C1">Start Test</a>
+                    <a href="flash_cards" class="btn text-light  custom-btn btn-block" style="background-color: #6F42C1">Start Here</a>
                     </div>
                 </div>
             </div>
@@ -332,17 +332,10 @@
                                 <div class="card-value">13</div>
                             </div>
                         </div>
+                        {{-- <hr> --}}
                         <hr>
-                        <div class="card-item row">
-                            <div class="col-9"> 
-                                <div class="card-label">Total Videos Seen </div>
-                            </div>
-                            <div class="col-3 text-end">
-                                <div class="card-value">4</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="card-item row">
+                        <br><br>
+                        <div class="card-item mt-2 row">
                             <div class="col-9"> 
                                 {{-- <div class="card-label">Total Learning Objectives </div> --}}
                             </div>
@@ -359,7 +352,7 @@
                                 {{-- <div class="card-value ">470</div> --}}
                             </div>
                         </div>
-                   <a href="scr_videos" class="btn text-light custom-btn btn-block" style="background-color: #555555">Start Test</a>
+                   <a href="scr_videos" class="btn text-light custom-btn btn-block" style="background-color: #555555">Start Here</a>
                     </div>
                 </div>
             </div>

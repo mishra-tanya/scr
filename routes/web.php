@@ -13,6 +13,9 @@ Route::get('/results', function () {
     return view('users.series.results');
 })->name('home');
 
+use App\Http\Controllers\ContactController;
+
+Route::post('contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 
 use App\Http\Controllers\AuthController;
@@ -41,6 +44,8 @@ use App\Http\Controllers\ScrChapterController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\LearningObjController;
+use App\Http\Controllers\NotesController;
+
 
 Route::middleware(['auth', 'is_user','check.trial'])->group(function () {
     Route::get('dashboard', function () {
@@ -65,12 +70,23 @@ Route::middleware(['auth', 'is_user','check.trial'])->group(function () {
 
     Route::post('/update-email-notification/{user}', [AuthController::class,'updateEmailNotification'])->name('update.email.notification');
 
+    Route::get('/scr_notes', [NotesController::class, 'index'])->name('scr_notes.index');
+    Route::get('/scr_notes/{chapter}', [NotesController::class, 'getchapternotes'])->name('getchapternotes');
+    Route::post('/submit_notes', [NotesController::class, 'store'])->name('store.notes');
+
+    Route::get('/flash_cards', [NotesController::class, 'flashCards'])->name('flash_cards');
+    Route::get('/scr_videos', function () {
+        return view('users.notes.videos');
+    })->name('scr_videos');
+    
+
 });
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionLimitController;
 use App\Http\Controllers\UserController;
+
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login']);
@@ -91,17 +107,16 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function ()  {
     Route::get('/limit_ques', [QuestionLimitController::class, 'index'])->name('question.limits');
 
     Route::get('/fetch-learning-objectives/{chapterId}', [QuestionController::class, 'fetchLearningObjectives']);
-    Route::get('/dashboard/user', [UserController::class, 'index'])->name('dashboard.users.admin');
 
+    Route::get('/dashboard/user', [UserController::class, 'index'])->name('dashboard.users.admin');
     Route::get('/{email}/learning_obj_result/{chapter_id}/{test}',[UserController::class,'userloResult'])->name('userloResult');
     Route::get('/scrtest/{chapter_id}', [UserController::class, 'viewScrTestDetails'])->name('admin.scr.test.details');
-    
     Route::get('dashboard',[UserController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/user/{email}', [UserController::class, 'showUserDetails'])->name('user.details');
-
     Route::post('/admin/send-email/{id}', [UserController::class, 'sendEmail'])->name('admin.send.email');
-    
     Route::put('/trial-requests/{id}/update-trial-days', [UserController::class, 'updateTrialDays'])->name('update.trial.days');
+    Route::get('contact/messages', [ContactController::class, 'showMessages'])->name('contact.messages');
 
+    
 });
 

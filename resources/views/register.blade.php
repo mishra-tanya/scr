@@ -61,9 +61,9 @@
                                     <div class="col-md-6 mb-4">
                                         <div data-mdb-input-init class="form-outline">
                                             <label class="form-label" for="first_name">First name</label>
-                                            <input type="text" id="first_name" class="form-control" placeholder="Enter First Name" name="first_name" required />
+                                            <input type="text" id="first_name" class="form-control" placeholder="Enter First Name" name="first_name" required pattern=".{2,}"/>
                                             <div class="invalid-feedback">
-                                                First name is required.
+                                                First name must be at least 2 characters long.
                                             </div>
                                         </div>
                                     </div>
@@ -80,16 +80,18 @@
                                     <div class="col-md-12 mb-4">
                                         <div data-mdb-input-init class="form-outline">
                                             <label class="form-label" for="address">Address</label>
-                                            <input type="text" id="address" class="form-control" placeholder="Enter Address" name="address"   />
-                                            
+                                            <input type="text" id="address" class="form-control" placeholder="Enter Address" name="address"  required pattern=".{5,}" />
+                                            <div class="invalid-feedback">
+                                                Address must be at least 5 characters long.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div data-mdb-input-init class="form-outline">
                                             <label class="form-label" for="country">Country</label>
-                                            <input type="text" id="country" class="form-control" placeholder="Enter Country" name="country" required />
+                                            <input type="text" id="country" class="form-control" placeholder="Enter Country" name="country" required pattern=".{4,}"/>
                                             <div class="invalid-feedback">
-                                                Country is required.
+                                                Country must be at least 4 characters long.
                                             </div>
                                         </div>
                                     </div>
@@ -106,13 +108,15 @@
 
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="designation">Designation</label>
-                                    <input type="text" id="designation" class="form-control" placeholder="Enter Designation" name="designation"  />
-                                   
+                                    <input type="text" id="designation" class="form-control" placeholder="Enter Designation" name="designation"  required pattern=".{4,}"/>
+                                    <div class="invalid-feedback">
+                                        Designation must be at least 4 character long.
+                                    </div>
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline mb-4">
                                     <label class="form-label" for="email">Email</label>
-                                    <input type="email" id="email" class="form-control" placeholder="Enter Email" name="email" required />
+                                    <input type="email" id="email" class="form-control" placeholder="Enter Email" name="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"  />
                                     <div class="invalid-feedback">
                                         A valid email is required.
                                     </div>
@@ -169,11 +173,11 @@
             });
 
             function validateInput(input) {
-                if (input.id === 'address' && input.value.split(' ').length < 5) {
-                    input.setCustomValidity('Address should be more than 5 words.');
-                } else {
-                    input.setCustomValidity('');
-                }
+                // if (input.id === 'address' && input.value.split(' ').length < 5) {
+                //     input.setCustomValidity('Address should be more than 5 words.');
+                // } else {
+                //     input.setCustomValidity('');
+                // }
 
                 if (input.checkValidity()) {
                     input.classList.remove('is-invalid');

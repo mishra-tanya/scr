@@ -165,6 +165,21 @@
                 width: 50px;
                 margin: 5px;
             }
+            .mark-review-btn {
+                font-size: 18px;
+                /* max-width:190px; */
+            }
+
+            #submit_test {
+                font-size: 18px;
+                max-width: 124px;
+                margin-bottom: 22px;
+            }
+
+            #next {
+                font-size: 18px;
+                max-width: 131px;
+            }
         }
 
         .loader {
@@ -223,7 +238,9 @@
 
 
             <div class="ch text-center" style="font-size: 25px;">
-                <b class="">Lesson: {{ $ch_no = substr($test, 7) }}</b>
+                <p><b class="">Chapter: {{ $ch_no = substr($test, 7) }}</b></p>
+                <p class="">Learning Objective: {{ $ch_no = substr($chapter_id, 3) }}</p>
+
             </div>
             <input type="hidden" name="chapter_id" value={{ $chapter_id }}>
             <input type="hidden" name="test" value={{ $test }}>
@@ -257,7 +274,7 @@
                                     <b>A. </b>
                                     <input type="radio" name="results[{{ $key }}][user_answer]"
                                         value="A" class="ms-2">
-                                    <span class="ms-2">{{ $question->option_a }}</span>
+                                    <span class="ms-2 text-capitalize">{{ $question->option_a }}</span>
                                 </label>
                             </div>
                             <div class="col-12 col-md-6 mb-3">
@@ -265,7 +282,7 @@
                                     <b>B. </b>
                                     <input type="radio" name="results[{{ $key }}][user_answer]"
                                         value="B" class="ms-2">
-                                    <span class="ms-2">{{ $question->option_b }}</span>
+                                    <span class="ms-2 text-capitalize">{{ $question->option_b }}</span>
                                 </label>
                             </div>
                             <div class="col-12">
@@ -275,7 +292,7 @@
                                     <b>C. </b>
                                     <input type="radio" name="results[{{ $key }}][user_answer]"
                                         value="C" class="ms-2">
-                                    <span class="ms-2">{{ $question->option_c }}</span>
+                                    <span class="ms-2 text-capitalize">{{ $question->option_c }}</span>
                                 </label>
                             </div>
                             <div class="col-12 col-md-6 mb-3">
@@ -283,7 +300,7 @@
                                     <b>D. </b>
                                     <input type="radio" name="results[{{ $key }}][user_answer]"
                                         value="D" class="ms-2">
-                                    <span class="ms-2">{{ $question->option_d }}</span>
+                                    <span class="ms-2 text-capitalize">{{ $question->option_d }}</span>
                                 </label>
                             </div>
                         </div>
@@ -304,7 +321,9 @@
                 @endforeach
             </div>
             <div style="display: flex; justify-content: end;">
-                <button id="next" class="button mx-2">Next</button>
+                <button id="next" class="button mx-2"  style="
+                position: relative;
+                top: -70px;">Next</button>
             </div>
         </div>
     </form>

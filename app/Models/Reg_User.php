@@ -11,7 +11,8 @@ class Reg_User extends Authenticatable
     use Notifiable;
     protected $table = 'reg_users';
     protected $fillable = [
-        'first_name', 'last_name', 'address', 'country', 'designation', 'email', 'password', 'is_admin','contact_no'
+        'first_name', 'last_name', 'address', 'country', 'designation', 'email', 'password', 'is_admin'
+        ,'contact_no', 'chapter_notes'
     ];
 
     protected $hidden = [

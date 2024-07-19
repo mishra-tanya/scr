@@ -325,6 +325,7 @@ nav .navbar .links li .sub-menu li{
             <ul class="htmlCss-sub-menu sub-menu">
           <li><a href={{url('admin/register')}}> Register New Admin</a></li>
           <li><a href={{url('admin/dashboard#trial')}}>Trial Requests</a></li>
+          <li><a href={{url('admin/contact/messages')}}> Contact Messages</a></li>
           <li><a href={{url('admin/dashboard/user#all_user')}}>All Users</a></li>
           <li><a href={{url('admin/dashboard/user#all_admin')}}> All Admins</a></li>
 

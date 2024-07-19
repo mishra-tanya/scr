@@ -10,6 +10,7 @@ use App\Models\Question;
 use App\Models\TrialRequest; 
 
 
+
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class UserController extends Controller
         $totalSCRQuestionsAdded = Question::count();
         $totalUsers = Reg_User::where('is_admin', '0')->count();
         $totalPaidUsers = Reg_User::where('payment_status', 1)->count();
-        $totalTrialRequests = 0;
+        $totalTrialRequests = TrialRequest::whereDate('created_at', now()->toDateString())->count();
         $newUsersToday = Reg_User::whereDate('created_at', now()->toDateString())->count();
         $totalAdmins = Reg_User::where('is_admin', '1')->count();
         $totalChapters = 8; 

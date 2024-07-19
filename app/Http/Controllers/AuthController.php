@@ -12,7 +12,7 @@ use App\Models\LearningObjResult;
 use App\Models\LearningObj;
 use App\Models\TestName; 
 use App\Models\Result; 
-
+use App\Models\Note; 
 
 
 class AuthController extends Controller
@@ -77,9 +77,9 @@ class AuthController extends Controller
         ]);
         // dd($req->all());
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect()->route('login')->with('success', 'Registration successful.');
+        return redirect()->route('login')->with('registered', true);
     }
 
 
@@ -102,8 +102,28 @@ class AuthController extends Controller
             if ($statusItem['status'] == 'attempted' || $statusItem['status'] == 'completed') {
                 $attemptedCount++;
             }
+        } 
+        
+        $chapterNotes = json_decode($user->chapter_notes);
+
+        $numberOfChapters = 0;
+       
+        
+        $numberOfChapters = 0;
+        $numberOfFlashChapters = 0;
+
+        if (is_array($chapterNotes)) {
+            foreach ($chapterNotes as $chapter) {
+                if (preg_match('/^Chapter/', $chapter)) {
+                    $numberOfChapters++;
+                } elseif (preg_match('/^flash_chapter/', $chapter)) {
+                    $numberOfFlashChapters++;
+                }
+            }
         }
-        //counting attempts
+    
+        // dd($numberOfChapters); 
+        
         $count = Question::count();
         $lo_count = LearningObj::count();
         $lo_test_count = TestName::count();
@@ -153,7 +173,7 @@ class AuthController extends Controller
 
         return view('users.home', ['user' => $user], compact(
             'attemptedCount', 'attempted', 'count', 'lo_count', 'lo_test_count',
-            'total_questions', 'correct_answers', 'score',
+            'total_questions', 'correct_answers', 'score','numberOfChapters','numberOfFlashChapters',
             'scr_total_questions', 'scr_correct_answers', 'scr_score','scr_results','learning_obj_results'
         ));
     } else {

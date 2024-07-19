@@ -93,7 +93,7 @@
                         @foreach ($testNames as $chapter => $tests)
                         <div class="card mb-4">
                             <div class="card-content">
-                                <h2 class="text-center"><b>Lesson: {{$chapter_id=substr($chapter,2)}}</b></h2>
+                                <h2 class="text-center"><b>Chapter: {{$chapter_id=substr($chapter,2)}}</b></h2>
                                 <hr>
                                 @foreach ($tests as $index => $test)
                                 <div class="card-item row">

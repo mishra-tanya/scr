@@ -180,14 +180,10 @@
     <br><br>
     <br><br>
     <div class="text-center">
-        <h2><b>Lesson: {{ substr($test, 7, 1) }}</b><span class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
-            <b class="d-block d-md-inline">Test Series: {{ substr($chapter_id, 3) }}</b>
+        <h2><b>Chapter: {{ substr($test, 7, 1) }}</b><span class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
+            <b class="d-block d-md-inline">Learning Objective: {{ substr($chapter_id, 3) }}</b>
         </h2>
 
-
-        {{-- <h2><b>Chapter: {{ substr($chapter_id, 1, 1) }}</b><span class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
-            <b class="d-block d-md-inline">Test Series: {{ substr($chapter_id, 3, 1) }}</b>
-        </h2> --}}
     </div> <br>
     <h2 class="text-center"><b>Your Result</b></h2>
     <div class="card-container">
@@ -282,7 +278,7 @@
                 <b>
                     <h4><strong>Question {{ $index + 1 }}:</strong></h4>
                 </b>
-                <h4 class="mb-3"><b>{{ $question['question_title'] }}</b></h4>
+                <h4 class="mb-3"><b>{!! nl2br(e($question['question_title'])) !!}</b></h4>
                 <div class="options">
                     <div
                         class="option @if ($question['user_answer'] == 'A') @if ($question['user_answer'] == strtoupper($question['result_ans'])) correct @else incorrect @endif @endif">

@@ -42,9 +42,9 @@
                  
                     
                     
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <a href="#forgot">Forgot Password?</a>
-                    </div>
+                    </div> --}}
                     <div class="hr"></div>
                     <div class="foot-lnk">
                         

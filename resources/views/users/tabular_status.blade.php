@@ -54,9 +54,9 @@
                                 <td>Mock Test</td>
                                 <td>Test {{ $scr_result->chapter_id }}</td>
                                 @else
-                                <td>Chapter {{ substr($scr_result->chapter_id, 1, 1) }}</td>
-                                <td>Test {{ substr($scr_result->chapter_id, 3) }}</td>
-                                @endif
+                                <td>Chapter {{ preg_replace('/C(\d+)T(\d+)/', '$1', $scr_result->chapter_id) }}</td>
+                                <td>Test Series {{ preg_replace('/C(\d+)T(\d+)/', '$2', $scr_result->chapter_id) }}</td>
+                                  @endif
                                 <td>
                                     <i class="bi bi-check-circle-fill" style="color: green;"></i>
                                     <span class="ms-1">Completed</span>
@@ -99,7 +99,7 @@
                             <tr>
                                 <th>S.No.</th>
                                 <th>User Id</th>
-                                <th>Lesson</th>
+                                <th>Chapter</th>
                                 <th>Learning Objective</th>
                                 <th>Status</th>
                                 <th>Score</th>
@@ -111,7 +111,7 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ Auth::user()->email }}</td>
-                                    <td>Lesson {{ substr($result->test, 7) }}</td>
+                                    <td>Chapter {{ substr($result->test, 7) }}</td>
                                     <td>Learning Objective {{ substr($result->chapter_id, 3) }}</td>
                                     <td>
                                         <i class="bi bi-check-circle-fill" style="color: green;"></i>
