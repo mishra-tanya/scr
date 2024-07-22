@@ -119,7 +119,7 @@
             <div class="card golden-card col-md-4 mx-auto ">
                 <div class="p-4 pb-1">
                     <h3>Get Premium Here</h3>
-                    <p>At Price <b>000 ₹</b> Only </p>
+                    <p>At Price <b>4000 ₹  or USD 50</b> Only </p>
                 </div>
                 <div class="card-content p-4">
 
@@ -164,7 +164,7 @@
                         <div class="mb-3">
                             <label for="trial" class="form-label">Trial Days</label>
                             <select class="form-select" id="trial" name="trial" required>
-                                @for ($i=3;$i<=60;$i+=3){
+                                @for ($i=1;$i<=3;$i++){
                                     <option value={{$i}}>{{$i}} Days</option>
                                 }
                                 @endfor

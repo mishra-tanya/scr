@@ -19,6 +19,8 @@ class ScrChapterController extends Controller
         "Climate Risk Measurement and Management ",
         "Climate Models and Scenario Analysis ",
         "Net Zero",
+        "Climate and Nature Risk Assessment",
+        "Transition Planning and GHG Accounting"
     ];
 
     $userId = Auth::id();
@@ -29,7 +31,7 @@ class ScrChapterController extends Controller
 
     $statusData = json_decode($user->status, true) ?? [];
 
-    for ($i = 1; $i <= 8; $i++) {
+    for ($i = 1; $i <= 10; $i++) {
         $chapter_id = "$i";
         $testKey1 = "Test 1";
         $testKey2 = "Test 2";

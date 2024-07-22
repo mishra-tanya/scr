@@ -230,6 +230,7 @@
             <div class="ch text-center" style="font-size: 25px;">
                 <p><b class="">Chapter: {{ $ch_no = substr($test, 7) }}</b></p>
                 <p class="">Learning Objective: {{ $ch_no = substr($chapter_id, 3) }}</p>
+                <p style="font-size:18px;"><b>{{$testName->title}}</b></p>
             </div>
             <input type="hidden" name="chapter_id" value="{{ $chapter_id }}">
             <input type="hidden" name="test" value="{{ $test }}">

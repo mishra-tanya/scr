@@ -37,13 +37,44 @@
         @endif </b> </h1>
 
 <br>
+
+<script>
+    function countdown(endTime) {
+        const end = new Date(endTime).getTime();
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = end - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const trialEndsAt = "{{ $trial_ends_at }}";
+        countdown(trialEndsAt);
+    });
+</script>
+
+
+
 @if(Auth::user()->payment_status == 0)
+<p class="text-center"><b style="text-decoration: underline; color:#006637;">Trial Countdown </b> : <span id="countdown" style="color:rgba(255, 0, 0, 0.658);"></span></p>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         You are currently on trial. Please <a href="{{ route('payment.page') }}" class="alert-link">upgrade your account</a> to continue your preparation journey.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+ <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-
         <div class="row stats mt-4"><br>
 
             <div class="col-md-3 mb-4">

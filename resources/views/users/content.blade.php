@@ -176,7 +176,7 @@
                                 <div class="card-label">Total Chapters</div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">8</div>
+                                <div class="card-value">10</div>
                             </div>
                         </div>
                         <hr>
@@ -185,7 +185,7 @@
                                 <div class="card-label">Total Tests </div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">29</div>
+                                <div class="card-value">35</div>
                             </div>
                         </div>
                         <hr>
@@ -232,7 +232,7 @@
                                 <div class="card-label">Total Chapters</div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">8</div>
+                                <div class="card-value">10</div>
                             </div>
                         </div>
                         <hr>
@@ -273,7 +273,7 @@
                                 <div class="card-label">Total Chapters</div>
                             </div>
                             <div class="col-3 text-end">
-                                <div class="card-value">8</div>
+                                <div class="card-value">   10</div>
                             </div>
                         </div>
                         <hr>

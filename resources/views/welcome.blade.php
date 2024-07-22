@@ -2,53 +2,54 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>SCR Preparation Tool</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>SCR Preparation Tool</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/hero-bg.jpg" rel="icon">
-  <link href="assets/img/hero-bg.jpg" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="assets/img/scr2.png" rel="icon">
+    <link href="assets/img/scr2.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> --}}
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,300italic&subset=latin' rel='stylesheet' type='text/css'>
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> --}}
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,300italic&subset=latin'
+        rel='stylesheet' type='text/css'>
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="css/style.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            {{-- <a href="/" class="logo"><img src="assets/img/scr1.png" alt="" class="img-fluid"></a> --}}
 
-      <h1 class="logo"><a href="/">SCR Preparation Tool</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            <h1 class="logo"><a href="/">SCR Preparation Tool</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          {{-- <li><a class="nav-link scrollto" href="#services">Services</a></li> --}}
-          {{-- <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    {{-- <li><a class="nav-link scrollto" href="#services">Services</a></li> --}}
+                    {{-- <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li> --}}
-          {{-- <li><a class="nav-link scrollto" href="#pricing">Premium</a></li> --}}
-          {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                    {{-- <li><a class="nav-link scrollto" href="#pricing">Premium</a></li> --}}
+                    {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -65,56 +66,57 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> --}}
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="https://indiaesg.org/">IndiaESG.org</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="https://indiaesg.org/">IndiaESG.org</a></li>
 
-          
-          @guest
-          <li><a class="nav-link scrollto" href="{{ url('admin/login') }}">Admin Login</a></li>
-          <li><a class="getstarted scrollto" href="{{ url('login') }}">Login</a></li>
-      @endguest
-      @auth
-          @if(Auth::user()->is_admin)
-              <li><a class="nav-link scrollto" href="{{ url('admin/dashboard') }}">Admin Dashboard</a></li>
-          @else
-              <li><a class="nav-link scrollto" href="{{ url('home') }}">User Dashboard</a></li>
-          @endif
-          <li><a class="getstarted scrollto" href="{{ url('logout') }}">Logout</a></li>
-      @endauth
-      
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
 
-    </div>
-  </header><!-- End Header -->
+                    @guest
+                        <li><a class="nav-link scrollto" href="{{ url('admin/login') }}">Admin Login</a></li>
+                        <li><a class="getstarted scrollto" href="{{ url('login') }}">Login</a></li>
+                    @endguest
+                    @auth
+                        @if (Auth::user()->is_admin)
+                            <li><a class="nav-link scrollto" href="{{ url('admin/dashboard') }}">Admin Dashboard</a></li>
+                        @else
+                            <li><a class="nav-link scrollto" href="{{ url('home') }}">User Dashboard</a></li>
+                        @endif
+                        <li><a class="getstarted scrollto" href="{{ url('logout') }}">Logout</a></li>
+                    @endauth
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="row justify-content-center">
-        <div class="col-xl-7 col-lg-9 text-center">
-         @auth
-         <h2 class=" text-capitalize">Welcome {{Auth::user()->first_name}}, to</h2>
-         @endauth
-          <h1>Substainability and Climate Risk (SCR)</h1>
-          <h2>SCR Preparation Module</h2>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
         </div>
-      </div>
-      @guest
-      <div class="text-center">
-        <a href={{url('login')}} class="btn-get-started scrollto">Get Started</a>
-      </div>
-      @endguest
-      @auth
-      <div class="text-center">
-        <a href={{url('home')}} class="btn-get-started scrollto">Get Started</a>
-      </div>
-  @endauth
-     
+    </header><!-- End Header -->
 
-      {{-- <div class="row icon-boxes"> --}}
-        {{-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-9 text-center">
+                    @auth
+                        <h2 class=" text-capitalize">Welcome {{ Auth::user()->first_name }}, to</h2>
+                    @endauth
+                    <h1>Substainability and Climate Risk (SCR) Preparation Tool</h1>
+                    <h2>"Ace SCR with Confidence: Learn, Practice, Succeed"
+                    </h2>
+                </div>
+            </div>
+            @guest
+                <div class="text-center">
+                    <a href={{ url('login') }} class="btn-get-started scrollto">Get Started</a>
+                </div>
+            @endguest
+            @auth
+                <div class="text-center">
+                    <a href={{ url('home') }} class="btn-get-started scrollto">Get Started</a>
+                </div>
+            @endauth
+
+
+            {{-- <div class="row icon-boxes"> --}}
+            {{-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
             <div class="icon"><i class="ri-stack-line"></i></div>
             <h4 class="title"><a href="">Lorem Ipsum</a></h4>
@@ -146,55 +148,76 @@
           </div>
         </div> --}}
 
-      {{-- </div> --}}
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>About Us</h2>
-          <p>Aim to provide the solution for individuals seeking to navigate the challenges posed by SCR</p>
+            {{-- </div> --}}
         </div>
+    </section><!-- End Hero -->
 
-        <div class="row content">
-          <div class="col-lg-12">
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>About Us</h2>
+                    <p>Elevate your SCR exam preparation with IndiaESG.org's comprehensive Preparation Tool:</p>
+                </div>
+
+                <div class="row content">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="">
+                                    <li><i class="ri-check-double-line"></i>Developed by sustainable finance and climate
+                                        risk experts</li>
+                                    <li><i class="ri-check-double-line"></i>Covers the latest syllabus, including
+                                        chapters 9 and 10 </li>
+                                    <li><i class="ri-check-double-line"></i>Over 3,000 practice questions to test your
+                                        knowledge </li>
+                                    <li><i class="ri-check-double-line"></i> Recorded video lessons for effective
+                                        revision</li>
+                                    <li><i class="ri-check-double-line"></i> Flashcards and detailed notes to reinforce
+                                        key concepts</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><i class="bi bi-dot"></i>Risk-free trial:</li>
+                                    <div class="mx-4 mt-2" >
+                                        <ul>
+                                            <li><i class="ri-check-double-line"></i> Start with a 1-day free trial</li>
+                                            <li><i class="ri-check-double-line"></i>Option to extend your trial period
+                                            </li>
+                                            <li><i class="ri-check-double-line"></i>Pay only if you're satisfied</li>
+                                        </ul>
+                                    </div>
+
+                                    <li class="mt-4"><i class="bi bi-dot "></i></i>Affordable pricing:</li>
+                                    <div class="mx-4 mt-2">
+                                        <ul>
+                                            <li><i class="ri-check-double-line"></i>Just INR 4,000 or USD 50 for full
+                                                access</li>
+                                        </ul>
+
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 pt-4 mt-4 pt-lg-0">
             <p>
-              Our main goal is to offer a complete solution for individuals who wants to understand and deal with the challanges
-              brought by climate change. Providing various resources like revision notes and test series along with mock 
-              tests and video solutions. And in test series providing the detailed feedback of 
-              the tests. The project is creation of a preparation module that's not only easy to 
-              access but also effective in helping users grasp the various aspects of 
-              sustainability and climate risk management.
+              This all-in-one platform is designed to maximize your chances of success. Don't leave your SCR certification to chance – prepare with confidence using IndiaESG.org's Preparation Tool.
+             <b> Ready to take your SCR prep to the next level? </b><a href="/login">Start your free trial today!</a>
             </p>
-            <ul class="">
-              <li><i class="ri-check-double-line"></i>Providing Learning Resources</li>
-              <li><i class="ri-check-double-line"></i>Access to Test Series & Mock Tests </li>
-              {{-- <li><i class="ri-check-double-line"></i>Progress Tracking </li> --}}
-              {{-- <li><i class="ri-check-double-line"></i> </li>
-              <li><i class="ri-check-double-line"></i> </li> --}}
-
-            </ul>
+            {{-- <a href="/payment" class="btn-learn-more">Learn More</a> --}}
           </div>
-          {{-- <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <a href="#" class="btn-learn-more">Learn More</a>
-          </div> --}}
-        </div>
+                </div>
 
-      </div>
-    </section><!-- End About Section -->
+            </div>
+        </section><!-- End About Section -->
 
-    <!-- ======= Counts Section ======= -->
-    {{-- <section id="counts" class="counts section-bg">
+        <!-- ======= Counts Section ======= -->
+        {{-- <section id="counts" class="counts section-bg">
       <div class="container">
 
         <div class="row justify-content-end">
@@ -232,8 +255,8 @@
       </div>
     </section><!-- End Counts Section --> --}}
 
-    <!-- ======= About Video Section ======= -->
-    {{-- <section id="about-video" class="about-video">
+        <!-- ======= About Video Section ======= -->
+        {{-- <section id="about-video" class="about-video">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -267,8 +290,8 @@
       </div>
     </section><!-- End About Video Section --> --}}
 
-    <!-- ======= Clients Section ======= -->
-    {{-- <section id="clients" class="clients section-bg">
+        <!-- ======= Clients Section ======= -->
+        {{-- <section id="clients" class="clients section-bg">
       <div class="container">
 
         <div class="row">
@@ -379,15 +402,15 @@
               </div>
             </div><!-- End testimonial item --> --}}
 
-          {{-- </div>
+        {{-- </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
     </section><!-- End Testimonials Section --> --}}
 
-    <!-- ======= Services Section ======= -->
-    {{-- <section id="services" class="services section-bg">
+        <!-- ======= Services Section ======= -->
+        {{-- <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -412,7 +435,7 @@
               </div>
               <h4><a href="">Providing Learning Resources</a></h4>
               {{-- <p></p> --}}
-            {{--</div>
+        {{-- </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
@@ -437,13 +460,13 @@
                 <i class="bx bx-tachometer"></i>
               </div>
               <h4><a href="">Easy Overall Progress Tracking</a></h4> --}}
-              {{-- <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p> --}}
-            {{-- </div>
+        {{-- <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p> --}}
+        {{-- </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             {{-- <div class="icon-box iconbox-yellow"> --}}
-            {{--}}  <div class="icon">
+        {{-- }}  <div class="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
                   <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"></path>
                 </svg>
@@ -452,9 +475,9 @@
               <h4><a href="">Nemo Enim</a></h4>
               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
             </div> --}}
-          {{-- </div> --}}
+        {{-- </div> --}}
 
-          {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+        {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box iconbox-red">
               <div class="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -467,8 +490,8 @@
             </div>
           </div> --}}
 
-          {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300"> --}}
-            {{-- <div class="icon-box iconbox-teal">
+        {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300"> --}}
+        {{-- <div class="icon-box iconbox-teal">
               <div class="icon">
                 <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
                   <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
@@ -478,15 +501,15 @@
               <h4><a href="">Divera Don</a></h4>
               <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
             </div> --}}
-          {{-- </div> --}}
-{{-- 
+        {{-- </div> --}}
+        {{-- 
         </div>
 
       </div> --}}
-    {{-- </section><!-- End Sevices Section --> --}}
+        {{-- </section><!-- End Sevices Section --> --}}
 
-    <!-- ======= Cta Section ======= -->
-    {{-- <section id="cta" class="cta">
+        <!-- ======= Cta Section ======= -->
+        {{-- <section id="cta" class="cta">
       <div class="container" data-aos="zoom-in">
         <div class="text-center">
           <h3>Call To Action</h3>
@@ -737,13 +760,13 @@
       </div>
     </section><!-- End Team Section --> --}}
 
-    <!-- ======= Pricing Section ======= -->
-    {{-- <section id="pricing" class="pricing">
+        <!-- ======= Pricing Section ======= -->
+        {{-- <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <h2>Why to buy premium?</h2> --}}
-          {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
+        {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
         {{-- </div>
         <div class="row ">
             <div class="col-lg-3 col-md-6" data-aos="zoom-im" data-aos-delay="100">
@@ -757,10 +780,10 @@
                 <li>1 day access to learning resources</li>
                 <li>1 day access to Test series and Mock tests</li>
                 {{-- <li>After one day can ask for more trials</li> --}}
-                {{-- <li class="na">Pharetra massa</li>
+        {{-- <li class="na">Pharetra massa</li>
                 <li class="na">Massa ultricies mi</li> --}}
-              {{-- </ul> --}}
-              {{-- @guest
+        {{-- </ul> --}}
+        {{-- @guest
               <div class="btn-wrap">
                 <a href={{route('login')}} class="btn-buy">Buy Now</a>
               </div>
@@ -784,9 +807,9 @@
                 <li>Life-time access to learning resources</li>
                 <li>Life-time access to Test series and Mock tests</li>
                 {{-- <li>Nulla at volutpat dola</li> --}}
-                {{-- <li>Pharetra massa</li>
+        {{-- <li>Pharetra massa</li>
                 <li>Massa ultricies mi</li> --}}
-              {{-- </ul>
+        {{-- </ul>
               @guest
               <div class="btn-wrap">
                 <a href={{route('login')}} class="btn-buy">Buy Now</a>
@@ -804,119 +827,202 @@
         </div>
 
       </div>  --}}
-    {{-- </section><!-- End Pricing Section --> --}} 
+        {{-- </section><!-- End Pricing Section --> --}}
 
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fade-up">
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq section-bg">
+            <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Frequently Asked Questions</h2>
-          {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
-        </div>
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
+                </div>
 
-        <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up" >
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-1" class="collapsed" >Is it only free for one day? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse " data-bs-parent=".faq-list">
-                <p>
-                  Yes, it is free for only one day after registeration. But you can ask for more free trials.
-                </p>
-              </div>
-            </li>
+                <div class="faq-list">
+                    <ul>
+                        <li data-aos="fade-up">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                data-bs-target="#faq-list-1" class="collapsed">1. What is the SCR Preparation Tool?<i
+                                    class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-1" class="collapse " data-bs-parent=".faq-list">
+                                <p>
+                                  The SCR Preparation Tool is a comprehensive online platform designed to help aspirants prepare for the SCR exam, developed by IndiaESG.org.
+                                </p>
+                            </div>
+                        </li>
+                        
+                        <li data-aos="fade-up" data-aos-delay="100">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                data-bs-target="#faq-list-2" class="collapsed">2. Who developed this tool?<i class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                  The tool was developed by sustainable finance and climate risk professionals.
+                                </p>
+                            </div>
+                        </li>
 
-            <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">After payment how many days I can access? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  You can access it anytime, anywhere after payment.
-                </p>
-              </div>
-            </li>
-{{-- 
-            <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">
+                3. Does it cover the latest SCR syllabus?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                </p>
+                  Yes, it covers the latest syllabus, including chapters 9 and 10.
+                         </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">
+                4. How many practice questions does it offer?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
+                  The tool includes more than 3,000 practice questions.
                 </p>
               </div>
-            </li> --}}
+            </li>
 
-
-          </ul>
-        </div>
-
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact Us</h2>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-12  mt-lg-0">
-            @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if ($errors->any())
-        <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                     {{ $error }} 
-                @endforeach
-        </div>
-    @endif
-  
-            <form action="{{ route('contact.submit') }}" method="POST" role="form" class="php-email-form">
-              @csrf
-              <div class="row gy-2 gx-md-3">
-                  <div class="col-md-4 form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                  </div>
-                  <div class="col-md-4 form-group">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
-                  </div>
-                  <div class="col-md-4 form-group">
-                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Your Contact Number" required min="10" >
-                </div>
-                  <div class="form-group col-12">
-                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                  </div>
-                  <div class="form-group col-12">
-                      <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                  </div>
-                  <div class="text-center col-12"><button type="submit">Send Message</button></div>
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">
+                5. What learning resources are available?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  It offers recorded video lessons, flashcards, and detailed revision notes.
+                </p>
               </div>
-          </form>
-          </div>
+            </li>
 
-        </div>
+            <li data-aos="fade-up" data-aos-delay="500">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-6" class="collapsed">
+                6. Is there a free trial available?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-6" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Yes, there's a 1-day free trial, which can be extended if needed.
+                </p>
+              </div>
+            </li>
 
-      </div>
-    </section><!-- End Contact Section -->
+            <li data-aos="fade-up" data-aos-delay="600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-7" class="collapsed">
+                7. Do I have to pay upfront?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-7" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  No, you only need to pay if you're satisfied after the trial period.
+                </p>
+              </div>
+            </li>
 
-  </main><!-- End #main -->
+            <li data-aos="fade-up" data-aos-delay="700">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-8" class="collapsed">
+                8. How much does it cost?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-8" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  The full access price is INR 4,000 or USD 50.
+                </p>
+              </div>
+            </li>
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-{{-- 
+            <li data-aos="fade-up" data-aos-delay="800">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-9" class="collapsed">
+                9. Can I use the tool for revision?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-9" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Yes, the tool includes various features specifically designed for revision, such as flashcards and recorded videos.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="900">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-10" class="collapsed">
+                        10. Is the content up-to-date?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-10" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Yes, the tool covers the latest syllabus and is developed by industry professionals.
+                </p>
+              </div>
+            </li>
+
+
+                    </ul>
+                </div>
+
+            </div>
+        </section><!-- End Frequently Asked Questions Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-12  mt-lg-0">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <form action="{{ route('contact.submit') }}" method="POST" role="form"
+                            class="php-email-form">
+                            @csrf
+                            <div class="row gy-2 gx-md-3">
+                                <div class="col-md-4 form-group">
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Your Email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input type="text" name="phone" class="form-control" id="phone"
+                                        placeholder="Your Contact Number" required min="10">
+                                </div>
+                                <div class="form-group col-12">
+                                    <input type="text" class="form-control" name="subject" id="subject"
+                                        placeholder="Subject" required>
+                                </div>
+                                <div class="form-group col-12">
+                                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                </div>
+                                <div class="text-center col-12"><button type="submit">Send Message</button></div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <br>
+                <p class="mx-2 text-center">** You can write to us directly to <a
+                        href="mailto:scr@indiaesg.org">scr@indiaesg.org</a> or send WhatsApp message to +91-9137835145
+                    **
+                </p>
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        {{-- 
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -965,39 +1071,40 @@
         </div>
       </div>
     </div> --}}
-   
-      <h2 class="text-center pt-3">
-        <a href="#"><i class="bi bi-facebook m-2"></i></a>
-        <a href="#"><i class="bi bi-instagram m-2"></i></a>
-        <a href="#"><i class="bi bi-twitter-x m-2"></i></a>
-        <a href="#"><i class="bi bi-linkedin m-2"></i></a>
-  
-      </h2>
-  
 
-      <div class="me-md-auto text-center text-md-start m-4">
-        <div class="copyright text-center">
-          &copy; Copyright 2024 <strong><span>IndiaESG</span></strong>. All Rights Reserved
+        <h2 class="text-center pt-3">
+            <a href="#"><i class="bi bi-facebook m-2"></i></a>
+            <a href="#"><i class="bi bi-instagram m-2"></i></a>
+            <a href="#"><i class="bi bi-twitter-x m-2"></i></a>
+            <a href="#"><i class="bi bi-linkedin m-2"></i></a>
+
+        </h2>
+
+
+        <div class="me-md-auto text-center text-md-start m-4">
+            <div class="copyright text-center">
+                &copy; Copyright 2024 <strong><span>IndiaESG.org</span></strong>. All Rights Reserved
+            </div>
+
+
         </div>
-        
-     
-    </div>
-  </footer><!-- End Footer -->
+    </footer><!-- End Footer -->
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="js/main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="js/main.js"></script>
 
 </body>
 

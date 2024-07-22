@@ -51,7 +51,7 @@
                                 <label for="chapter_id" class="form-label">Chapter</label>
                                 <select name="chapter_id" id="chapter_id" class="form-select">
                                     <option value="">Select Chapter</option>
-                                    @for ($i = 1; $i <= 8; $i++)
+                                    @for ($i = 1; $i <= 10; $i++)
                                         <option value="{{ $i }}">Chapter {{ $i }}</option>
                                     @endfor
                                 </select>

@@ -107,7 +107,7 @@
 
     <div class="container mt-4"><br><br>
         <div class="row" style="display:flex;justify-content:center; align-items:center; ">
-            @for($i=1;$i<=8;$i++)
+            @for($i=1;$i<=10;$i++)
             <div class="col-md-3 text-center" >
                 <form action="{{ route('store.notes') }}" method="POST">
                     @csrf

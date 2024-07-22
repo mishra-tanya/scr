@@ -36,8 +36,14 @@ class LearningObjController extends Controller
                     ->limit($limit)
                     ->get();
             $userId = $request->userId; 
-           
-            return view('users.series.lo_questions', compact('questions','chapter_id','test'));
+            $url="ch".substr($test,7);
+            $testName = TestName::where('url_id', $chapter_id)
+            ->where('chapter', $url)
+            ->first();
+
+        // dd($chapter_id,$test,$testName);
+
+            return view('users.series.lo_questions', compact('questions','chapter_id','test','testName'));
             // dd($questions);
             // return response()->json($questions);
     }
@@ -170,14 +176,18 @@ public function getLoResult($chapter_id, $test)
     // dd($totalQuestions);
 
     $user->calculateOverallResult();
-       
+    $url="ch".substr($test,7);
+    $testName = TestName::where('url_id', $chapter_id)
+    ->where('chapter', $url)
+    ->first();
 
     return view('users.series.lo_results', [
         'chapter_id' => $chapter_id,
         'test' => $test,
         'questions' => $questions,
         'totalQuestions' => $totalQuestions,
-        'correctAnswers' => $correctAnswers
+        'correctAnswers' => $correctAnswers,
+        'testName'=>$testName
     ]);
 }
 

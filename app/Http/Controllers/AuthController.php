@@ -170,11 +170,12 @@ class AuthController extends Controller
         $user->calculateOverallResult();
         $learning_obj_results = LearningObjResult::where('user_id', $userId)->get();
 
+        $trial_ends_at = session('trial_ends_at');
 
         return view('users.home', ['user' => $user], compact(
             'attemptedCount', 'attempted', 'count', 'lo_count', 'lo_test_count',
             'total_questions', 'correct_answers', 'score','numberOfChapters','numberOfFlashChapters',
-            'scr_total_questions', 'scr_correct_answers', 'scr_score','scr_results','learning_obj_results'
+            'scr_total_questions', 'scr_correct_answers', 'scr_score','scr_results','learning_obj_results', 'trial_ends_at'
         ));
     } else {
         return redirect()->route('login')->with('error', 'You must be logged in to access this page.');

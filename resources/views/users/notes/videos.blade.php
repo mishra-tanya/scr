@@ -33,38 +33,6 @@
     <div class="container">
         <div class="m-3">
             <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="video-card">
-                        <video width="100%" height="auto" controls>
-                            <source  src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_1_FOUNDATIONS_OF_CLIMATE_CHANGE.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <p>Revision Chapter 1: Foundations of Climate Change</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <video width="100%" height="auto" controls>
-                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_2_SUSTAINABILITY.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Revision Chapter 2: Sustainability</p>
-                </div>
-
-                <div class="col-md-4">
-                    <video width="100%" height="auto" controls>
-                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_3_CLIMATE_CHANGE_RISK.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Revision Chapter 3: Climate Change Risk</p>
-                </div>
-
-                <div class="col-md-4">
-                    <video width="100%" height="auto" controls>
-                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_4_SUSTAINABILITY_AND_CLIMATE_POLICY_CULTURE_AND_GOVERNANCE.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Revision Chapter 4: Sustainability And Climate Policy Culture And Governance</p>
-                </div>
 
                 <div class="col-md-4">
                     <video width="100%" height="auto" controls>
@@ -133,6 +101,39 @@
                         Your browser does not support the video tag.
                     </video>
                     <p>Session 9: Scenatio Analysis</p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="video-card">
+                        <video width="100%" height="auto" controls>
+                            <source  src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_1_FOUNDATIONS_OF_CLIMATE_CHANGE.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p>Revision Chapter 1: Foundations of Climate Change</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <video width="100%" height="auto" controls>
+                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_2_SUSTAINABILITY.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Revision Chapter 2: Sustainability</p>
+                </div>
+
+                <div class="col-md-4">
+                    <video width="100%" height="auto" controls>
+                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_3_CLIMATE_CHANGE_RISK.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Revision Chapter 3: Climate Change Risk</p>
+                </div>
+
+                <div class="col-md-4">
+                    <video width="100%" height="auto" controls>
+                        <source src="http://indiaesg.org/uploads/VIDEO/REVISION_CHAPTER_4_SUSTAINABILITY_AND_CLIMATE_POLICY_CULTURE_AND_GOVERNANCE.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Revision Chapter 4: Sustainability And Climate Policy Culture And Governance</p>
                 </div>
             </div>
         </div>

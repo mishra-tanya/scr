@@ -183,7 +183,14 @@
         <h2><b>Chapter: {{ substr($test, 7, 1) }}</b><span class="d-none d-md-inline">&nbsp;&nbsp;&nbsp;</span>
             <b class="d-block d-md-inline">Learning Objective: {{ substr($chapter_id, 3) }}</b>
         </h2>
+<div class="row">
+    <div class="col-md-2">
 
+    </div>
+    <div class="col-md-8">
+        <b>{{$testName->title}}</b>
+    </div>
+</div>
     </div> <br>
     <h2 class="text-center"><b>Your Result</b></h2>
     <div class="card-container">

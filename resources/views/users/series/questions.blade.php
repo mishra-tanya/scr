@@ -236,6 +236,26 @@
                 border-width: 8px;
             }
         }
+        
+.logo{
+  margin-right:700px;
+}
+@media (max-width:370px){
+  nav .navbar .nav-links{
+  max-width: 100%;
+} 
+}
+
+@media (max-width:1024px){
+.logo{
+  margin-right:0px;
+}
+}
+
+.image-logo{
+  width: 100px;
+  height: auto;
+}
     </style>
     {{-- navbar --}}
     <div class="navbar">
@@ -246,12 +266,13 @@
         <nav>
             <div class="navbar">
                 <i class='bx bx-menu'></i>
-                <div class="logo"><a href="#">SCR</a></div>
+                <img class="image-logo" src="/assets/img/scr2.png" alt="">
+                <div class="logo" >
+                  <a href="#" >SCR </a></div>
                 <div class="nav-links">
-                    <div class="sidebar-logo">
-                        <span class="logo-name">SCR</span>
-                        <i class='bx bx-x'></i>
-                    </div>
+                  <div class="sidebar-logo">
+                    <i class='bx bx-x' ></i>
+                  </div>
                     <ul class="links">
                         <li><a href="/">Home</a></li>
                         {{-- <li><a href="/home">Dashboard</a></li> --}}

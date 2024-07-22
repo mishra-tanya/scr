@@ -309,10 +309,10 @@ nav .navbar .links li .sub-menu li{
 <nav>
     <div class="navbar">
       <i class='bx bx-menu'></i>
-      <div class="logo"><a href="#">Admin Login</a></div>
+      <div class="logo"><a href="#">SCR Admin</a></div>
       <div class="nav-links">
         <div class="sidebar-logo">
-          <span class="logo-name">Admin Login</span>
+          <span class="logo-name">SCR Admin</span>
           <i class='bx bx-x' ></i>
         </div>
         <ul class="links">

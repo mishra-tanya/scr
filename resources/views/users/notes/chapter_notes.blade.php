@@ -11,12 +11,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     
     <style>
-        body{
-            font-size:20px;
-        }
+      .card-body{
+        font-size:18px;
+      }
         .note-content p {
             position: relative;
             padding-left: 20px; 
+            font-size:22px;
+            margin-top: 20px;
+            text-decoration: underline;
+            font-weight: bold;
         }
 
         .note-content p::before {

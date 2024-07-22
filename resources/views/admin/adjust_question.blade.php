@@ -58,7 +58,7 @@
                     @endif
 
                     {{-- Test Series Question Limits --}}
-                    @for ($chapter = 1; $chapter <= 8; $chapter++)
+                    @for ($chapter = 1; $chapter <= 10; $chapter++)
                         @php
                             $chapterName = 'chapter' . $chapter;
                             $questionLimit = $questionLimits->firstWhere('chapter', $chapterName);
