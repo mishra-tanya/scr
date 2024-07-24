@@ -79,7 +79,8 @@ Route::middleware(['auth', 'is_user','check.trial'])->group(function () {
         return view('users.notes.videos');
     })->name('scr_videos');
     
-
+    Route::get('/flash_card/{chapter}/{id}', [NotesController::class, 'flash_lo'])->name('flash_card_detail');
+    
 });
 
 use App\Http\Controllers\AdminAuthController;
