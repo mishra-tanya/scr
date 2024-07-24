@@ -9,9 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     
     <style>
-        body {
-            font-size: 18px;
+        body{
             background-color: #f2f2f2;
+        }
+        .container {
+            font-size: 18px;
         }
         .accordion-button {
             font-size: 18px;
@@ -32,12 +34,12 @@
     @include('nav')
     <br><br><br>
     <h2 class="text-center mb-4" style="background-color: rgb(235, 235, 235); padding: 12px;">
-        <b>   Flash Cards for Chapter {{ $chapter }}</b>
+        <b>   Flash Cards for   Chapter {{ substr($chapter,7) }}</b>
     </h2>
     <div class="container mt-5">
             <div class="card-body">
                 <div class="accordion" id="accordionExample">
-                    @foreach ($flash_chapter_notes as $index => $note)
+                    @foreach ($flashCards as $index => $note)
                         <div class="accordion-item p-2">
                             <h2 class="accordion-header" id="heading{{ $index }}">
                                 <button class="accordion-button {{ $index != 0 ? 'collapsed' : '' }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $index }}" aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="collapse{{ $index }}">

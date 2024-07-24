@@ -170,10 +170,30 @@ class AuthController extends Controller
         $user->calculateOverallResult();
         $learning_obj_results = LearningObjResult::where('user_id', $userId)->get();
 
+        // $find_rank=Reg_User::where('is_admin','0')->orderBy('learning_obj','desc')->get();
+        // $lo_rank=null;
+        // foreach($find_rank as $index=>$rank){
+        //     if($user->email==$rank->email){
+        //         $lo_rank =$index+1;
+        //         break;
+        //     }
+        // }
+
+        // $find_rank_scr=Reg_User::where('is_admin','0')->orderBy('scr','desc')->get();
+        // $scr_rank=null;
+        // foreach($find_rank_scr as $index=>$rank){
+        //     if($user->email==$rank->email){
+        //         $scr_rank =$index+1;
+        //         break;
+        //     }
+        // }
+        // dd($scr_rank);
+
         $trial_ends_at = session('trial_ends_at');
 
         return view('users.home', ['user' => $user], compact(
             'attemptedCount', 'attempted', 'count', 'lo_count', 'lo_test_count',
+            // 'lo_rank','scr_rank',
             'total_questions', 'correct_answers', 'score','numberOfChapters','numberOfFlashChapters',
             'scr_total_questions', 'scr_correct_answers', 'scr_score','scr_results','learning_obj_results', 'trial_ends_at'
         ));

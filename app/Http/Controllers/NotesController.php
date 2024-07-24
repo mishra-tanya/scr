@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Note;
 use App\Models\Reg_User;
 use App\Models\Flash;
+use App\Models\FlashTest;
 
 class NotesController extends Controller
 {
@@ -26,11 +27,11 @@ class NotesController extends Controller
             } 
             elseif (preg_match('/^flash_chapter/', $chapter)) {
                 $numericPart = preg_replace('/[^0-9]/', '', $chapter);
-                $page_url = 'Chapter' . $numericPart;
+                $page_url = 'ch' . $numericPart;
 // dd($page_url);            
-                $flash_chapter_notes = Flash::where("page_url", $page_url)->get();
+                $flash_chapter_notes = FlashTest::where("chapter", $page_url)->get();
                 // dd($flash_chapter_notes);
-                return view('users.notes.flash_chapter_notes', ['flash_chapter_notes' => $flash_chapter_notes, 'chapter'=>$numericPart]);
+                return view('users.notes.flash_lo_chapter_notes', ['flash_chapter_notes' => $flash_chapter_notes, 'chapter'=>$numericPart]);
             } else {
                 abort(404);
             }
@@ -58,5 +59,20 @@ class NotesController extends Controller
         $chapterNotes = json_decode($user->chapter_notes, true) ?? [];
 // dd($chapterNotes);
         return view ('users.notes.flash_cards', compact('chapterNotes'));
+    }
+
+    public function flash_lo( $chapter,$id){
+        $user = auth()->user();
+        // dd($id,$chapter);
+        $flashCards = Flash::where('lo_test', $id)
+        ->where('page_url', $chapter)
+        ->get();
+
+        // dd($flashCards);
+        return view ('users.notes.flash_chapter_notes',[        
+        'flashCards' => $flashCards,
+        'id' => $id,
+        'chapter' => $chapter
+]);
     }
 }
