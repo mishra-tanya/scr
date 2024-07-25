@@ -91,6 +91,7 @@
                                 <th>Overall Scr Result</th>
                                 <th>Overall Learning Obj Result</th>
                                 <th>Payment Status</th>
+                                <th>Payment Id</th>
                                 <th>Trial Days</th>
                                 <th>View</th>
                             </tr>
@@ -112,6 +113,7 @@
                                     @else
                                         Unpaid
                                     @endif</td>
+                                    <td>{{$user->payment_id}}</td>
                                     <td>{{$user->trial_days}}</td>
                                     <td><a href="{{ url('/admin/user/' . $user->email) }}">View</a></td>
                                     {{-- <td>{{ $user->payment_status }}</td> --}}
