@@ -15,11 +15,16 @@ class RazorpayService
     }
     public function createOrder($amount, $currency = 'INR')
     {
-        return $this->api->order->create([
-            'amount' => 1 * 100,
-            'currency' => $currency,
-            'payment_capture' => 1,
-        ]);
+        try {
+            $order = $this->api->order->create([
+                'amount' => $amount * 100,
+                'currency' => $currency,
+                'payment_capture' => 1,
+            ]);
+            return $order;
+        } catch (\Exception $e) {
+            dd($e->getMessage()); // Print the error message for debugging
+        }
     }
 
     public function fetchPayment($paymentId)
