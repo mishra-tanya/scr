@@ -35,7 +35,7 @@ class PhonePeController extends Controller
             'redirectUrl' => route('phonepe.callback'),
             'redirectMode' => 'POST',
             'callbackUrl' => route('phonepe.callback'),
-            'mobileNumber' => '9999999999',
+            // 'mobileNumber' => '9999999999',
             'paymentInstrument' => 
             array (
             'type' => 'PAY_PAGE',
@@ -51,7 +51,7 @@ class PhonePeController extends Controller
 
         $finalXHeader = $sha256.'###'.$saltIndex;
 
-        $url = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+        $url = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
         $response = Curl::to($url)
                 ->withHeader('Content-Type:application/json')
                 ->withHeader('X-VERIFY:'.$finalXHeader)
@@ -72,7 +72,7 @@ class PhonePeController extends Controller
 
         $finalXHeader = hash('sha256','/pg/v1/status/'.$input['merchantId'].'/'.$input['transactionId'].$saltKey).'###'.$saltIndex;
 
-        $response = Curl::to('https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/'.$input['merchantId'].'/'.$input['transactionId'])
+        $response = Curl::to('https://api.phonepe.com/apis/hermes/pg/v1/pay/status/'.$input['merchantId'].'/'.$input['transactionId'])
                 ->withHeader('Content-Type:application/json')
                 ->withHeader('accept:application/json')
                 ->withHeader('X-VERIFY:'.$finalXHeader)
