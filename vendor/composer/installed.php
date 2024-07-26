@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'aed4393fa95f3e03339089e36401cf4bda8013c1',
+        'reference' => 'f64ba4cf57a069ac4b6dceeae58fcc951cec138b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -364,6 +364,15 @@
                 0 => 'v11.8.0',
             ),
         ),
+        'ixudra/curl' => array(
+            'pretty_version' => '6.22.2',
+            'version' => '6.22.2.0',
+            'reference' => 'ac1844e9770995a493fd92b6b18b254b1636f2d0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ixudra/curl',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -382,7 +391,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'aed4393fa95f3e03339089e36401cf4bda8013c1',
+            'reference' => 'f64ba4cf57a069ac4b6dceeae58fcc951cec138b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

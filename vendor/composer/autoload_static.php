@@ -139,6 +139,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         ),
         'I' => 
         array (
+            'Ixudra\\Curl\\' => 12,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
         ),
@@ -451,6 +452,10 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         array (
             0 => __DIR__ . '/..' . '/laravel/prompts/src',
         ),
+        'Ixudra\\Curl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ixudra/curl/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -555,6 +560,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Http\\Controllers\\LearningObjController' => __DIR__ . '/../..' . '/app/Http/Controllers/LearningObjController.php',
         'App\\Http\\Controllers\\NotesController' => __DIR__ . '/../..' . '/app/Http/Controllers/NotesController.php',
         'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
+        'App\\Http\\Controllers\\PaymentIntegrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentIntegrationController.php',
         'App\\Http\\Controllers\\QuestionController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuestionController.php',
         'App\\Http\\Controllers\\QuestionLimitController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuestionLimitController.php',
         'App\\Http\\Controllers\\QuizController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuizController.php',
@@ -580,6 +586,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Models\\TrialRequest' => __DIR__ . '/../..' . '/app/Models/TrialRequest.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\Services\\RazorpayService' => __DIR__ . '/../..' . '/app/Services/RazorpayService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -2844,6 +2851,10 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Ixudra\\Curl\\Builder' => __DIR__ . '/..' . '/ixudra/curl/src/Builder.php',
+        'Ixudra\\Curl\\CurlService' => __DIR__ . '/..' . '/ixudra/curl/src/CurlService.php',
+        'Ixudra\\Curl\\CurlServiceProvider' => __DIR__ . '/..' . '/ixudra/curl/src/CurlServiceProvider.php',
+        'Ixudra\\Curl\\Facades\\Curl' => __DIR__ . '/..' . '/ixudra/curl/src/Facades/Curl.php',
         'Laravel\\Prompts\\Concerns\\Colors' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Colors.php',
         'Laravel\\Prompts\\Concerns\\Cursor' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Cursor.php',
         'Laravel\\Prompts\\Concerns\\Erase' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Erase.php',
