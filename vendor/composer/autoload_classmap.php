@@ -15,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\NotesController' => $baseDir . '/app/Http/Controllers/NotesController.php',
     'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/PaymentController.php',
     'App\\Http\\Controllers\\PaymentIntegrationController' => $baseDir . '/app/Http/Controllers/PaymentIntegrationController.php',
+    'App\\Http\\Controllers\\PhonePeController' => $baseDir . '/app/Http/Controllers/PhonePeController.php',
     'App\\Http\\Controllers\\QuestionController' => $baseDir . '/app/Http/Controllers/QuestionController.php',
     'App\\Http\\Controllers\\QuestionLimitController' => $baseDir . '/app/Http/Controllers/QuestionLimitController.php',
     'App\\Http\\Controllers\\QuizController' => $baseDir . '/app/Http/Controllers/QuizController.php',

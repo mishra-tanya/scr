@@ -561,6 +561,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Http\\Controllers\\NotesController' => __DIR__ . '/../..' . '/app/Http/Controllers/NotesController.php',
         'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
         'App\\Http\\Controllers\\PaymentIntegrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentIntegrationController.php',
+        'App\\Http\\Controllers\\PhonePeController' => __DIR__ . '/../..' . '/app/Http/Controllers/PhonePeController.php',
         'App\\Http\\Controllers\\QuestionController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuestionController.php',
         'App\\Http\\Controllers\\QuestionLimitController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuestionLimitController.php',
         'App\\Http\\Controllers\\QuizController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuizController.php',
