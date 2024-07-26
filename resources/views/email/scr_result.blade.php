@@ -101,8 +101,25 @@
             @if (is_numeric($test))
             <p>Mock Test: {{ $test }}</p>
         @else
-            <p>Chapter: {{ substr($test, 1, 1) }}</p>
-            <p>Test: {{ substr($test, 3) }}</p>
+        {{-- {{dd($test)}} --}}
+        @php
+        function getChapter($test) {
+            // Extract chapter number dynamically
+            $matches = [];
+            preg_match('/C(\d+)T/', $test, $matches);
+            return $matches[1] ?? 'N/A';
+        }
+
+        function getTest($test) {
+            // Extract test number dynamically
+            $matches = [];
+            preg_match('/T(\d+)/', $test, $matches);
+            return $matches[1] ?? 'N/A';
+        }
+    @endphp
+  {{-- {{  dd( getChapter($test),  getTest($test))}} --}}
+               <p>Chapter: {{ getChapter($test) }}</p>
+               <p>Test: {{ getTest($test) }}</p>
         @endif
         
             <p>Correct Answers: {{ $correctAnswers }}</p>

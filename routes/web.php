@@ -45,6 +45,18 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\LearningObjController;
 use App\Http\Controllers\NotesController;
+use App\Http\Controllers\PaymentIntegrationController;
+
+Route::get('/payment_scr', [PaymentIntegrationController::class, 'initiatePayment'])->name('payment.initiate')->middleware('auth');
+Route::post('/payment/callback', [PaymentIntegrationController::class, 'handlePayment'])->name('payment.callback')->middleware('auth');
+
+Route::get('/payment/success', function () {
+    return view('payment.success');
+})->name('payment.success')->middleware('auth');
+
+Route::get('/payment/failed', function () {
+    return view('payment.failed');
+})->name('payment.failed')->middleware('auth');
 
 
 Route::middleware(['auth', 'is_user','check.trial'])->group(function () {
