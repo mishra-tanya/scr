@@ -75,7 +75,7 @@ class PhonePeController extends Controller
 
         $responseData = $response->json();
         // dd($responseData);
-        if ($responseData['data']['responseCode'] == 'SUCCESS') {
+        if (isset($responseData['data']) && $responseData['data']['responseCode'] == 'SUCCESS') {
             $transaction = DB::table('transactions')
                 ->where('transaction_id', $input['transactionId'])
                 ->first();
