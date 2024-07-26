@@ -46,9 +46,16 @@ use App\Http\Controllers\ResultController;
 use App\Http\Controllers\LearningObjController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\PaymentIntegrationController;
+use App\Http\Controllers\PhonePeController;
+
 
 Route::get('/payment_scr', [PaymentIntegrationController::class, 'initiatePayment'])->name('payment.initiate')->middleware('auth');
 Route::post('/payment/callback', [PaymentIntegrationController::class, 'handlePayment'])->name('payment.callback')->middleware('auth');
+
+Route::post('/phonepe/initiate', [PhonePeController::class, 'initiatePayment'])->name('phonepe.initiate')->middleware('auth');
+Route::middleware(['web'])->group(function () {
+    Route::post('/phonepe/callback', [PhonePeController::class, 'handleCallback'])->name('phonepe.callback');
+});
 
 Route::get('/payment/success', function () {
     return view('payment.success');
