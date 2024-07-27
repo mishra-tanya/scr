@@ -89,7 +89,7 @@
             <h2>Your payment was successful</h2><br>
             <p>Thank you for your payment.</p>      
             <p> Payment Id: {{Auth::user()->payment_id}}</p>
-            <p>You can redirect to <a href="\home">Dashboard</a> Now</p>
+            <p>You can redirect to <a href={{url('\home')}}>Dashboard</a> Now</p>
         </div> 
     </div>
 </body>

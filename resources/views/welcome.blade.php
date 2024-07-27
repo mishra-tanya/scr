@@ -38,7 +38,7 @@
         <div class="container d-flex align-items-center justify-content-between">
             {{-- <a href="/" class="logo"><img src="assets/img/scr1.png" alt="" class="img-fluid"></a> --}}
 
-            <h1 class="logo"><a href="/">SCR Preparation Tool</a></h1>
+            <h1 class="logo"><a href="/scr-prep">SCR Preparation Tool</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
 
             <nav id="navbar" class="navbar">

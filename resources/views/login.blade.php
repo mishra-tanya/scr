@@ -67,7 +67,7 @@
                     <div class="foot-lnk">
                         Not Registered? <a href="{{ url('register') }}">Register Now</a>
                         <br><br>
-                        <a href="/" style="margin-top:30px;">Back to Home Page</a>
+                        <a href={{url('/')}} style="margin-top:30px;">Back to Home Page</a>
                     </div>
                 </div>
             </div>

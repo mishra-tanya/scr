@@ -332,8 +332,8 @@ nav .navbar .links li .sub-menu li{
           <i class='bx bx-x' ></i>
         </div>
         <ul class="links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/home">Dashboard</a></li>
+          <li><a href={{url('/')}}>Home</a></li>
+          <li><a href={{url('/home')}}>Dashboard</a></li>
 
           {{-- <li>
             <a href="#">HTML & CSS</a>
@@ -364,8 +364,8 @@ nav .navbar .links li .sub-menu li{
               <li><a href="#">Complete Website</a></li>
             </ul>
           </li> --}}
-          <li><a href="/#about">About us</a></li>
-          <li><a href="/#contact">Contact us</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#contact">Contact us</a></li>
           <li><a href={{ url('logout') }}>Logout</a></li>
           <li class="text-white"> {{Auth::user()->email}}</li>
 

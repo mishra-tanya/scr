@@ -159,7 +159,7 @@
         }
       
     </style>
-    <link rel="stylesheet" href="../../css/graph.css">
+    <link rel="stylesheet" href="../css/graph.css">
 </head>
 
 <body>

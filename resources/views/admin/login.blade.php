@@ -48,7 +48,7 @@
                     <div class="hr"></div>
                     <div class="foot-lnk">
                         
-                        <a href="/" style="margin-top:30px;">Back to Home Page</a>
+                        <a href={{url('/')}} style="margin-top:30px;">Back to Home Page</a>
             
                     </div>
                 </div>

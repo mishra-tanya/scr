@@ -88,7 +88,7 @@
             <i class="fa fa-times-circle" aria-hidden="true"></i>
             <h2>Your payment failed</h2>
             <p>Try again later.</p> 
-            <p>Go to previous page <a href="\payment">Here</a></p>
+            <p>Go to previous page <a href={{url('payment')}}>Here</a></p>
         </div> 
     </div>
 </body>

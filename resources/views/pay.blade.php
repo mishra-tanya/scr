@@ -134,7 +134,7 @@
                     </ul>
 
                 </div>
-                <a href="\payment_scr" class="btn golden-button my-3">Get Premium</a>
+                <a href={{url('\payment_scr')}} class="btn golden-button my-3">Get Premium</a>
 
             </div><br>
             <div class="col-md-1"></div>

@@ -274,9 +274,9 @@
                     <i class='bx bx-x' ></i>
                   </div>
                     <ul class="links">
-                        <li><a href="/">Home</a></li>
+                        <li><a href={{url('/')}}>Home</a></li>
                         {{-- <li><a href="/home">Dashboard</a></li> --}}
-                        <li><a href="/scr_questions">SCR Dashboard</a></li>
+                        <li><a href={{url('/scr_questions')}}>SCR Dashboard</a></li>
 
 
                     </ul>

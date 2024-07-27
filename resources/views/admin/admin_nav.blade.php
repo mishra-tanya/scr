@@ -316,8 +316,8 @@ nav .navbar .links li .sub-menu li{
           <i class='bx bx-x' ></i>
         </div>
         <ul class="links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/admin/dashboard">Dashboard</a></li>
+          <li><a href={{url('/')}}>Home</a></li>
+          <li><a href={{url('/admin/dashboard')}}>Dashboard</a></li>
 
           <li>
             <a href="#">User/Admin</a>

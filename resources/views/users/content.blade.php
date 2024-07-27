@@ -163,7 +163,7 @@
                                 <div class="card-value ">{{ $lo_count }}</div>
                             </div>
                         </div>
-                        <hr> <a href="/learning_obj" class="btn text-light custom-btn btn-block"
+                        <hr> <a href={{url('/learning_obj')}} class="btn text-light custom-btn btn-block"
                             style="background-color: #38befd">Start Here</a>
                     </div>
                 </div>
@@ -221,7 +221,7 @@
                                 <div class="card-value ">{{ $count }}</div>
                             </div>
                         </div>
-                        <hr> <a href="/scr_questions" class="btn text-light custom-btn btn-block"
+                        <hr> <a href={{url('/scr_questions')}} class="btn text-light custom-btn btn-block"
                             style="background-color: #28A745">Start Here</a>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
                         <hr>
                         <br><br><br><br>
 
-                        <a href="scr_notes" class="btn text-light  custom-btn btn-block mt-3"
+                        <a href={{url('scr_notes')}} class="btn text-light  custom-btn btn-block mt-3"
                             style="background-color: #826201">Start Here</a>
                     </div>
                 </div>
@@ -321,7 +321,7 @@
                                 {{-- <div class="card-value ">470</div> --}}
                             </div>
                         </div>
-                        <a href="flash_cards" class="btn text-light  custom-btn btn-block"
+                        <a href={{url('flash_cards')}} class="btn text-light  custom-btn btn-block"
                             style="background-color: #6F42C1">Start Here</a>
                     </div>
                 </div>
@@ -371,7 +371,7 @@
                                 {{-- <div class="card-value ">470</div> --}}
                             </div>
                         </div>
-                        <a href="scr_videos" class="btn text-light custom-btn btn-block"
+                        <a href={{url('scr_videos')}} class="btn text-light custom-btn btn-block"
                             style="background-color: #555555">Start Here</a>
                     </div>
                 </div>
