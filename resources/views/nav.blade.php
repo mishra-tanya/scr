@@ -324,7 +324,7 @@ nav .navbar .links li .sub-menu li{
 <nav>
     <div class="navbar">
       <i class='bx bx-menu'></i>
-      <img class="image-logo" src="/assets/img/scr2.png" alt="">
+      <img class="image-logo" src={{url('/assets/img/scr2.png')}} alt="">
       <div class="logo" >
         <a href="#" >SCR </a></div>
       <div class="nav-links">
@@ -364,8 +364,8 @@ nav .navbar .links li .sub-menu li{
               <li><a href="#">Complete Website</a></li>
             </ul>
           </li> --}}
-          <li><a href="#about">About us</a></li>
-          <li><a href="#contact">Contact us</a></li>
+          <li><a href={{url('/#about')}}>About us</a></li>
+          <li><a href={{url('/#contact')}}>Contact us</a></li>
           <li><a href={{ url('logout') }}>Logout</a></li>
           <li class="text-white"> {{Auth::user()->email}}</li>
 

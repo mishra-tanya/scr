@@ -28,9 +28,9 @@
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     padding: 45px;
     width: 100%;
-    max-width: 250px;
+    max-width: 240px;
     text-align: center;
-    margin: 20px auto;
+    /* margin: 20px auto; */
     border-radius: 10px;
     background-color: #fff;
     position: relative;
