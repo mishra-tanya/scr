@@ -16,7 +16,7 @@ class RazorpayService
     public function createOrder($amount, $currency = 'INR')
     {
         return $this->api->order->create([
-            'amount' => 1 * 100,
+            'amount' => 4000 * 100,
             'currency' => $currency,
             'payment_capture' => 1,
         ]);

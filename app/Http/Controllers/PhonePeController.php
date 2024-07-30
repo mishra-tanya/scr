@@ -27,7 +27,7 @@ class PhonePeController extends Controller
             'merchantId' => env('PHONEPE_MERCHANT_ID'),
             'merchantTransactionId' => $transactionId,
             'merchantUserId' => 'MUID123',
-            'amount' => 100,
+            'amount' => 4000*100,
             'redirectUrl' => route('phonepe.callback'),
             'redirectMode' => 'POST',
             'callbackUrl' => route('phonepe.callback'),
@@ -59,23 +59,11 @@ class PhonePeController extends Controller
 
     public function handleCallback(Request $request)
     {
+        // dd($request);
         $input = $request->all();
-        $saltKey = env('PHONEPE_API_KEY');
-        $saltIndex = 1;
-
-        $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
-
-        $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-                'accept' => 'application/json',
-                'X-VERIFY' => $finalXHeader,
-                'X-MERCHANT-ID' => $input['transactionId']
-            ])
-            ->get('https://api.phonepe.com/apis/hermes/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId']);
-
-        $responseData = $response->json();
-        // dd($responseData);
-        if (isset($responseData['data']) && $responseData['data']['responseCode'] == 'SUCCESS') {
+      
+        // dd($input);
+        if ($input['code'] == 'PAYMENT_SUCCESS') {
             $transaction = DB::table('transactions')
                 ->where('transaction_id', $input['transactionId'])
                 ->first();
@@ -85,7 +73,7 @@ class PhonePeController extends Controller
                 
                 if ($user) {
                     $user->payment_status = 1;
-                    $user->payment_id = $input['transactionId'];
+                    $user->payment_id = $input['providerReferenceId'];
                     $user->save();
                 }
     
