@@ -23,6 +23,7 @@ return array(
     'App\\Http\\Controllers\\ScrChapterController' => $baseDir . '/app/Http/Controllers/ScrChapterController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Middleware\\AdminAuthentication' => $baseDir . '/app/Http/Middleware/AdminAuthentication.php',
+    'App\\Http\\Middleware\\CheckDeactivated' => $baseDir . '/app/Http/Middleware/CheckDeactivated.php',
     'App\\Http\\Middleware\\CheckTrialPeriod' => $baseDir . '/app/Http/Middleware/CheckTrialPeriod.php',
     'App\\Http\\Middleware\\UserAuthentication' => $baseDir . '/app/Http/Middleware/UserAuthentication.php',
     'App\\Mail\\ScrTestResultMail' => $baseDir . '/app/Mail/ScrTestResultMail.php',

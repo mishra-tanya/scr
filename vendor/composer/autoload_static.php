@@ -569,6 +569,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Http\\Controllers\\ScrChapterController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScrChapterController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Middleware\\AdminAuthentication' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminAuthentication.php',
+        'App\\Http\\Middleware\\CheckDeactivated' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckDeactivated.php',
         'App\\Http\\Middleware\\CheckTrialPeriod' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckTrialPeriod.php',
         'App\\Http\\Middleware\\UserAuthentication' => __DIR__ . '/../..' . '/app/Http/Middleware/UserAuthentication.php',
         'App\\Mail\\ScrTestResultMail' => __DIR__ . '/../..' . '/app/Mail/ScrTestResultMail.php',
