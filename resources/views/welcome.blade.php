@@ -207,7 +207,7 @@
                     <div class="col-lg-12 pt-4 mt-4 pt-lg-0">
             <p>
               This all-in-one platform is designed to maximize your chances of success. Don't leave your SCR certification to chance – prepare with confidence using IndiaESG.org's Preparation Tool.
-             <b> Ready to take your SCR prep to the next level? </b><a href="/login">Start your free trial today!</a>
+             <b> Ready to take your SCR prep to the next level? </b><a href={{url('login')}}>Start your free trial today!</a>
             </p>
             {{-- <a href="/payment" class="btn-learn-more">Learn More</a> --}}
           </div>

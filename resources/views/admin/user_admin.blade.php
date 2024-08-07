@@ -27,49 +27,6 @@
     @include('admin/admin_nav')
 <br><br>
 <br>
-<div class="m-4 border shadow-md">
-    <h2 class="text-center " style="background-color: rgb(255, 255, 255); padding: 12px;">All Admins
-    </h2>
-    <div class="container">
-        <div class="panel">
-            <div class="table-responsive">
-                <table id="all_admin" class="table table-hover  text-center table-bordered table-condensed">
-                    <thead style="">
-                        <tr>
-                            <th>S.No.</th>
-                            <th>Admin Name</th>
-                            <th>Admin Email</th>
-                            <th>Admin Address</th>
-                            <th>Admin Contact</th>
-                            <th>Country</th>
-                            <th>Designation</th>
-                            {{-- <th>Update</th>
-                            <th>Delete</th> --}}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($admins as $index => $admin)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td class="text-capitalize">{{ $admin->first_name." ".$admin->last_name  }}</td>
-                                <td>{{ $admin->email }}</td>
-                                <td class="text-capitalize">{{ $admin->address }}</td>
-                                <td></td>
-                                <td class="text-capitalize">{{ $admin->country }}</td>
-                                <td class="text-capitalize">{{ $admin->designation }}</td>
-                                {{-- <td></td>
-                                <td></td> --}}
-                                {{-- <td>{{ $user->payment_status }}</td> --}}
-                                {{-- <td>{{ $user->trial_days }}</td> --}}
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-</div><br><br>
 
 
     <div class="m-4 border shadow-md">
@@ -78,10 +35,32 @@
         <div class="container">
             <div class="panel">
                 <div class="table-responsive">
-                    <table id="all_user" class="table table-hover  text-center table-bordered table-condensed">
+                    
+@if (session('success'))
+<script>
+    window.onload = function() {
+        alert("{{ session('success') }}");
+        window.location.href = "{{ url()->previous() }}"; 
+    };
+</script>
+@endif
+<div class="row mb-3 " style="display: flex;justify-content:center;align-items:center;">
+    <div class="col-md-2">
+        <div class="bg-primary text-white text-center">
+        For Paid Users
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="bg-danger text-white text-center">
+            For Deactivated Accounts
+            </div>
+    </div>
+</div>
+<table id="all_user" class="table table-hover  text-center table-bordered table-condensed">
                         <thead style="">
                             <tr>
                                 <th>S.No.</th>
+                                <th>Account Status</th>
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>User Contact</th>
@@ -92,14 +71,35 @@
                                 <th>Overall Learning Obj Result</th>
                                 <th>Payment Status</th>
                                 <th>Payment Id</th>
+                                <th>Update Payment Status</th>
                                 <th>Trial Days</th>
+                                <th>Registered On </th>
                                 <th>View</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($users as $index => $user)
-                                <tr>
+                            @php
+                            $rowClass = '';
+                            if ($user->deactivated) {
+                                $rowClass = 'table-danger'; 
+                            } elseif ($user->payment_status == 1) {
+                                $rowClass = 'table-primary'; 
+                            }
+                        @endphp
+                        <tr class="{{ $rowClass }}">
                                     <td>{{ $index + 1 }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.toggleAccountStatus') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="email" value="{{ $user->email }}">
+                                            @if ($user->deactivated)
+                                                <button type="submit" class="btn btn-sm btn-warning">Activate</button>
+                                            @else
+                                                <button type="submit" class="btn btn-sm btn-danger">Deactivate</button>
+                                            @endif
+                                        </form>
+                                    </td>
                                     <td class="text-capitalize">{{ $user->first_name." ".$user->last_name  }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->contact_no }}</td>
@@ -114,7 +114,17 @@
                                         Unpaid
                                     @endif</td>
                                     <td>{{$user->payment_id}}</td>
+                                    <td>
+                                        @if ($user->payment_status == 0)
+                                            <form action="{{ route('admin.updatePaymentStatus') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="email" value="{{ $user->email }}">
+                                                <button type="submit" class="btn btn-sm btn-success">Mark as Paid</button>
+                                            </form>
+                                        @endif
+                                    </td>
                                     <td>{{$user->trial_days}}</td>
+                                    <td>{{ $user->created_at->format('Y-m-d') }}</td>
                                     <td><a href="{{ url('/admin/user/' . $user->email) }}">View</a></td>
                                     {{-- <td>{{ $user->payment_status }}</td> --}}
                                     {{-- <td>{{ $user->trial_days }}</td> --}}
@@ -127,7 +137,49 @@
         </div>
     </div><br><br>
 
-   
+    <div class="m-4 border shadow-md">
+        <h2 class="text-center " style="background-color: rgb(255, 255, 255); padding: 12px;">All Admins
+        </h2>
+        <div class="container">
+            <div class="panel">
+                <div class="table-responsive">
+                    <table id="all_admin" class="table table-hover  text-center table-bordered table-condensed">
+                        <thead style="">
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Admin Name</th>
+                                <th>Admin Email</th>
+                                <th>Admin Address</th>
+                                <th>Admin Contact</th>
+                                <th>Country</th>
+                                <th>Designation</th>
+                                {{-- <th>Update</th>
+                                <th>Delete</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($admins as $index => $admin)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td class="text-capitalize">{{ $admin->first_name." ".$admin->last_name  }}</td>
+                                    <td>{{ $admin->email }}</td>
+                                    <td class="text-capitalize">{{ $admin->address }}</td>
+                                    <td></td>
+                                    <td class="text-capitalize">{{ $admin->country }}</td>
+                                    <td class="text-capitalize">{{ $admin->designation }}</td>
+                                    {{-- <td></td>
+                                    <td></td> --}}
+                                    {{-- <td>{{ $user->payment_status }}</td> --}}
+                                    {{-- <td>{{ $user->trial_days }}</td> --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><br><br>
 @include('footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

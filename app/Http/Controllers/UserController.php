@@ -31,7 +31,7 @@ class UserController extends Controller
         $totalTrialRequests = TrialRequest::whereDate('created_at', now()->toDateString())->count();
         $newUsersToday = Reg_User::whereDate('created_at', now()->toDateString())->count();
         $totalAdmins = Reg_User::where('is_admin', '1')->count();
-        $totalChapters = 8; 
+        $totalChapters = 10; 
 
         $trialRequests = DB::table('trial_requests')
         ->join('reg_users', 'trial_requests.email', '=', 'reg_users.email')
@@ -162,4 +162,30 @@ class UserController extends Controller
         return back();
     }
     
+    public function updatePaymentStatus(Request $request)
+    {
+        $email = $request->input('email');
+
+        $user = Reg_User::where('email', $email)->first();
+        if ($user) {
+            $user->payment_status = 1;
+            $user->payment_id="Through Admin";
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'Payment status updated successfully for user email : '. $email);
+    }
+
+    public function toggleAccountStatus(Request $request)
+    {
+        $email = $request->input('email');
+
+        $user = Reg_User::where('email', $email)->first();
+        if ($user) {
+            $user->deactivated = !$user->deactivated;
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'Account status updated successfully.');
+    }
 }

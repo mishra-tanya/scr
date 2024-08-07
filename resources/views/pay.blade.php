@@ -90,32 +90,12 @@
   <br><br>
     <div class="conatiner text-center mb-3">
         <h1 class="text-center">Buy Premium</h1>
-        <p class="mt-3 ">Get started with  premium for life time access</p>
+        <p class="mt-3 ">Get started with  premium for two exam windows</p>
     </div>
     <div class="container mt-5 text-center ">
         <div class="row m-3">
+
             <div class="col-md-1"></div>
-            <div class="card golden-card col-md-4 mx-auto ">
-                <div class="p-4 pb-1">
-                    <h3>Get Free Trials</h3>
-                    <p style="text-decoration: underline">Only for Trial Days</p>
-
-                </div>
-                <div class="card-content p-4">
-                    <ul class="list-unstyled">
-                        <li><i class="bi bi-check2-circle text-success"></i>SCR Test Series </li>
-                        <hr>
-                        <li><i class="bi bi-check2-circle text-success"></i> All Learning Objectives </li>
-                        <hr>
-                        <li><i class="bi bi-check2-circle text-success"></i> Full Mock Tests</li>
-                        <hr>
-                        <li><i class="bi bi-check2-circle text-success"></i> Chapter Wise Notes</li>
-                    </ul>
-
-                </div>
-                <a href="#free-trials" class="btn golden-button my-3">Ask for Free Trials</a>
-
-            </div><br>
             <div class="card golden-card col-md-4 mx-auto ">
                 <div class="p-4 pb-1">
                     <h3>Get Premium Here</h3>
@@ -137,8 +117,32 @@
                 <a href={{url('payment_scr')}} class="btn golden-button my-3">Get Premium</a>
 
             </div><br>
+            
+            <div class="card golden-card col-md-4 mx-auto ">
+                <div class="p-4 pb-1">
+                    <h3>Get Free Trials</h3>
+                    <p style="text-decoration: underline">Only for Trial Days</p>
+
+                </div>
+                <div class="card-content p-4">
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check2-circle text-success"></i>SCR Test Series </li>
+                        <hr>
+                        <li><i class="bi bi-check2-circle text-success"></i> All Learning Objectives </li>
+                        <hr>
+                        <li><i class="bi bi-check2-circle text-success"></i> Full Mock Tests</li>
+                        <hr>
+                        <li><i class="bi bi-check2-circle text-success"></i> Chapter Wise Notes</li>
+                    </ul>
+
+                </div>
+                <a href="#free-trials" class="btn golden-button my-3">Ask for Free Trials</a>
+
+            </div>
             <div class="col-md-1"></div>
+            <br>
         </div>
+        
     </div>
     <hr>
     
@@ -151,9 +155,9 @@
                   
                 <div class="form-container m-3 mt-0 card-content ">
                     @if(session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
+                    <script>
+                        alert("{{ session('success') }}");
+                    </script>
                 @endif
                     <form action={{route('trial.request')}} method="POST" id="trial-request-form">
                         @csrf

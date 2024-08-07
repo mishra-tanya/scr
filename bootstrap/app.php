@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'is_admin' => \App\Http\Middleware\AdminAuthentication::class,
             'is_user' => \App\Http\Middleware\UserAuthentication::class,
             'check.trial' => \App\Http\Middleware\CheckTrialPeriod::class,
+            'check.deactivated' => \App\Http\Middleware\CheckDeactivated::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

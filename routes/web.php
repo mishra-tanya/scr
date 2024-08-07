@@ -65,8 +65,12 @@ Route::get('/payment/failed', function () {
     return view('payment.failed');
 })->name('payment.failed')->middleware('auth');
 
+Route::get('/account-deactivated', function () {
+    return view('account-deactivated');
+})->name('account-deactivated')->middleware('auth');
 
-Route::middleware(['auth', 'is_user','check.trial'])->group(function () {
+
+Route::middleware(['auth', 'is_user','check.trial','check.deactivated'])->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
@@ -99,7 +103,8 @@ Route::middleware(['auth', 'is_user','check.trial'])->group(function () {
     })->name('scr_videos');
     
     Route::get('/flash_card/{chapter}/{id}', [NotesController::class, 'flash_lo'])->name('flash_card_detail');
-    
+    Route::post('/savequiz', [QuizController::class, 'saveQuiz'])->name('savequiz');
+
 });
 
 use App\Http\Controllers\AdminAuthController;
@@ -134,9 +139,19 @@ Route::prefix('admin')->middleware(['is_admin'])->group(function ()  {
     Route::get('dashboard',[UserController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/user/{email}', [UserController::class, 'showUserDetails'])->name('user.details');
     Route::post('/admin/send-email/{id}', [UserController::class, 'sendEmail'])->name('admin.send.email');
+    Route::post('/admin/update-payment-status', [UserController::class, 'updatePaymentStatus'])->name('admin.updatePaymentStatus');
+
     Route::put('/trial-requests/{id}/update-trial-days', [UserController::class, 'updateTrialDays'])->name('update.trial.days');
+    Route::post('/toggle-account-status', [UserController::class, 'toggleAccountStatus'])->name('admin.toggleAccountStatus');
+
     Route::get('contact/messages', [ContactController::class, 'showMessages'])->name('contact.messages');
 
-    
+    Route::get('/paid_user_reg', function () {
+        return view('admin.paid_user_reg');
+    })->name('admin.paid_user');
+
+    Route::post('/paid_user_reg',[AuthController::class,'paid_register'])->name('paid_user');
+
+
 });
 

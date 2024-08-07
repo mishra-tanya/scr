@@ -262,7 +262,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,300italic&subset=latin'
             rel='stylesheet' type='text/css'>
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="../../css/home.css">
+        <link rel="stylesheet" href={{url('/css/home.css')}}>
         <nav>
             <div class="navbar">
                 <i class='bx bx-menu'></i>
@@ -420,25 +420,25 @@
                             <hr>
                             <label><b>A. </b>
                                 <input type="radio" id="question-{{ $key }}-A"
-                                    name="results[{{ $key }}][user_answer]" value="A">
+                                    name="results[{{ $key }}][user_answer]" value="A"  onchange="handleOptionChange(event, {{ $key }})">
                                 {{ $question->option_a }}
                             </label>
                             <hr>
                             <label><b>B. </b>
                                 <input type="radio" id="question-{{ $key }}-B"
-                                    name="results[{{ $key }}][user_answer]" value="B">
+                                    name="results[{{ $key }}][user_answer]" value="B" onchange="handleOptionChange(event, {{ $key }})">
                                 {{ $question->option_b }}
                             </label>
                             <hr>
                             <label><b>C. </b>
                                 <input type="radio" id="question-{{ $key }}-C"
-                                    name="results[{{ $key }}][user_answer]" value="C">
+                                    name="results[{{ $key }}][user_answer]" value="C" onchange="handleOptionChange(event, {{ $key }})">
                                 {{ $question->option_c }}
                             </label>
                             <hr>
                             <label><b>D. </b>
                                 <input type="radio" id="question-{{ $key }}-D"
-                                    name="results[{{ $key }}][user_answer]" value="D">
+                                    name="results[{{ $key }}][user_answer]" value="D" onchange="handleOptionChange(event, {{ $key }})">
                                 {{ $question->option_d }}
                             </label>
                             <input type="hidden" name="results[{{ $key }}][question_id]"
@@ -456,6 +456,59 @@
                             </div>
                         </div>
                     @endforeach
+                    <script>
+                       document.addEventListener('DOMContentLoaded', function() {
+                        const userId = "{{ Auth::user()->id }}"; 
+    const chapter = "{{ $chapter_id }}";
+    const storageKey = `${userId}-${chapter}`;
+    const storedData = JSON.parse(localStorage.getItem(storageKey)) || {};
+
+    // Initialize radio buttons based on local storage
+    Object.entries(storedData).forEach(([questionIndex, selectedValue]) => {
+        const questionBlock = document.getElementById(`question-${questionIndex}`);
+        if (questionBlock) {
+            const radioButton = questionBlock.querySelector(`input[value="${selectedValue}"]`);
+            if (radioButton) {
+                radioButton.checked = true;
+            }
+
+            // Update UI for selected button
+            const questionButton = document.querySelector(`.question-number-list button[data-index="${questionIndex}"]`);
+            if (questionButton) {
+                questionButton.style.backgroundColor = 'darkgreen';
+                questionButton.style.borderRadius = '50%';
+                questionButton.style.padding = '17px';
+            }
+        }
+    });
+
+    function handleOptionChange(event, questionIndex) {
+        const selectedValue = event.target.value;
+        let storedData = JSON.parse(localStorage.getItem(storageKey)) || {};
+        storedData[questionIndex] = selectedValue;
+        localStorage.setItem(storageKey, JSON.stringify(storedData));
+
+        // Update UI for selected button
+        const questionButton = document.querySelector(`.question-number-list button[data-index="${questionIndex}"]`);
+        if (questionButton) {
+            questionButton.style.backgroundColor = 'darkgreen';
+            questionButton.style.borderRadius = '50%';
+            questionButton.style.padding = '17px';
+        }
+    }
+
+    // Attach event listeners to radio buttons
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function(event) {
+            const questionIndex = parseInt(this.id.split('-')[1]);
+            handleOptionChange(event, questionIndex);
+        });
+    });
+});
+console.log(localStorage.getItem("{{ $chapter_id }}"));
+
+
+                    </script>
                 @endif
             </div>
 

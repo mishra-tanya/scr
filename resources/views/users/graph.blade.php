@@ -147,7 +147,7 @@
                         <h3><b>Attempted Tests</b></h3>
                         <p>Overall Total Tests</p>
                         @php
-                            $total_tests = $lo_test_count + 27;
+                            $total_tests = $lo_test_count + 35;
                             $attempted_tests = $attemptedCount + $attempted;
                             $percentage = ($total_tests > 0) ? ($attempted_tests / $total_tests) * 100 : 0;
                             $formatted_percentage = number_format($percentage, 2);
