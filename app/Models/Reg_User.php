@@ -12,7 +12,7 @@ class Reg_User extends Authenticatable
     protected $table = 'reg_users';
     protected $fillable = [
         'first_name', 'last_name', 'address', 'country', 'designation', 'email', 'password', 'is_admin'
-        ,'contact_no', 'chapter_notes','payment_status','payment_id',
+        ,'contact_no', 'chapter_notes','payment_status','payment_id', 'email_verified', 'verification_token'
     ];
 
     protected $hidden = [

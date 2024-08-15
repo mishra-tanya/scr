@@ -13,7 +13,8 @@ use App\Models\LearningObj;
 use App\Models\TestName; 
 use App\Models\Result; 
 use App\Models\Note; 
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -32,6 +33,13 @@ class AuthController extends Controller
         $credentials = $req->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if (!$user->email_verified) {
+                auth()->logout();
+                return redirect()->route('login')
+                    ->with('status', 'Your email is not verified. Please check your email for the verification link.')
+                    ->with('email', $user->email);
+            }
             return redirect()->intended('home');
         }
 
@@ -64,7 +72,7 @@ class AuthController extends Controller
                 'email' => 'The email address has already been taken.'
             ])->withInput();
         }
-        
+        $verification_token = Str::random(32);
         $user = Reg_User::create([
             'first_name' => $req->first_name,
             'last_name' => $req->last_name,
@@ -73,13 +81,20 @@ class AuthController extends Controller
             'country' => $req->country,
             'designation' => $req->designation,
             'email' => $req->email,
-            'password' => Hash::make($req->password)
+            'password' => Hash::make($req->password),
+            'verification_token' => $verification_token
+
         ]);
+
+        Mail::send('email.verify', ['token' => $verification_token], function($message) use ($req) {
+            $message->to($req->email);
+            $message->subject('Email Verification');
+        });
         // dd($req->all());
 
         // Auth::login($user);
 
-        return redirect()->route('login')->with('registered', true);
+        return redirect()->route('login')->with(['registered' => true, 'status' => 'Verification email sent to your email address. Please check your inbox.']);
     }
 
     public function paid_register(Request $req)
@@ -110,6 +125,7 @@ class AuthController extends Controller
             'designation' => $req->designation,
             'email' => $req->email,
             'payment_status'=>1,
+            'email_verified'=>1,
             'password' => Hash::make($req->password)
         ]);
         // dd($req->all());
@@ -261,6 +277,44 @@ public function updateEmailNotification(Request $request, Reg_User $user)
         $request->session()->regenerateToken();
         return redirect('/login');
     }
+    
+
+    public function verify($token)
+{
+    $user = Reg_User::where('verification_token', $token)->first();
+
+    if (!$user) {
+        return redirect()->route('login')->with('error', 'Invalid verification token.');
+    }
+
+    $user->email_verified = true;
+    $user->verification_token = null;
+    $user->save();
+
+    return redirect()->route('login')->with('success', 'Email verified successfully. You can now log in.');
+}
+
+    public function resend(Request $request)
+    {
+        $user = Reg_User::where('email', $request->email)->first();
+
+        if ($user) {
+            $verification_token = Str::random(32);
+            $user->update(['verification_token' => $verification_token]);
+
+            // Send verification email
+            Mail::send('email.verify', ['token' => $verification_token], function($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('Email Verification');
+            });
+
+            return redirect()->route('login')->with('status', 'Verification email resent. Please check your inbox.');
+        }
+
+        return redirect()->route('login')->withErrors(['email' => 'Email not found.']);
+    }
+
+
     
      public function deploy()
     {

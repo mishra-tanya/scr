@@ -29,12 +29,27 @@
                 <div class="sign-in-htm">
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-                        @if (session('status'))
+                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}
                             </div>
                         @endif
 
+                        @if (session('email'))
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-link p-0 mb-2 m-0 align-baseline text-white" data-bs-toggle="modal" data-bs-target="#verificationModal">
+                            Resend Verification Email
+                        </button>
+                    @endif
+
+                        @if (session('registered'))
+                        <div class="alert alert-warning">
+                            Please check your email and wait until you receive the email before attempting to resend the verification link. 
+                            <button type="button" class="btn btn-link p-0 m-0 align-baseline text-warning" data-bs-toggle="modal" data-bs-target="#verificationModal">
+                                Resend Verification Email
+                            </button>
+                        </div>
+                    @endif
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                     @foreach ($errors->all() as $error)
@@ -112,12 +127,37 @@
         </div>
     </div>
 
+        <!-- Verification Email Modal -->
+        <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="verificationModalLabel">Resend Verification Email</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{ route('verification.resend') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="email" class="col-form-label text-dark">Email Address:</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ session('email') }}" >
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Resend Verification Email</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+{{-- 
     @if(session('registered'))
     <script>
         alert('Registration successful. Login Now!');
         window.location.href = "{{ route('login') }}";
     </script>
-    @endif
+    @endif --}}
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reg_users', function (Blueprint $table) {
-            $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('email_verified')->default(false);
+            $table->string('verification_token')->nullable();
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('reg_users', function (Blueprint $table) {
-            $table->dropColumn('email_verified_at');
+            $table->dropColumn('email_verified');
+            $table->dropColumn('verification_token');
         });
     }
 };

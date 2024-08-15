@@ -6,9 +6,25 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>SCR Preparation Tool</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <meta name="keywords" content="SCR exam preparation, Sustainability and Climate Risk, SCR certification, practice questions, climate risk, Garp Preparation, management">
 
+ <link rel="canonical" href="https://indiaesg.org/scr-prep/public/">
+   <meta name="description" content="Prepare for the SCR exam with IndiaESG.org. Access 3,000+ practice questions, video lessons, and notes. Start your risk-free trial today!">
+ <meta property="og:image" content="https://indiaesg.org/scr-prep/public/assets/img/scr2.png">
+ 
+    <meta property="og:title" content="SCR Exam Preparation Tool - IndiaESG.org">
+    <meta property="og:url" content="https://indiaesg.org/scr-prep/public/">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Prepare for the SCR exam with IndiaESG.org's comprehensive tool, featuring 3,000+ practice questions, video lessons, and a risk-free trial.">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "SCR Preparation Tool",
+        "url": "https://indiaesg.org/scr-prep/public/",
+        "description": "Prepare for the SCR exam with IndiaESG.org's comprehensive tool, featuring 3,000+ practice questions, video lessons, and a risk-free trial.",
+      }
+      </script>
     <!-- Favicons -->
     <link href="assets/img/scr2.png" rel="icon">
     <link href="assets/img/scr2.png" rel="apple-touch-icon">

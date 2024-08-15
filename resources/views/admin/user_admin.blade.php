@@ -46,7 +46,7 @@
 @endif
 <div class="row mb-3 " style="display: flex;justify-content:center;align-items:center;">
     <div class="col-md-2">
-        <div class="bg-primary text-white text-center">
+        <div class="bg-success text-white text-center">
         For Paid Users
         </div>
     </div>
@@ -55,12 +55,23 @@
             For Deactivated Accounts
             </div>
     </div>
+    <div class="col-md-3">
+        <div class="bg-warning text-white text-center">
+            For Unpaid Verified Active Users
+            </div>
+    </div>
+    <div class="col-md-3">
+        <div class="bg-primary text-white text-center">
+            Paid but email not verified
+            </div>
+    </div>
 </div>
 <table id="all_user" class="table table-hover  text-center table-bordered table-condensed">
                         <thead style="">
                             <tr>
                                 <th>S.No.</th>
                                 <th>Account Status</th>
+                                <th>Email Verification</th>
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>User Contact</th>
@@ -83,9 +94,18 @@
                             $rowClass = '';
                             if ($user->deactivated) {
                                 $rowClass = 'table-danger'; 
-                            } elseif ($user->payment_status == 1) {
+                            } 
+                            elseif ($user->email_verified == 1) {
+                                $rowClass = 'table-warning'; 
+
+                                if ($user->payment_status == 1) {
+                                    $rowClass = 'table-success'; 
+                                }
+                            }
+                            elseif ($user->payment_status == 1) {
                                 $rowClass = 'table-primary'; 
                             }
+                            
                         @endphp
                         <tr class="{{ $rowClass }}">
                                     <td>{{ $index + 1 }}</td>
@@ -100,6 +120,11 @@
                                             @endif
                                         </form>
                                     </td>
+                                    <td>@if ($user->email_verified==1)
+                                        Done
+                                    @else
+                                        Not Done
+                                    @endif</td>
                                     <td class="text-capitalize">{{ $user->first_name." ".$user->last_name  }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->contact_no }}</td>
