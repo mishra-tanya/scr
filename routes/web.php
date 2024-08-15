@@ -26,8 +26,9 @@ Route::post('/login',[AuthController::class,'login'])->name('login');
 
 Route::get('/register',[AuthController::class,'register_view'])->name('register');
 Route::post('/register',[AuthController::class,'register'])->name('register');
-
+Route::get('/verify/{token}', [AuthController::class, 'verify'])->name('verify');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/resend-verification-email', [AuthController::class, 'resend'])->name('verification.resend');
 
 use App\Http\Controllers\PaymentController;
 Route::get('/payment', [PaymentController::class, 'show'])->name('payment.page')->middleware('auth');
@@ -70,7 +71,7 @@ Route::get('/account-deactivated', function () {
 })->name('account-deactivated')->middleware('auth');
 
 
-Route::middleware(['auth', 'is_user','check.trial','check.deactivated'])->group(function () {
+Route::middleware(['auth', 'is_user','check.trial','check.deactivated','email.verified'])->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
